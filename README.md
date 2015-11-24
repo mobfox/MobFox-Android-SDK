@@ -21,7 +21,7 @@ In your project's ```AndroidManifest.xml``` add the following permissions:
 
 ```
 
-In your ```gradle.build`` add the following:
+In your ```gradle.build``` add the following:
 
 ```groovy
 dependencies {
