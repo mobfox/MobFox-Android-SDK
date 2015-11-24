@@ -197,7 +197,7 @@ import com.mobfox.sdk.NativeListener;
         native = new Native(this);
         native.setListener(listener);
 
-        aNative.load("<your-publication-hash>");
+        native.load("<your-publication-hash>");
 
     }
 
