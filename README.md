@@ -86,10 +86,16 @@ In your activity set up the interstitial:
 
 ``` java
 
+// ...
+
 import com.mobfox.sdk.Interstitial;
 import com.mobfox.sdk.InterstitialListener;
 
+// ...
+
 private Interstitial interstitial;
+
+// ...
 
 @Override
 protected void onCreate(Bundle savedInstanceState) {
@@ -136,6 +142,130 @@ protected void onPause() {
     super.onPause();
     interstitial.onPause();
 }
+
+// ...
 ```
 
 ## Native Ad
+In your activity set up the native ad:
+``` java
+
+// ...
+
+import com.mobfox.sdk.Native;
+import com.mobfox.sdk.NativeListener;
+
+// ...
+
+    private Native native;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+
+        super.onCreate(savedInstanceState);
+
+        NativeListener listener = new NativeListener() {
+            @Override
+            public void onNativeReady(MobFoxRes mobFoxRes) {
+                Toast.makeText
+                mobfox_android_sdk_core.Utils.makeToast(Native.this, "Native Ready");
+            }
+        };
+
+        native = new Native(this);
+        native.setListener(listener);
+
+        aNative.load("<your-publication-hash>");
+
+    }
+
+// ...
+
+```
+
+The ```MobFoxRes``` object returned by the native listener contains the ad data used to construct the native ad:
+```java
+public class MobFoxRes {
+
+    public String getIcon_url() {
+        //...
+    }
+
+    
+    public int getIcon_width() {
+        //...
+    }
+
+
+    public int getIcon_height() {
+        //...
+    }
+
+    public Bitmap getIcon() {
+        //...
+    }
+
+    public String getMain_url() {
+        //...
+    }
+
+    public int getMain_width() {
+        //...
+    }
+
+    public int getMain_height() {
+        //...
+    }
+
+    public Bitmap getMain() {
+        //...
+    }
+
+    public String getText_headline() {
+        //...
+    }
+
+    public String getText_description() {
+        //...
+    }
+
+    public String getText_cta() {
+        //...
+    }
+
+    public String getText_rating() {
+        //...
+    }
+
+    public String getText_advertiser() {
+        //...
+    }
+
+    public List<Tracker> getTrackerList() {
+        //...
+    }
+
+    public String getClick_url() {
+        //...
+    }
+}
+```
+
+The ```List<Tracker>``` returned by ```getTrackerList``` contains tracker urls you must call before display the ad:
+```java
+public class Tracker {
+
+    public String getType() {
+        //..
+    }
+
+    //you must call this!
+    public String getUrl() {
+        //..
+    }
+
+}
+```
+
+## Custom Events
+TBD
