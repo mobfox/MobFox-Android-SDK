@@ -8,6 +8,28 @@ You will need a [MobFox](http://www.mobfox.com/) account.
 
 # Installation
 
+Download and unzip [MobFox-Android-SDK-Core-Lib](https://github.com/mobfox/MobFox-Android-SDK-Core-Lib/releases/latest) or clone this repository and extract the ```MobFox-Android-SDK-Core.jar``` and put it in your project under the directory ```libs``.
+
+
+In your project's ```AndroidManifest.xml``` add the following permissions:
+```xml
+    
+    <uses-permission android:name="android.permission.INTERNET"></uses-permission>
+    <uses-permission android:name="android.permission.READ_PHONE_STATE"></uses-permission>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"></uses-permission>
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"></uses-permission>
+
+```
+
+In your ```gradle.build`` add the following:
+
+```groovy
+dependencies {
+    compile 'com.google.android.gms:play-services:+'
+    compile files('libs/MobFox-Android-SDK-Core.jar')
+}
+```
+
 # Usage
 
 ## Banner
