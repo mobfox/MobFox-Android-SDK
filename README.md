@@ -102,8 +102,6 @@ protected void onPause() {
 
 ```
 
-Don't forget to declare this activity in your AndroidManifest.xml.
-
 ## Interstitial
 
 In your activity set up the interstitial:
