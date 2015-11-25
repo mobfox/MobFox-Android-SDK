@@ -8,7 +8,7 @@ You will need a [MobFox](http://www.mobfox.com/) account.
 
 # Installation
 
-Download and unzip [MobFox-Android-SDK-Core-Lib](https://github.com/mobfox/MobFox-Android-SDK-Core-Lib/releases/latest) or clone this repository and extract the ```MobFox-Android-SDK-Core.jar``` and put it in your project under the directory ```libs``.
+Download and unzip [MobFox-Android-SDK-Core-Lib](https://github.com/mobfox/MobFox-Android-SDK-Core-Lib/releases/latest) or clone this repository and extract the ```MobFox-Android-SDK-Core.jar``` and put it in your project under the directory ``libs``.
 
 
 In your project's ```AndroidManifest.xml``` add the following permissions:
