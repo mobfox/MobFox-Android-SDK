@@ -131,7 +131,7 @@ protected void onCreate(Bundle savedInstanceState) {
 
     interstitial = new Interstitial(this);
 
-    Activity self = this;
+    final Activity self = this;
     InterstitialListener listener = new InterstitialListener() {
         @Override
         public void onInterstitialLoaded() {
