@@ -190,7 +190,8 @@ import com.mobfox.sdk.NativeListener;
         NativeListener listener = new NativeListener() {
             @Override
             public void onNativeReady(MobFoxNativeObject mobFoxNativeObject) {
-                //display native object parameter e.g. click_url
+                //native object ready
+                //displaying object parameter e.g. click_url
                 Toast.makeText(MyNative.this, "click_url" + mobFoxNativeObject.getClick_url(), Toast.LENGTH_SHORT).show();
             }
         };
