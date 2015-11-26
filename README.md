@@ -200,7 +200,7 @@ import com.mobfox.sdk.NativeListener;
         
         aNative.setListener(listener);
 
-        aNative.load("80187188f458cfde788d961b6882fd53");
+        aNative.load("<your-publication-hash>");
     }
 
 // ...
