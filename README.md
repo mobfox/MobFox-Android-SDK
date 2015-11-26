@@ -11,7 +11,7 @@ You will need a [MobFox](http://www.mobfox.com/) account.
 Download and unzip [MobFox-Android-SDK-Core-Lib](https://github.com/mobfox/MobFox-Android-SDK-Core-Lib/releases/latest) or clone this repository and extract the ```MobFox-Android-SDK-Core.jar``` and put it in your project under the directory ``libs``.
 
 
-In your project's ```AndroidManifest.xml``` add the following permissions:
+In your project's ```AndroidManifest.xml``` under the ```manifest``` tag, add the following permissions:
 ```xml
     
     <uses-permission android:name="android.permission.INTERNET"></uses-permission>
@@ -34,7 +34,7 @@ dependencies {
 
 ## Banner
 
-Add to your ```AndroidManifest.xml``` or one of your layout xmls:
+Add to your activity's layout xml:
 ```xml
 
 <com.mobfox.sdk.Banner
@@ -45,6 +45,8 @@ Add to your ```AndroidManifest.xml``` or one of your layout xmls:
         android:layout_centerVertical="true">
 </com.mobfox.sdk.Banner>
 ```
+It's advised to select popular layout_width/layout_height combinations so you'll get a good fill rate.
+Popular sizes are: 320x50, 300x250, 320x480
 
 In your activity set up the banner:
 
@@ -61,8 +63,8 @@ private Banner banner;
 @Override
 protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
-    requestWindowFeature(Window.FEATURE_NO_TITLE);
-    setContentView(R.layout.banner);
+
+    setContentView(R.layout.activity_main);
 
     banner = (Banner) findViewById(R.id.banner);
 
@@ -86,6 +88,7 @@ protected void onCreate(Bundle savedInstanceState) {
         public void onBannerFinished() {
             Toast.makeText(self, "banner finished", Toast.LENGTH_SHORT).show();
         } 
+    });
 
     banner.load("<your-publication-hash>");
 }
@@ -123,9 +126,8 @@ private Interstitial interstitial;
 protected void onCreate(Bundle savedInstanceState) {
 
     super.onCreate(savedInstanceState);
-    requestWindowFeature(Window.FEATURE_NO_TITLE);
     getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
-    setContentView(R.layout.interstitial);
+    setContentView(R.layout.activity_main);
 
     interstitial = new Interstitial(this);
 
