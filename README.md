@@ -45,7 +45,7 @@ Add to your activity's layout xml:
         android:layout_centerVertical="true">
 </com.mobfox.sdk.Banner>
 ```
-It's advised to select popular layout_width/layout_height combinations so you'll get a good fill rate.
+It's advised to select popular ```layout_width```/```layout_height``` combinations so you'll get a good fill rate.
 Popular sizes are: 320x50, 300x250, 320x480
 
 In your activity set up the banner:
