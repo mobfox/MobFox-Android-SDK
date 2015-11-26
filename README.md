@@ -181,35 +181,34 @@ import com.mobfox.sdk.NativeListener;
 
 // ...
 
-    private Native native;
+    private Native aNative;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
         super.onCreate(savedInstanceState);
 
         NativeListener listener = new NativeListener() {
             @Override
-            public void onNativeReady(MobFoxRes mobFoxRes) {
-                Toast.makeText
-                mobfox_android_sdk_core.Utils.makeToast(Native.this, "Native Ready");
+            public void onNativeReady(MobFoxNativeObject mobFoxNativeObject) {
+                //display native object parameter e.g. click_url
+                Toast.makeText(MyNative.this, "click_url" + mobFoxNativeObject.getClick_url(), Toast.LENGTH_SHORT).show();
             }
         };
 
-        native = new Native(this);
-        native.setListener(listener);
+        aNative = new Native(this);
+        
+        aNative.setListener(listener);
 
-        native.load("<your-publication-hash>");
-
+        aNative.load("80187188f458cfde788d961b6882fd53");
     }
 
 // ...
 
 ```
 
-The ```MobFoxRes``` object returned by the native listener contains the ad data used to construct the native ad:
+The ```MobFoxNativeObject``` object returned by the native listener contains the ad data used to construct the native ad:
 ```java
-public class MobFoxRes {
+public class MobFoxNativeObject {
 
     public String getIcon_url() {
         //...
@@ -275,7 +274,7 @@ public class MobFoxRes {
 }
 ```
 
-The ```List<Tracker>``` returned by ```getTrackerList``` contains tracker urls you must call before display the ad:
+The ```List<Tracker>``` returned by ```getTrackerList``` contains tracker url's you must call before displaying the ad:
 ```java
 public class Tracker {
 
