@@ -310,6 +310,10 @@ public class Tracker {
 }
 ```
 
+##Test Inventory Hashes
+
+You can test your implementations with these [test inventory hashes](http://dev.mobfox.com/index.php?title=Test_Inventory_Hashes)
+
 ## Custom Events
 
 This feature lets you use your accounts on other advertising platforms such as MoPub inside MobFox's SDK.
