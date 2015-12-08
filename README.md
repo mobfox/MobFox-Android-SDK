@@ -95,6 +95,7 @@ protected void onCreate(Bundle savedInstanceState) {
             Toast.makeText(self, "banner clicked", Toast.LENGTH_SHORT).show();
         }
 
+        //do not write code here to not disturb custom events
         @Override
         public boolean onCustomEvent(JSONArray jsonArray) {
             return false;
