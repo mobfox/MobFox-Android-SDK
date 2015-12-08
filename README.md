@@ -146,25 +146,31 @@ protected void onCreate(Bundle savedInstanceState) {
     final Activity self = this;
     InterstitialListener listener = new InterstitialListener() {
         @Override
-        public void onInterstitialLoaded() {
-            Toast.makeText(self, "ready", Toast.LENGTH_SHORT).show();
-            //call show to disaply the interstitial when it finishes loading
+        public void onInterstitialLoaded(Interstitial interstitial) {
+            Toast.makeText(self, "interstitial ready", Toast.LENGTH_SHORT).show();
+
+            //call show to display the interstitial when it finishes loading
             interstitial.show();
         }
 
         @Override
-        public void onInterstitialFailed(String error) {
-            Toast.makeText(self, "error: " + error, Toast.LENGTH_SHORT).show();
+        public void onInterstitialFailed(Interstitial interstitial, Exception e) {
+            Toast.makeText(self, e.getMessage(), Toast.LENGTH_SHORT).show();
         }
 
         @Override
-        public void onInterstitialClosed() {
-            Toast.makeText(self, "closed", Toast.LENGTH_SHORT).show();
+        public void onInterstitialClosed(Interstitial interstitial) {
+            Toast.makeText(self, "interstitial closed", Toast.LENGTH_SHORT).show();
         }
 
         @Override
         public void onInterstitialFinished() {
-            Toast.makeText(self, "finished", Toast.LENGTH_SHORT).show();
+            Toast.makeText(self, "interstitial finished", Toast.LENGTH_SHORT).show();
+        }
+
+        @Override
+        public void onInterstitialClicked(Interstitial interstitial) {
+            Toast.makeText(self, "interstitial clicked", Toast.LENGTH_SHORT).show();
         }
     };
 
