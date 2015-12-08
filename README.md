@@ -5,8 +5,8 @@ Supports Android OS 4.1.x (Jelly Bean) and up.
 
 <!-- toc -->
 
-* [Prerequisites](#prerequisites)
-* [Installation](#installation)
+* [Prerequisites](# Prerequisites)
+* [Installation](# Installation)
 * [Usage](#Usage)
   * [Banner Ad](#Banner)
   * [Interstitial Ad](#Interstitial)
@@ -17,7 +17,7 @@ Supports Android OS 4.1.x (Jelly Bean) and up.
 <!-- toc stop -->
 
 
-#Prerequisites
+# Prerequisites
 
 You will need a [MobFox](http://www.mobfox.com/) account.
 
