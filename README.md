@@ -310,7 +310,7 @@ public class Tracker {
 }
 ```
 
-##Test Inventory Hashes
+##Test Banner
 
 You can test your implementations with these [test inventory hashes](http://dev.mobfox.com/index.php?title=Test_Inventory_Hashes)
 
