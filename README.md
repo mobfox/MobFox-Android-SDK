@@ -5,8 +5,8 @@ Supports Android OS 4.1.x (Jelly Bean) and up.
 
 <!-- toc -->
 
-* [Prerequisites](# Prerequisites)
-* [Installation](# Installation)
+* [Prerequisites](#Prerequisites)
+* [Installation](#Installation)
 * [Usage](#Usage)
   * [Banner Ad](#Banner)
   * [Interstitial Ad](#Interstitial)
