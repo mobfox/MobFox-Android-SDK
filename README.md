@@ -2,21 +2,6 @@
 
 Supports Android OS 4.1.x (Jelly Bean) and up.
 
-
-<!-- toc -->
-
-* [Prerequisites](#Prerequisites)
-* [Installation](#Installation)
-* [Usage](#Usage)
-  * [Banner Ad](#Banner)
-  * [Interstitial Ad](#Interstitial)
-  * [Native Ad](#Native Ad)
-  * [Custom Events](#custom-events)
-  * [Adapters](#adapters)
-
-<!-- toc stop -->
-
-
 # Prerequisites
 
 You will need a [MobFox](http://www.mobfox.com/) account.
@@ -325,7 +310,7 @@ public class Tracker {
 }
 ```
 
-##Test Banner
+## Test Banner
 
 You can test your implementations with these [test inventory hashes](http://dev.mobfox.com/index.php?title=Test_Inventory_Hashes)
 
