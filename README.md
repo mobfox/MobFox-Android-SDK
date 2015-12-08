@@ -196,6 +196,7 @@ In your activity set up the native ad:
 
 import com.mobfox.sdk.Native;
 import com.mobfox.sdk.NativeListener;
+import com.mobfox.sdk.MobFoxNativeObject;
 
 // ...
 
