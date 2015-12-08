@@ -295,10 +295,10 @@ public class Tracker {
 
 This feature lets you use your accounts on other advertising platforms such as MoPub inside MobFox's SDK.
 
-[Custom Events](http://www.mobfox.com/)
+[Custom Events](https://github.com/mobfox/MobFox-Android-SDK-Core-Lib/wiki/Custom-Events)
 
 ## Adapters
 
 Adapters are the opposite of Custom Events, they let you use MobFox as a Custom Event in other networks.
 
-[Adapters](http://www.mobfox.com/)
+[Adapters](https://github.com/mobfox/MobFox-Android-SDK-Core-Lib/wiki/Adapters)
