@@ -63,31 +63,42 @@ private Banner banner;
 @Override
 protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
-
     setContentView(R.layout.activity_main);
 
     banner = (Banner) findViewById(R.id.banner);
 
     final Activity self = this;
+    
     banner.setListener(new BannerListener() {
         @Override
-        public void onBannerError(String error) {
-            Toast.makeText(self, error, Toast.LENGTH_SHORT).show();
+        public void onBannerError(View view, Exception e) {
+            Toast.makeText(self, e.getMessage(), Toast.LENGTH_SHORT).show();
         }
 
         @Override
-        public void onBannerLoaded(Banner banner) {
+        public void onBannerLoaded(View view) {
             Toast.makeText(self, "banner loaded", Toast.LENGTH_SHORT).show();
         }
 
-        public void onBannerClosed() {
+        @Override
+        public void onBannerClosed(View view) {
             Toast.makeText(self, "banner closed", Toast.LENGTH_SHORT).show();
         }
 
         @Override
         public void onBannerFinished() {
             Toast.makeText(self, "banner finished", Toast.LENGTH_SHORT).show();
-        } 
+        }
+
+        @Override
+        public void onBannerClicked(View view) {
+            Toast.makeText(self, "banner clicked", Toast.LENGTH_SHORT).show();
+        }
+
+        @Override
+        public boolean onCustomEvent(JSONArray jsonArray) {
+            return false;
+        }
     });
 
     banner.load("<your-publication-hash>");
