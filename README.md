@@ -8,7 +8,7 @@ Supports Android OS 4.1.x (Jelly Bean) and up.
 * [Prerequisites](#prerequisites)
 * [Installation](#installation)
 * [Usage](#usage)
-  * [Banner Ad](#Banner)
+  * [Banner Ad](#banner-ad)
   * [Interstitial Ad](#Interstitial)
   * [Native Ad](#native-ad)
   * [Custom Events](#custom-events)
