@@ -2,13 +2,13 @@
 
 Supports Android OS 4.1.x (Jelly Bean) and up.
 
-#Prerequisites
+# Prerequisites
 
 You will need a [MobFox](http://www.mobfox.com/) account.
 
 # Installation
 
-Download and unzip [MobFox-Android-SDK-Core-Lib](https://github.com/mobfox/MobFox-Android-SDK-Core-Lib/releases/latest) or clone this repository and extract the ```MobFox-Android-SDK-Core.jar``` and put it in your project under the directory ``libs``.
+Download and unzip [MobFox-Android-SDK-Core-Lib](https://github.com/mobfox/MobFox-Android-SDK-Core-Lib/releases/latest) or clone this repository and extract the ```MobFox-Android-SDK-Core.jar``` and put it in your project under the ``libs`` directory.
 
 
 In your project's ```AndroidManifest.xml``` under the ```manifest``` tag, add the following permissions:
@@ -63,31 +63,43 @@ private Banner banner;
 @Override
 protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
-
     setContentView(R.layout.activity_main);
 
     banner = (Banner) findViewById(R.id.banner);
 
     final Activity self = this;
+    
     banner.setListener(new BannerListener() {
         @Override
-        public void onBannerError(String error) {
-            Toast.makeText(self, error, Toast.LENGTH_SHORT).show();
+        public void onBannerError(View view, Exception e) {
+            Toast.makeText(self, e.getMessage(), Toast.LENGTH_SHORT).show();
         }
 
         @Override
-        public void onBannerLoaded(Banner banner) {
+        public void onBannerLoaded(View view) {
             Toast.makeText(self, "banner loaded", Toast.LENGTH_SHORT).show();
         }
 
-        public void onBannerClosed() {
+        @Override
+        public void onBannerClosed(View view) {
             Toast.makeText(self, "banner closed", Toast.LENGTH_SHORT).show();
         }
 
         @Override
         public void onBannerFinished() {
             Toast.makeText(self, "banner finished", Toast.LENGTH_SHORT).show();
-        } 
+        }
+
+        @Override
+        public void onBannerClicked(View view) {
+            Toast.makeText(self, "banner clicked", Toast.LENGTH_SHORT).show();
+        }
+
+        //do not write code here to not disturb custom events
+        @Override
+        public boolean onCustomEvent(JSONArray jsonArray) {
+            return false;
+        }
     });
 
     banner.load("<your-publication-hash>");
@@ -134,25 +146,31 @@ protected void onCreate(Bundle savedInstanceState) {
     final Activity self = this;
     InterstitialListener listener = new InterstitialListener() {
         @Override
-        public void onInterstitialLoaded() {
-            Toast.makeText(self, "ready", Toast.LENGTH_SHORT).show();
-            //call show to disaply the interstitial when it finishes loading
+        public void onInterstitialLoaded(Interstitial interstitial) {
+            Toast.makeText(self, "interstitial ready", Toast.LENGTH_SHORT).show();
+
+            //call show to display the interstitial when it finishes loading
             interstitial.show();
         }
 
         @Override
-        public void onInterstitialFailed(String error) {
-            Toast.makeText(self, "error: " + error, Toast.LENGTH_SHORT).show();
+        public void onInterstitialFailed(Interstitial interstitial, Exception e) {
+            Toast.makeText(self, e.getMessage(), Toast.LENGTH_SHORT).show();
         }
 
         @Override
-        public void onInterstitialClosed() {
-            Toast.makeText(self, "closed", Toast.LENGTH_SHORT).show();
+        public void onInterstitialClosed(Interstitial interstitial) {
+            Toast.makeText(self, "interstitial closed", Toast.LENGTH_SHORT).show();
         }
 
         @Override
         public void onInterstitialFinished() {
-            Toast.makeText(self, "finished", Toast.LENGTH_SHORT).show();
+            Toast.makeText(self, "interstitial finished", Toast.LENGTH_SHORT).show();
+        }
+
+        @Override
+        public void onInterstitialClicked(Interstitial interstitial) {
+            Toast.makeText(self, "interstitial clicked", Toast.LENGTH_SHORT).show();
         }
     };
 
@@ -178,6 +196,7 @@ In your activity set up the native ad:
 
 import com.mobfox.sdk.Native;
 import com.mobfox.sdk.NativeListener;
+import com.mobfox.sdk.MobFoxNativeObject;
 
 // ...
 
@@ -290,6 +309,10 @@ public class Tracker {
 
 }
 ```
+
+## Test Banner
+
+You can test your implementations with these [test inventory hashes](http://dev.mobfox.com/index.php?title=Test_Inventory_Hashes)
 
 ## Custom Events
 
