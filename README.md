@@ -2,6 +2,24 @@
 
 Supports Android OS 4.1.x (Jelly Bean) and up.
 
+
+<!-- toc -->
+
+* [Prerequisites](#prerequisites)
+* [Installation](#installation)
+  * [CocoaPods](#cocoapods)
+  * [Manual Installation](#manual-installation)
+  * [iOS 9+ Specific](#ios-9-specific)
+* [Usage](#usage)
+  * [Banner Ad](#banner-ad)
+  * [Interstitial Ad](#interstitial-ad)
+  * [Native Ad](#native-ad)
+  * [Custom Events](#custom-events)
+  * [Adapters](#adapters)
+
+<!-- toc stop -->
+
+
 # Prerequisites
 
 You will need a [MobFox](http://www.mobfox.com/) account.
