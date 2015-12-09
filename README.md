@@ -9,7 +9,7 @@ Supports Android OS 4.1.x (Jelly Bean) and up.
 * [Installation](#installation)
 * [Usage](#usage)
   * [Banner Ad](#banner-ad)
-  * [Interstitial Ad](#Interstitial)
+  * [Interstitial Ad](#interstitial-ad)
   * [Native Ad](#native-ad)
   * [Custom Events](#custom-events)
   * [Adapters](#adapters)
