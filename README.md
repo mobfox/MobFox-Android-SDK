@@ -340,3 +340,7 @@ This feature lets you use your accounts on other advertising platforms such as M
 Adapters are the opposite of Custom Events, they let you use MobFox as a Custom Event in other networks.
 
 [Adapters](https://github.com/mobfox/MobFox-Android-SDK-Core-Lib/wiki/Adapters)
+
+# Min Versions
+
+Minimal lighter versions of the SDK core can be found [Here](...)
