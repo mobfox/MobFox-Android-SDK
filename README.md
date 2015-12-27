@@ -127,6 +127,11 @@ protected void onPause() {
     banner.onPause();
 }
 
+@Override
+protected void onResume() {
+    super.onResume();
+    banner.onResume();
+}
 
 // ...
 
@@ -198,6 +203,12 @@ protected void onCreate(Bundle savedInstanceState) {
 protected void onPause() {
     super.onPause();
     interstitial.onPause();
+}
+
+@Override
+protected void onResume() {
+    super.onResume();
+    interstitial.onResume();
 }
 
 // ...
