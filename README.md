@@ -8,7 +8,7 @@ Supports Android OS 4.1.x (Jelly Bean) and up.
 * [Prerequisites](#prerequisites)
 * [Installation](#installation)
   * [Gradle Installation](#option-1-gradle-installation)
-  * [Jar Installation](#option-2)
+  * [Jar Installation](#option-2-jar-installation)
 * [Usage](#usage)
   * [Banner Ad](#banner)
   * [Interstitial Ad](#interstitial)
