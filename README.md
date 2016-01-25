@@ -7,6 +7,8 @@ Supports Android OS 4.1.x (Jelly Bean) and up.
 
 * [Prerequisites](#prerequisites)
 * [Installation](#installation)
+  * [Gradle Installation](#option 1)
+  * [Jar Installation](#option 2)
 * [Usage](#usage)
   * [Banner Ad](#banner)
   * [Interstitial Ad](#interstitial)
@@ -47,6 +49,8 @@ dependencies {
 ```
 
 Done.
+
+## Option 2: Jar Installation
 
 Download and unzip [MobFox-Android-SDK-Core-Lib](https://github.com/mobfox/MobFox-Android-SDK-Core-Lib/releases/latest) or clone this repository and extract the ```MobFox-Android-SDK-Core.jar``` and put it in your project under the ``libs`` directory.
 
