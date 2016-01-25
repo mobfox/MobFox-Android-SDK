@@ -25,7 +25,7 @@ You will need a [MobFox](http://www.mobfox.com/) account.
 
 ## Option 1: Gradle Installation
 
-Add ```groovy jcenter``` to your repositories, if missing.
+Add ```jcenter``` to your repositories, if missing.
 In your build.gradle:
 
 ```groovy
