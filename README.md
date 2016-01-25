@@ -23,6 +23,21 @@ You will need a [MobFox](http://www.mobfox.com/) account.
 
 # Installation
 
+## Option 1: Gradle Installation
+
+Add ```groovy jcenter``` to your repositories, if missing.
+In your build.gradle:
+
+```groovy
+allprojects {
+    repositories {
+        jcenter()
+    }
+}
+```
+
+Next, add Google Play Services and 
+
 Download and unzip [MobFox-Android-SDK-Core-Lib](https://github.com/mobfox/MobFox-Android-SDK-Core-Lib/releases/latest) or clone this repository and extract the ```MobFox-Android-SDK-Core.jar``` and put it in your project under the ``libs`` directory.
 
 
