@@ -192,6 +192,11 @@ protected void onCreate(Bundle savedInstanceState) {
         public void onInterstitialClicked(Interstitial interstitial) {
             Toast.makeText(self, "interstitial clicked", Toast.LENGTH_SHORT).show();
         }
+        
+        @Override
+        public void onInterstitialShown(Interstitial interstitial) {
+            Toast.makeText(self, "interstitial shown", Toast.LENGTH_SHORT).show();
+        }
     };
 
     interstitial.setListener(listener);
