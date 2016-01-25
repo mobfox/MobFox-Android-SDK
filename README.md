@@ -36,7 +36,17 @@ allprojects {
 }
 ```
 
-Next, add Google Play Services and 
+Next, add ```Google Play Services``` and ```MobFox-Android-Core``` to your compile dependencies:
+
+```groovy
+dependencies {
+    //... other dependencies ...
+    compile 'com.google.android.gms:play-services:+'
+    compile 'com.mobfox.sdk:MobFox-Android-Core:1.+'
+}
+```
+
+Done.
 
 Download and unzip [MobFox-Android-SDK-Core-Lib](https://github.com/mobfox/MobFox-Android-SDK-Core-Lib/releases/latest) or clone this repository and extract the ```MobFox-Android-SDK-Core.jar``` and put it in your project under the ``libs`` directory.
 
