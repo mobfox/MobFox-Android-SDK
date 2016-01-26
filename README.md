@@ -64,6 +64,14 @@ Done.
 
 Download and unzip [MobFox-Android-SDK-Core-Lib](https://github.com/mobfox/MobFox-Android-SDK-Core-Lib/releases/latest) or clone this repository and extract the ```MobFox-Android-SDK-Core.jar``` and put it in your project under the ``libs`` directory.
 
+Next, In your ```gradle.build``` add the following dependencies:
+
+```groovy
+dependencies {
+    compile 'com.google.android.gms:play-services:+'
+    compile files('libs/MobFox-Android-SDK-Core-1.+.jar')
+}
+```
 
 In your project's ```AndroidManifest.xml``` under the ```manifest``` tag, add the following permissions:
 ```xml
@@ -73,15 +81,6 @@ In your project's ```AndroidManifest.xml``` under the ```manifest``` tag, add th
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"></uses-permission>
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"></uses-permission>
 
-```
-
-In your ```gradle.build``` add the following dependencies:
-
-```groovy
-dependencies {
-    compile 'com.google.android.gms:play-services:+'
-    compile files('libs/MobFox-Android-SDK-Core.jar')
-}
 ```
 
 # Usage
