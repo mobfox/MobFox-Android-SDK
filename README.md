@@ -397,4 +397,4 @@ Adapters are the opposite of Custom Events, they let you use MobFox as a Custom 
 
 # Min Versions
 
-Minimal lighter versions of the SDK core can be found [Here](...)
+Minimal lighter versions of the SDK core can be found [Here](https://github.com/mobfox/MobFox-Android-SDK-Core-Lib/wiki/Minimal-Versions)
