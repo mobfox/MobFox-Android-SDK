@@ -258,6 +258,46 @@ protected void onResume() {
 ```
 
 ## Native Ad
+We will use the layout below to show our native assets:
+
+```xml
+
+// ...
+
+<RelativeLayout
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:id="@+id/nativeLayout">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/headline"/>
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:adjustViewBounds="true"
+        android:maxWidth="300dp"
+        android:maxHeight="300dp"
+        android:scaleType="fitCenter"
+        android:id="@+id/nativeIcon"
+        android:layout_below="@+id/headline"/>
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:adjustViewBounds="true"
+        android:maxHeight="300dp"
+        android:scaleType="fitCenter"
+        android:id="@+id/nativeMainImg"
+        android:layout_below="@+id/nativeIcon"/>
+ </RelativeLayout>
+ 
+// ...
+ 
+```
+
 In your activity set up the native ad:
 ``` java
 
@@ -270,23 +310,96 @@ import com.mobfox.sdk.MobFoxNativeObject;
 // ...
 
     private Native aNative;
+    private Activity self;
+
+    private NativeListener listener;
+    
+    //creating variables for our layout
+    TextView headline;
+    ImageView nativeIcon, nativeMainImg;
+    RelativeLayout layout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.our_layout);
 
-        NativeListener listener = new NativeListener() {
+        self = this;
+
+        //assigning xml components to our layout
+        headline = (TextView) findViewById(R.id.headline);
+        nativeIcon = (ImageView) findViewById(R.id.nativeIcon);
+        nativeMainImg = (ImageView) findViewById(R.id.nativeMainImg);
+        layout = (RelativeLayout) findViewById(R.id.nativeLayout);
+
+        aNative = new Native(this);
+
+        //we must set a listener for native
+
+        listener = new NativeListener() {
             @Override
-            public void onNativeReady(MobFoxNativeObject mobFoxNativeObject) {
+            public void onNativeReady(Native aNative, MobFoxNativeObject mobFoxNativeObject) {
+
+                Toast.makeText(self, "on native ready", Toast.LENGTH_SHORT).show();
+
                 //native object ready
-                //displaying object parameter e.g. click_url
-                Toast.makeText(MyNative.this, "click_url" + mobFoxNativeObject.getClick_url(), Toast.LENGTH_SHORT).show();
+                //displaying object parameter e.g. headline
+
+                String nativeHeadline = mobFoxNativeObject.getText_headline();
+
+                headline.setText(nativeHeadline);
+
+                //if we want to get the actual bitmap images
+                //we will call the 'getIconFromUrl' to get the icon and 'getMainFromUrl' to get the main image
+                //and pass our listener to notify us when ready
+
+                mobFoxNativeObject.getIconFromURL(listener);
+                mobFoxNativeObject.getMainFromURL(listener);
+
+                //to make our layout clickable we will use the 'registerViewForInteraction'
+                //and pass our view group e.g our relative layout
+
+                aNative.registerViewForInteraction(layout);
+            }
+
+            @Override
+            public void onNativeError(MobFoxNativeObject mobFoxNativeObject, Exception e) {
+
+                Toast.makeText(self, "on native error: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onNativeClick(MobFoxNativeObject mobFoxNativeObject) {
+
+                Toast.makeText(self, "on native click", Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onNativeIcon(Bitmap bitmap) {
+
+                Toast.makeText(self, "on native icon", Toast.LENGTH_SHORT).show();
+
+                //icon ready
+                //setting up ImageView
+
+                nativeIcon.setImageBitmap(bitmap);
+            }
+
+            @Override
+            public void onNativeMain(Bitmap bitmap) {
+
+                Toast.makeText(self, "on native main", Toast.LENGTH_SHORT).show();
+
+                //icon ready
+                //setting up ImageView
+
+                nativeMainImg.setImageBitmap(bitmap);
             }
         };
 
-        aNative = new Native(this);
-        
         aNative.setListener(listener);
+
+        //load our native
 
         aNative.load("<your-publication-hash>");
     }
@@ -298,6 +411,14 @@ import com.mobfox.sdk.MobFoxNativeObject;
 The ```MobFoxNativeObject``` object returned by the native listener contains the ad data used to construct the native ad:
 ```java
 public class MobFoxNativeObject {
+
+    public void getIconFromURL(NativeListener listener) {
+        //...
+    }
+    
+    public void getMainFromURL(NativeListener listener) {
+        //...
+    }
 
     public String getIcon_url() {
         //...
