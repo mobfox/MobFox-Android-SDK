@@ -258,6 +258,46 @@ protected void onResume() {
 ```
 
 ## Native Ad
+We will use the layout below in our example:
+
+```xml
+
+// ...
+
+<RelativeLayout
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:id="@+id/nativeLayout">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/headline"/>
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:adjustViewBounds="true"
+        android:maxWidth="300dp"
+        android:maxHeight="300dp"
+        android:scaleType="fitCenter"
+        android:id="@+id/nativeIcon"
+        android:layout_below="@+id/headline"/>
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:adjustViewBounds="true"
+        android:maxHeight="300dp"
+        android:scaleType="fitCenter"
+        android:id="@+id/nativeMainImg"
+        android:layout_below="@+id/nativeIcon"/>
+ </RelativeLayout>
+ 
+// ...
+ 
+```
+
 In your activity set up the native ad:
 ``` java
 
@@ -371,6 +411,14 @@ import com.mobfox.sdk.MobFoxNativeObject;
 The ```MobFoxNativeObject``` object returned by the native listener contains the ad data used to construct the native ad:
 ```java
 public class MobFoxNativeObject {
+
+    public void getIconFromURL(NativeListener listener) {
+        //...
+    }
+    
+    public void getMainFromURL(NativeListener listener) {
+        //...
+    }
 
     public String getIcon_url() {
         //...
