@@ -258,7 +258,7 @@ protected void onResume() {
 ```
 
 ## Native Ad
-We will use the layout below in our example:
+We will use the layout below to show our native assets:
 
 ```xml
 
