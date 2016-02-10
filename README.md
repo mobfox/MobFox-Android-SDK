@@ -345,6 +345,64 @@ import com.mobfox.sdk.MobFoxNativeObject;
                 Toast.makeText(self, "on native ready", Toast.LENGTH_SHORT).show();
 
                 //native object ready
+                //first fire tracker urls for click tracking
+
+                List<Tracker> trackers = mobFoxNativeObject.getTrackerList();
+
+                for (int i = 0; i < trackers.size(); i++) {
+
+                    Tracker tracker = trackers.get(i);
+
+                    String trackerUrl = tracker.getUrl();
+
+                    AsyncTask<String, Void, Void> fireTracker = new AsyncTask<String, Void, Void>() {
+
+                        @Override
+                        protected Void doInBackground(String... params) {
+
+                            URL url;
+                            HttpURLConnection con = null;
+
+                            try {
+
+                                url = new URL(params[0]);
+                                con = (HttpURLConnection) url.openConnection();
+                                int responseCode = con.getResponseCode();
+
+                                if (responseCode == HttpURLConnection.HTTP_OK) {
+
+                                    //tracker url fired!
+                                } else if (responseCode == HttpURLConnection.HTTP_BAD_GATEWAY) {
+
+                                    //tracker url bad gateway
+                                }
+
+                            } catch (Exception e) {
+
+                                //check exception for error origin
+
+                            } finally {
+
+                                if (con != null) {
+
+                                    con.disconnect();
+                                }
+                            }
+
+                            return null;
+                        }
+                    };
+
+                    if (trackerUrl != null) {
+
+                        fireTracker.execute(trackerUrl);
+                    } else {
+
+                        continue;
+                    }
+
+                }
+                
                 //displaying object parameter e.g. headline
 
                 String nativeHeadline = mobFoxNativeObject.getText_headline();
