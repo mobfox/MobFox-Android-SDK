@@ -129,7 +129,7 @@ protected void onCreate(Bundle savedInstanceState) {
         }
 
         @Override
-        public void onBannerFinished() {
+        public void onBannerFinished(View view) {
             Toast.makeText(self, "banner finished", Toast.LENGTH_SHORT).show();
         }
 
