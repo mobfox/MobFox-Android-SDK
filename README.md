@@ -250,6 +250,12 @@ protected void onResume() {
     interstitial.onResume();
 }
 
+@Override
+protected void onDestroy() {
+    super.onDestroy();
+    interstitial.onDestroy();
+}
+
 // ...
 ```
 
