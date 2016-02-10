@@ -161,6 +161,12 @@ protected void onResume() {
     banner.onResume();
 }
 
+@Override
+protected void onDestroy() {
+    super.onDestroy();
+    banner.onDestroy();
+}
+
 // ...
 
 ```
