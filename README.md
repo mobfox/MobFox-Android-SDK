@@ -48,16 +48,6 @@ dependencies {
 }
 ```
 
-In your project's ```AndroidManifest.xml``` under the ```manifest``` tag, add the following permissions:
-```xml
-    
-    <uses-permission android:name="android.permission.INTERNET"></uses-permission>
-    <uses-permission android:name="android.permission.READ_PHONE_STATE"></uses-permission>
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"></uses-permission>
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"></uses-permission>
-    
-```
-
 Done.
 
 ## Option 2: Jar Installation
@@ -139,7 +129,7 @@ protected void onCreate(Bundle savedInstanceState) {
         }
 
         @Override
-        public void onBannerFinished() {
+        public void onBannerFinished(View view) {
             Toast.makeText(self, "banner finished", Toast.LENGTH_SHORT).show();
         }
 
@@ -169,6 +159,12 @@ protected void onPause() {
 protected void onResume() {
     super.onResume();
     banner.onResume();
+}
+
+@Override
+protected void onDestroy() {
+    super.onDestroy();
+    banner.onDestroy();
 }
 
 // ...
@@ -252,6 +248,12 @@ protected void onPause() {
 protected void onResume() {
     super.onResume();
     interstitial.onResume();
+}
+
+@Override
+protected void onDestroy() {
+    super.onDestroy();
+    interstitial.onDestroy();
 }
 
 // ...
@@ -343,6 +345,64 @@ import com.mobfox.sdk.MobFoxNativeObject;
                 Toast.makeText(self, "on native ready", Toast.LENGTH_SHORT).show();
 
                 //native object ready
+                //first fire tracker urls for click tracking
+
+                List<Tracker> trackers = mobFoxNativeObject.getTrackerList();
+
+                for (int i = 0; i < trackers.size(); i++) {
+
+                    Tracker tracker = trackers.get(i);
+
+                    String trackerUrl = tracker.getUrl();
+
+                    AsyncTask<String, Void, Void> fireTracker = new AsyncTask<String, Void, Void>() {
+
+                        @Override
+                        protected Void doInBackground(String... params) {
+
+                            URL url;
+                            HttpURLConnection con = null;
+
+                            try {
+
+                                url = new URL(params[0]);
+                                con = (HttpURLConnection) url.openConnection();
+                                int responseCode = con.getResponseCode();
+
+                                if (responseCode == HttpURLConnection.HTTP_OK) {
+
+                                    //tracker url fired!
+                                } else if (responseCode == HttpURLConnection.HTTP_BAD_GATEWAY) {
+
+                                    //tracker url bad gateway
+                                }
+
+                            } catch (Exception e) {
+
+                                //check exception for error origin
+
+                            } finally {
+
+                                if (con != null) {
+
+                                    con.disconnect();
+                                }
+                            }
+
+                            return null;
+                        }
+                    };
+
+                    if (trackerUrl != null) {
+
+                        fireTracker.execute(trackerUrl);
+                    } else {
+
+                        continue;
+                    }
+
+                }
+                
                 //displaying object parameter e.g. headline
 
                 String nativeHeadline = mobFoxNativeObject.getText_headline();
