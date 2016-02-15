@@ -548,6 +548,14 @@ public class MobFoxNativeObject {
     public String getClick_url() {
         //...
     }
+    
+    public void getIconFromURL(Context context, NativeListener listener) {
+        //returns Bitmap icon (in listener onNativeIcon method)
+    }
+    
+    public void getMainFromURL(Context context, NativeListener listener) {
+        //returns Bitmap main image (in listener onNativeMain method)
+    }
 }
 ```
 
