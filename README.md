@@ -413,8 +413,8 @@ import com.mobfox.sdk.MobFoxNativeObject;
                 //we will call the 'getIconFromUrl' to get the icon and 'getMainFromUrl' to get the main image
                 //and pass our listener to notify us when ready
 
-                mobFoxNativeObject.getIconFromURL(listener);
-                mobFoxNativeObject.getMainFromURL(listener);
+                mobFoxNativeObject.getIconFromURL(self, listener);
+                mobFoxNativeObject.getMainFromURL(self, listener);
 
                 //to make our layout clickable we will use the 'registerViewForInteraction'
                 //and pass our view group e.g our relative layout
