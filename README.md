@@ -144,8 +144,10 @@ protected void onCreate(Bundle savedInstanceState) {
             return false;
         }
     });
+    
+    banner.setInventoryHash("<your-publication-hash>");
 
-    banner.load("<your-publication-hash>");
+    banner.load();
 }
 
 //need to add this so video ads will work properly
