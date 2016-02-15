@@ -201,6 +201,7 @@ protected void onCreate(Bundle savedInstanceState) {
     interstitial = new Interstitial(this);
 
     final Activity self = this;
+    
     InterstitialListener listener = new InterstitialListener() {
         @Override
         public void onInterstitialLoaded(Interstitial interstitial) {
@@ -237,7 +238,10 @@ protected void onCreate(Bundle savedInstanceState) {
     };
 
     interstitial.setListener(listener);
-    interstitial.load("<your-publication-hash>");
+    
+    interstitial.setInventoryHash("<your-publication-hash>");
+    
+    interstitial.load();
 }
 
 //need to add this so video ads will work properly
