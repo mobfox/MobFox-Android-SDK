@@ -145,6 +145,7 @@ protected void onCreate(Bundle savedInstanceState) {
         }
     });
     
+    //don't forget to set the inventory hash before loading
     banner.setInventoryHash("<your-publication-hash>");
 
     banner.load();
