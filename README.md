@@ -322,6 +322,8 @@ import com.mobfox.sdk.MobFoxNativeObject;
     private Activity self;
 
     private NativeListener listener;
+
+    static String userAgent = System.getProperty("http.agent");
     
     //creating variables for our layout
     TextView headline;
@@ -374,6 +376,7 @@ import com.mobfox.sdk.MobFoxNativeObject;
 
                                 url = new URL(params[0]);
                                 con = (HttpURLConnection) url.openConnection();
+                                con.setRequestProperty("User-Agent", userAgent);
                                 int responseCode = con.getResponseCode();
 
                                 if (responseCode == HttpURLConnection.HTTP_OK) {
