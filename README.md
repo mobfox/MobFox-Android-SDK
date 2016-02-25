@@ -376,7 +376,10 @@ import com.mobfox.sdk.MobFoxNativeObject;
 
                                 url = new URL(params[0]);
                                 con = (HttpURLConnection) url.openConnection();
+                                
+                                //you must set request user-agent for tracking to work
                                 con.setRequestProperty("User-Agent", userAgent);
+                                
                                 int responseCode = con.getResponseCode();
 
                                 if (responseCode == HttpURLConnection.HTTP_OK) {
