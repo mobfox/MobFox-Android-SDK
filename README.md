@@ -115,32 +115,38 @@ protected void onCreate(Bundle savedInstanceState) {
     banner.setListener(new BannerListener() {
         @Override
         public void onBannerError(View view, Exception e) {
+
             Toast.makeText(self, e.getMessage(), Toast.LENGTH_SHORT).show();
         }
 
         @Override
         public void onBannerLoaded(View view) {
+
             Toast.makeText(self, "banner loaded", Toast.LENGTH_SHORT).show();
         }
 
         @Override
         public void onBannerClosed(View view) {
+
             Toast.makeText(self, "banner closed", Toast.LENGTH_SHORT).show();
         }
 
         @Override
         public void onBannerFinished(View view) {
+
             Toast.makeText(self, "banner finished", Toast.LENGTH_SHORT).show();
         }
 
         @Override
         public void onBannerClicked(View view) {
+
             Toast.makeText(self, "banner clicked", Toast.LENGTH_SHORT).show();
         }
 
         //do not write code here to not disturb custom events
         @Override
-        public boolean onCustomEvent(JSONArray jsonArray) {
+        public boolean onCustomEvent(JSONArray jsonArray, JSONObject jsonObject) {
+
             return false;
         }
     });
