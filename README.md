@@ -115,32 +115,38 @@ protected void onCreate(Bundle savedInstanceState) {
     banner.setListener(new BannerListener() {
         @Override
         public void onBannerError(View view, Exception e) {
+
             Toast.makeText(self, e.getMessage(), Toast.LENGTH_SHORT).show();
         }
 
         @Override
         public void onBannerLoaded(View view) {
+
             Toast.makeText(self, "banner loaded", Toast.LENGTH_SHORT).show();
         }
 
         @Override
         public void onBannerClosed(View view) {
+
             Toast.makeText(self, "banner closed", Toast.LENGTH_SHORT).show();
         }
 
         @Override
         public void onBannerFinished(View view) {
+
             Toast.makeText(self, "banner finished", Toast.LENGTH_SHORT).show();
         }
 
         @Override
         public void onBannerClicked(View view) {
+
             Toast.makeText(self, "banner clicked", Toast.LENGTH_SHORT).show();
         }
 
         //do not write code here to not disturb custom events
         @Override
-        public boolean onCustomEvent(JSONArray jsonArray) {
+        public boolean onCustomEvent(JSONArray jsonArray, JSONObject jsonObject) {
+
             return false;
         }
     });
@@ -312,9 +318,10 @@ In your activity set up the native ad:
 
 // ...
 
-import com.mobfox.sdk.Native;
-import com.mobfox.sdk.NativeListener;
-import com.mobfox.sdk.MobFoxNativeObject;
+import com.mobfox.sdk.nativeads.Native;
+import com.mobfox.sdk.nativeads.NativeAd;
+import com.mobfox.sdk.nativeads.NativeListener;
+import com.mobfox.sdk.customevents.CustomEventNative;
 
 // ...
 
@@ -322,8 +329,6 @@ import com.mobfox.sdk.MobFoxNativeObject;
     private Activity self;
 
     private NativeListener listener;
-
-    static String userAgent = System.getProperty("http.agent");
     
     //creating variables for our layout
     TextView headline;
@@ -349,131 +354,50 @@ import com.mobfox.sdk.MobFoxNativeObject;
 
         listener = new NativeListener() {
             @Override
-            public void onNativeReady(Native aNative, MobFoxNativeObject mobFoxNativeObject) {
+            public void onNativeReady(Native aNative, CustomEventNative event, NativeAd ad) {
 
                 Toast.makeText(self, "on native ready", Toast.LENGTH_SHORT).show();
 
-                //native object ready
-                //first fire tracker urls for click tracking
+                //register custom layout click
+                event.registerViewForInteraction(layout);
 
-                List<Tracker> trackers = mobFoxNativeObject.getTrackerList();
+                ad.fireTrackers(self);
 
-                for (int i = 0; i < trackers.size(); i++) {
+                headline.setText(ad.getHeadline());
 
-                    Tracker tracker = trackers.get(i);
+                ad.loadImages(self, new NativeAd.ImagesLoadedListener() {
+                    @Override
+                    public void onImagesLoaded(NativeAd ad) {
 
-                    String trackerUrl = tracker.getUrl();
+                        Toast.makeText(self, "on images ready", Toast.LENGTH_SHORT).show();
 
-                    AsyncTask<String, Void, Void> fireTracker = new AsyncTask<String, Void, Void>() {
+                        nativeIcon.setImageBitmap(ad.getMain());
+                        nativeMainImg.setImageBitmap(ad.getIcon());
 
-                        @Override
-                        protected Void doInBackground(String... params) {
-
-                            URL url;
-                            HttpURLConnection con = null;
-
-                            try {
-
-                                url = new URL(params[0]);
-                                con = (HttpURLConnection) url.openConnection();
-                                
-                                //you must set request user-agent for tracking to work
-                                con.setRequestProperty("User-Agent", userAgent);
-                                
-                                int responseCode = con.getResponseCode();
-
-                                if (responseCode == HttpURLConnection.HTTP_OK) {
-
-                                    //tracker url fired!
-                                } else if (responseCode == HttpURLConnection.HTTP_BAD_GATEWAY) {
-
-                                    //tracker url bad gateway
-                                }
-
-                            } catch (Exception e) {
-
-                                //check exception for error origin
-
-                            } finally {
-
-                                if (con != null) {
-
-                                    con.disconnect();
-                                }
-                            }
-
-                            return null;
-                        }
-                    };
-
-                    if (trackerUrl != null) {
-
-                        fireTracker.execute(trackerUrl);
-                    } else {
-
-                        continue;
                     }
+                });
 
-                }
-                
-                //displaying object parameter e.g. headline
-
-                String nativeHeadline = mobFoxNativeObject.getText_headline();
-
-                headline.setText(nativeHeadline);
-
-                //if we want to get the actual bitmap images
-                //we will call the 'getIconFromUrl' to get the icon and 'getMainFromUrl' to get the main image
-                //and pass our listener to notify us when ready
-
-                mobFoxNativeObject.getIconFromURL(self, listener);
-                mobFoxNativeObject.getMainFromURL(self, listener);
-
-                //to make our layout clickable we will use the 'registerViewForInteraction'
-                //and pass our view group e.g our relative layout
-
-                aNative.registerViewForInteraction(layout);
             }
 
             @Override
-            public void onNativeError(MobFoxNativeObject mobFoxNativeObject, Exception e) {
+            public void onNativeError(Exception e) {
+            
+                Toast.makeText(self, "on native error", Toast.LENGTH_SHORT).show();
 
-                Toast.makeText(self, "on native error: " + e.getMessage(), Toast.LENGTH_SHORT).show();
             }
 
             @Override
-            public void onNativeClick(MobFoxNativeObject mobFoxNativeObject) {
+            public void onNativeClick(NativeAd ad) {
 
                 Toast.makeText(self, "on native click", Toast.LENGTH_SHORT).show();
+
             }
-
-            @Override
-            public void onNativeIcon(Bitmap bitmap) {
-
-                Toast.makeText(self, "on native icon", Toast.LENGTH_SHORT).show();
-
-                //icon ready
-                //setting up ImageView
-
-                nativeIcon.setImageBitmap(bitmap);
-            }
-
-            @Override
-            public void onNativeMain(Bitmap bitmap) {
-
-                Toast.makeText(self, "on native main", Toast.LENGTH_SHORT).show();
-
-                //icon ready
-                //setting up ImageView
-
-                nativeMainImg.setImageBitmap(bitmap);
-            }
+            
         };
 
         aNative.setListener(listener);
 
         //load our native
-
         aNative.load("<your-publication-hash>");
     }
 
@@ -481,102 +405,53 @@ import com.mobfox.sdk.MobFoxNativeObject;
 
 ```
 
-The ```MobFoxNativeObject``` object returned by the native listener contains the ad data used to construct the native ad:
+The ```NativeAd``` object returned by the native listener contains the ad data used to construct the native ad:
 ```java
 public class MobFoxNativeObject {
 
-    public void getIconFromURL(NativeListener listener) {
-        //...
-    }
+    public String getIconUrl();
     
-    public void getMainFromURL(NativeListener listener) {
-        //...
-    }
+    public int getIconWidth();
 
-    public String getIcon_url() {
-        //...
-    }
-
+    public int getIconHeight();
     
-    public int getIcon_width() {
-        //...
-    }
-
-
-    public int getIcon_height() {
-        //...
-    }
-
-    public Bitmap getIcon() {
-        //...
-    }
-
-    public String getMain_url() {
-        //...
-    }
-
-    public int getMain_width() {
-        //...
-    }
-
-    public int getMain_height() {
-        //...
-    }
-
-    public Bitmap getMain() {
-        //...
-    }
-
-    public String getText_headline() {
-        //...
-    }
-
-    public String getText_description() {
-        //...
-    }
-
-    public String getText_cta() {
-        //...
-    }
-
-    public String getText_rating() {
-        //...
-    }
-
-    public String getText_advertiser() {
-        //...
-    }
-
-    public List<Tracker> getTrackerList() {
-        //...
-    }
-
-    public String getClick_url() {
-        //...
-    }
+    //this will be null until loadImages is called
+    public Bitmap getIcon();
     
-    public void getIconFromURL(Context context, NativeListener listener) {
-        //returns Bitmap icon (in listener onNativeIcon method)
-    }
+    public String getMainUrl();
+
+    public int getMainWidth()
+
+    public int getMainHeight();
+
+    //this will be null until loadImages is called
+    public Bitmap getMain();
+
+    public String getHeadline();
+
+    public String getDescription();
+
+    public String getCta();
+
+    public String getRating();
+
+    public String getAdvertiser();
+
+    public List<Tracker> getTrackerList();
+
+    public String getClickUrl();
     
-    public void getMainFromURL(Context context, NativeListener listener) {
-        //returns Bitmap main image (in listener onNativeMain method)
-    }
 }
 ```
 
-The ```List<Tracker>``` returned by ```getTrackerList``` contains tracker url's you must call before displaying the ad:
+The ```List<Tracker>``` returned by ```getTrackerList``` contains tracker url's you must call before displaying the ad by calling the ```NativeAd.fireTrackers``` method :
 ```java
 public class Tracker {
 
-    public String getType() {
-        //..
-    }
+    public String getType();
 
-    //you must call this!
-    public String getUrl() {
-        //..
-    }
+    //you must call this url!
+    public String getUrl();
 
 }
 ```
