@@ -392,13 +392,7 @@ import com.mobfox.sdk.customevents.CustomEventNative;
                 Toast.makeText(self, "on native click", Toast.LENGTH_SHORT).show();
 
             }
-
-            @Override
-            public void onImagesReady(NativeAd ad) {
-
-                Toast.makeText(self, "on images ready", Toast.LENGTH_SHORT).show();
-
-            }
+            
         };
 
         aNative.setListener(listener);
