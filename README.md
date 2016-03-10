@@ -318,9 +318,10 @@ In your activity set up the native ad:
 
 // ...
 
-import com.mobfox.sdk.Native;
-import com.mobfox.sdk.NativeListener;
-import com.mobfox.sdk.MobFoxNativeObject;
+import com.mobfox.sdk.nativeads.Native;
+import com.mobfox.sdk.nativeads.NativeAd;
+import com.mobfox.sdk.nativeads.NativeListener;
+import com.mobfox.sdk.customevents.CustomEventNative;
 
 // ...
 
@@ -328,8 +329,6 @@ import com.mobfox.sdk.MobFoxNativeObject;
     private Activity self;
 
     private NativeListener listener;
-
-    static String userAgent = System.getProperty("http.agent");
     
     //creating variables for our layout
     TextView headline;
@@ -355,131 +354,56 @@ import com.mobfox.sdk.MobFoxNativeObject;
 
         listener = new NativeListener() {
             @Override
-            public void onNativeReady(Native aNative, MobFoxNativeObject mobFoxNativeObject) {
+            public void onNativeReady(Native aNative, CustomEventNative event, NativeAd ad) {
 
                 Toast.makeText(self, "on native ready", Toast.LENGTH_SHORT).show();
 
-                //native object ready
-                //first fire tracker urls for click tracking
+                //register custom layout click
+                event.registerViewForInteraction(layout);
 
-                List<Tracker> trackers = mobFoxNativeObject.getTrackerList();
+                ad.fireTrackers(self);
 
-                for (int i = 0; i < trackers.size(); i++) {
+                headline.setText(ad.getHeadline());
 
-                    Tracker tracker = trackers.get(i);
+                ad.loadImages(self, new NativeAd.ImagesLoadedListener() {
+                    @Override
+                    public void onImagesLoaded(NativeAd ad) {
 
-                    String trackerUrl = tracker.getUrl();
+                        Toast.makeText(self, "on images ready", Toast.LENGTH_SHORT).show();
 
-                    AsyncTask<String, Void, Void> fireTracker = new AsyncTask<String, Void, Void>() {
+                        nativeIcon.setImageBitmap(ad.getMain());
+                        nativeMainImg.setImageBitmap(ad.getIcon());
 
-                        @Override
-                        protected Void doInBackground(String... params) {
-
-                            URL url;
-                            HttpURLConnection con = null;
-
-                            try {
-
-                                url = new URL(params[0]);
-                                con = (HttpURLConnection) url.openConnection();
-                                
-                                //you must set request user-agent for tracking to work
-                                con.setRequestProperty("User-Agent", userAgent);
-                                
-                                int responseCode = con.getResponseCode();
-
-                                if (responseCode == HttpURLConnection.HTTP_OK) {
-
-                                    //tracker url fired!
-                                } else if (responseCode == HttpURLConnection.HTTP_BAD_GATEWAY) {
-
-                                    //tracker url bad gateway
-                                }
-
-                            } catch (Exception e) {
-
-                                //check exception for error origin
-
-                            } finally {
-
-                                if (con != null) {
-
-                                    con.disconnect();
-                                }
-                            }
-
-                            return null;
-                        }
-                    };
-
-                    if (trackerUrl != null) {
-
-                        fireTracker.execute(trackerUrl);
-                    } else {
-
-                        continue;
                     }
+                });
 
-                }
-                
-                //displaying object parameter e.g. headline
-
-                String nativeHeadline = mobFoxNativeObject.getText_headline();
-
-                headline.setText(nativeHeadline);
-
-                //if we want to get the actual bitmap images
-                //we will call the 'getIconFromUrl' to get the icon and 'getMainFromUrl' to get the main image
-                //and pass our listener to notify us when ready
-
-                mobFoxNativeObject.getIconFromURL(self, listener);
-                mobFoxNativeObject.getMainFromURL(self, listener);
-
-                //to make our layout clickable we will use the 'registerViewForInteraction'
-                //and pass our view group e.g our relative layout
-
-                aNative.registerViewForInteraction(layout);
             }
 
             @Override
-            public void onNativeError(MobFoxNativeObject mobFoxNativeObject, Exception e) {
+            public void onNativeError(Exception e) {
+            
+                Toast.makeText(self, "on native error", Toast.LENGTH_SHORT).show();
 
-                Toast.makeText(self, "on native error: " + e.getMessage(), Toast.LENGTH_SHORT).show();
             }
 
             @Override
-            public void onNativeClick(MobFoxNativeObject mobFoxNativeObject) {
+            public void onNativeClick(NativeAd ad) {
 
                 Toast.makeText(self, "on native click", Toast.LENGTH_SHORT).show();
+
             }
 
             @Override
-            public void onNativeIcon(Bitmap bitmap) {
+            public void onImagesReady(NativeAd ad) {
 
-                Toast.makeText(self, "on native icon", Toast.LENGTH_SHORT).show();
+                Toast.makeText(self, "on images ready", Toast.LENGTH_SHORT).show();
 
-                //icon ready
-                //setting up ImageView
-
-                nativeIcon.setImageBitmap(bitmap);
-            }
-
-            @Override
-            public void onNativeMain(Bitmap bitmap) {
-
-                Toast.makeText(self, "on native main", Toast.LENGTH_SHORT).show();
-
-                //icon ready
-                //setting up ImageView
-
-                nativeMainImg.setImageBitmap(bitmap);
             }
         };
 
         aNative.setListener(listener);
 
         //load our native
-
         aNative.load("<your-publication-hash>");
     }
 
