@@ -411,102 +411,53 @@ import com.mobfox.sdk.customevents.CustomEventNative;
 
 ```
 
-The ```MobFoxNativeObject``` object returned by the native listener contains the ad data used to construct the native ad:
+The ```NativeAd``` object returned by the native listener contains the ad data used to construct the native ad:
 ```java
 public class MobFoxNativeObject {
 
-    public void getIconFromURL(NativeListener listener) {
-        //...
-    }
+    public String getIconUrl();
     
-    public void getMainFromURL(NativeListener listener) {
-        //...
-    }
+    public int getIconWidth();
 
-    public String getIcon_url() {
-        //...
-    }
-
+    public int getIconHeight();
     
-    public int getIcon_width() {
-        //...
-    }
-
-
-    public int getIcon_height() {
-        //...
-    }
-
-    public Bitmap getIcon() {
-        //...
-    }
-
-    public String getMain_url() {
-        //...
-    }
-
-    public int getMain_width() {
-        //...
-    }
-
-    public int getMain_height() {
-        //...
-    }
-
-    public Bitmap getMain() {
-        //...
-    }
-
-    public String getText_headline() {
-        //...
-    }
-
-    public String getText_description() {
-        //...
-    }
-
-    public String getText_cta() {
-        //...
-    }
-
-    public String getText_rating() {
-        //...
-    }
-
-    public String getText_advertiser() {
-        //...
-    }
-
-    public List<Tracker> getTrackerList() {
-        //...
-    }
-
-    public String getClick_url() {
-        //...
-    }
+    //this will be null until loadImages is called
+    public Bitmap getIcon();
     
-    public void getIconFromURL(Context context, NativeListener listener) {
-        //returns Bitmap icon (in listener onNativeIcon method)
-    }
+    public String getMainUrl();
+
+    public int getMainWidth()
+
+    public int getMainHeight();
+
+    //this will be null until loadImages is called
+    public Bitmap getMain();
+
+    public String getHeadline();
+
+    public String getDescription();
+
+    public String getCta();
+
+    public String getRating();
+
+    public String getAdvertiser();
+
+    public List<Tracker> getTrackerList();
+
+    public String getClickUrl();
     
-    public void getMainFromURL(Context context, NativeListener listener) {
-        //returns Bitmap main image (in listener onNativeMain method)
-    }
 }
 ```
 
-The ```List<Tracker>``` returned by ```getTrackerList``` contains tracker url's you must call before displaying the ad:
+The ```List<Tracker>``` returned by ```getTrackerList``` contains tracker url's you must call before displaying the ad by calling the ```NativeAd.fireTrackers``` method :
 ```java
 public class Tracker {
 
-    public String getType() {
-        //..
-    }
+    public String getType();
 
-    //you must call this!
-    public String getUrl() {
-        //..
-    }
+    //you must call this url!
+    public String getUrl();
 
 }
 ```
