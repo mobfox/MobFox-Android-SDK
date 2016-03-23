@@ -364,7 +364,7 @@ protected void onDestroy() {
 // ...
 ```
 
-In your project's ```AndroidManifest.xml``` under the ```application``` tag, add the following activity:
+In your project's ```AndroidManifest.xml``` under the ```application``` tag, declare the following activity:
 ```xml
     
     <activity android:name="com.mobfox.sdk.interstitialads.InterstitialActivity"></activity>
