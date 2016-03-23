@@ -12,6 +12,7 @@ Supports Android OS 4.1.x (Jelly Bean) and up.
 * [Usage](#usage)
   * [Banner Ad](#banner)
   * [Interstitial Ad](#interstitial)
+  * [Interstitial Ad Activity](#interstitial-activity)
   * [Native Ad](#native-ad)
   * [Custom Events](#custom-events)
   * [Adapters](#adapters)
@@ -271,6 +272,8 @@ protected void onDestroy() {
 
 // ...
 ```
+
+## Interstitial Activity
 
 ## Native Ad
 We will use the layout below to show our native assets:
