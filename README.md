@@ -275,6 +275,102 @@ protected void onDestroy() {
 
 ## Interstitial Activity
 
+It's possible to display interstitial ads in their own separate activity.
+
+In your activity set up the interstitialAd interstitial:
+
+``` java
+
+// ...
+
+import com.mobfox.sdk.interstitialads.InterstitialAd;
+import com.mobfox.sdk.interstitialads.InterstitialAdListener;
+
+// ...
+
+private InterstitialAd interstitial;
+
+// ...
+
+@Override
+protected void onCreate(Bundle savedInstanceState) {
+    super.onCreate(savedInstanceState);
+
+    interstitial = new InterstitialAd(this);
+
+    final Activity self = this;
+    
+    InterstitialAdListener listener = new InterstitialAdListener() {
+        @Override
+        public void onInterstitialLoaded(InterstitialAd interstitial) {
+            Toast.makeText(self, "interstitial ready", Toast.LENGTH_SHORT).show();
+
+            //call show to display the interstitial when it finishes loading
+            interstitial.show();
+        }
+
+        @Override
+        public void onInterstitialFailed(InterstitialAd interstitial, Exception e) {
+            Toast.makeText(self, e.getMessage(), Toast.LENGTH_SHORT).show();
+        }
+
+        @Override
+        public void onInterstitialClosed(InterstitialAd interstitial) {
+            Toast.makeText(self, "interstitial closed", Toast.LENGTH_SHORT).show();
+        }
+
+        @Override
+        public void onInterstitialFinished() {
+            Toast.makeText(self, "interstitial finished", Toast.LENGTH_SHORT).show();
+        }
+
+        @Override
+        public void onInterstitialClicked(InterstitialAd interstitial) {
+            Toast.makeText(self, "interstitial clicked", Toast.LENGTH_SHORT).show();
+        }
+        
+        @Override
+        public void onInterstitialShown(InterstitialAd interstitial) {
+            Toast.makeText(self, "interstitial shown", Toast.LENGTH_SHORT).show();
+        }
+    };
+
+    interstitial.setListener(listener);
+    
+    interstitial.setInventoryHash("<your-publication-hash>");
+    
+    interstitial.load();
+}
+
+//need to add this so video ads will work properly
+@Override
+protected void onPause() {
+    super.onPause();
+    interstitial.onPause();
+}
+
+@Override
+protected void onResume() {
+    super.onResume();
+    interstitial.onResume();
+}
+
+@Override
+protected void onDestroy() {
+    super.onDestroy();
+    interstitial.onDestroy();
+}
+
+// ...
+```
+
+In your project's ```AndroidManifest.xml``` under the ```application``` tag, add the following activity:
+```xml
+    
+    <activity android:name="com.mobfox.sdk.interstitialads.InterstitialActivity"></activity>
+
+```
+
 ## Native Ad
 We will use the layout below to show our native assets:
 
