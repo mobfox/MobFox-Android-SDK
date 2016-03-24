@@ -36,8 +36,8 @@ In your build.gradle:
 ```groovy
 allprojects {
     repositories {
-       	//... other repositories ...
-	maven { url "https://jitpack.io" }
+        //... other repositories ...
+        maven { url "https://jitpack.io" }
     }
 }
 ```
