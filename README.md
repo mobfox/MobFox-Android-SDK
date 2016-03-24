@@ -28,13 +28,16 @@ You will need a [MobFox](http://www.mobfox.com/) account.
 
 ## Option 1: Gradle Installation
 
-Add ```jcenter``` to your repositories, if missing.
+MobFox SDK can easily be added as a dependency from JitPack package repository.
+
+Add ```JitPack``` to your repositories, if missing.
 In your build.gradle:
 
 ```groovy
 allprojects {
     repositories {
-        jcenter()
+       ...
+			    maven { url "https://jitpack.io" }
     }
 }
 ```
@@ -45,7 +48,7 @@ Next, add ```Google Play Services``` and ```MobFox-Android-Core``` to your compi
 dependencies {
     //... other dependencies ...
     compile 'com.google.android.gms:play-services:+'
-    compile 'com.mobfox.sdk:MobFox-Android-Core:1.+'
+    compile 'com.github.mobfox:MobFox-Android-SDK-Core:1.3.1a'
 }
 ```
 
