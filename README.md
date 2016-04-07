@@ -48,7 +48,7 @@ Next, add ```Google Play Services``` and ```MobFox-Android-Core``` to your compi
 dependencies {
     //... other dependencies ...
     compile 'com.google.android.gms:play-services:+'
-    compile 'com.github.mobfox:MobFox-Android-SDK-Core:v1.4.0a'
+    compile 'com.github.mobfox:MobFox-Android-SDK-Core:v1.4.1'
 }
 ```
 
