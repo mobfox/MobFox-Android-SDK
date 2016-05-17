@@ -47,8 +47,8 @@ Next, add ```Google Play Services``` and ```MobFox-Android-Core``` to your compi
 ```groovy
 dependencies {
     //... other dependencies ...
-    compile 'com.google.android.gms:play-services:+'
-    compile 'com.github.mobfox:MobFox-Android-SDK-Core:1.5.3'
+    compile 'com.google.android.gms:play-services-ads:+'
+    compile 'com.github.mobfox:MobFox-Android-SDK-Core:v1.5.4'
 }
 ```
 
