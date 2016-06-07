@@ -264,7 +264,7 @@ In your project's ```AndroidManifest.xml``` under the ```application``` tag, dec
 ```
 
 ## Native Ad
-We will use the layout below to show our native assets:
+the layout below is used to show native assets:
 
 ```xml
 
@@ -449,7 +449,7 @@ public class Tracker {
 
 ## Test Banner
 
-You can test your implementations with these [test inventory hashes](http://dev.mobfox.com/index.php?title=Test_Inventory_Hashes)
+You can test your implementations with these [test inventory hashes](https://docs.mobfox.com/docs/inventory-hashes-for-testing)
 
 ## Custom Events
 
