@@ -12,7 +12,6 @@ Supports Android OS 4.1.x (Jelly Bean) and up.
 * [Usage](#usage)
   * [Banner Ad](#banner)
   * [Interstitial Ad](#interstitial)
-  * [Interstitial Ad Activity](#interstitial-activity)
   * [Native Ad](#native-ad)
   * [Custom Events](#custom-events)
   * [Adapters](#adapters)
@@ -179,98 +178,6 @@ protected void onResume() {
 ```
 
 ## Interstitial
-
-In your activity set up the interstitial:
-
-``` java
-
-// ...
-
-import com.mobfox.sdk.Interstitial;
-import com.mobfox.sdk.InterstitialListener;
-
-// ...
-
-private Interstitial interstitial;
-
-// ...
-
-@Override
-protected void onCreate(Bundle savedInstanceState) {
-
-    super.onCreate(savedInstanceState);
-    getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
-    setContentView(R.layout.activity_main);
-
-    interstitial = new Interstitial(this);
-
-    final Activity self = this;
-    
-    InterstitialListener listener = new InterstitialListener() {
-        @Override
-        public void onInterstitialLoaded(Interstitial interstitial) {
-            Toast.makeText(self, "interstitial ready", Toast.LENGTH_SHORT).show();
-
-            //call show to display the interstitial when it finishes loading
-            interstitial.show();
-        }
-
-        @Override
-        public void onInterstitialFailed(Interstitial interstitial, Exception e) {
-            Toast.makeText(self, e.getMessage(), Toast.LENGTH_SHORT).show();
-        }
-
-        @Override
-        public void onInterstitialClosed(Interstitial interstitial) {
-            Toast.makeText(self, "interstitial closed", Toast.LENGTH_SHORT).show();
-        }
-
-        @Override
-        public void onInterstitialFinished() {
-            Toast.makeText(self, "interstitial finished", Toast.LENGTH_SHORT).show();
-        }
-
-        @Override
-        public void onInterstitialClicked(Interstitial interstitial) {
-            Toast.makeText(self, "interstitial clicked", Toast.LENGTH_SHORT).show();
-        }
-        
-        @Override
-        public void onInterstitialShown(Interstitial interstitial) {
-            Toast.makeText(self, "interstitial shown", Toast.LENGTH_SHORT).show();
-        }
-    };
-
-    interstitial.setListener(listener);
-    
-    interstitial.setInventoryHash("<your-publication-hash>");
-    
-    interstitial.load();
-}
-
-//need to add this so video ads will work properly
-@Override
-protected void onPause() {
-    super.onPause();
-    interstitial.onPause();
-}
-
-@Override
-protected void onResume() {
-    super.onResume();
-    interstitial.onResume();
-}
-
-@Override
-protected void onDestroy() {
-    super.onDestroy();
-    interstitial.onDestroy();
-}
-
-// ...
-```
-
-## Interstitial Activity
 
 It's possible to display interstitial ads in their own separate activity.
 
