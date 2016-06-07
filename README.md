@@ -48,7 +48,7 @@ Next, add ```Google Play Services``` and ```MobFox-Android-Core``` to your compi
 dependencies {
     //... other dependencies ...
     compile 'com.google.android.gms:play-services-ads:+'
-    compile 'com.github.mobfox:MobFox-Android-SDK-Core:v1.5.8'
+    compile 'com.github.mobfox:MobFox-Android-SDK-Core:2.+'
 }
 ```
 
@@ -63,7 +63,7 @@ Next, In your ```gradle.build``` add the following dependencies:
 ```groovy
 dependencies {
     compile 'com.google.android.gms:play-services-ads:+'
-    compile files('libs/MobFox-Android-SDK-Core-1.+.jar')
+    compile files('libs/MobFox-Android-SDK-Core-2.+.jar')
 }
 ```
 
@@ -74,6 +74,15 @@ In your project's ```AndroidManifest.xml``` under the ```manifest``` tag, add th
     <uses-permission android:name="android.permission.READ_PHONE_STATE"></uses-permission>
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"></uses-permission>
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"></uses-permission>
+    
+    ...
+    <application
+    ...
+    <!--mobfox interstitial activity-->
+    <activity android:name="com.mobfox.sdk.interstitialads.InterstitialActivity"></activity>
+    ...
+    </application>
+    
 
 ```
 
@@ -84,13 +93,13 @@ In your project's ```AndroidManifest.xml``` under the ```manifest``` tag, add th
 Add to your activity's layout xml:
 ```xml
 
-<com.mobfox.sdk.Banner
+<com.mobfox.sdk.bannerads.Banner
         android:layout_width="300dp"
         android:layout_height="250dp"
         android:id="@+id/banner"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true">
-</com.mobfox.sdk.Banner>
+</com.mobfox.sdk.bannerads.Banner>
 ```
 It's advised to select popular ```layout_width```/```layout_height``` combinations so you'll get a good fill rate.
 Popular sizes are: 320x50, 300x250, 320x480
@@ -100,68 +109,59 @@ In your activity set up the banner:
 ```java
 // ...
 
-import com.mobfox.sdk.Banner;
-import com.mobfox.sdk.BannerListener;
+import com.mobfox.sdk.bannerads.Banner;
+import com.mobfox.sdk.bannerads.BannerListener;
 
 // ...
 
-private Banner banner;
+Banner banner;
+BannerListener listener;
 
 @Override
 protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_main);
-
-    banner = (Banner) findViewById(R.id.banner);
-
-    final Activity self = this;
     
+    banner = (Banner) findViewById(R.id.banner);
+    
+    final Activity self = this;
     banner.setListener(new BannerListener() {
         @Override
-        public void onBannerError(View view, Exception e) {
-
+        public void onBannerError(View banner, Exception e) {
             Toast.makeText(self, e.getMessage(), Toast.LENGTH_SHORT).show();
         }
-
         @Override
-        public void onBannerLoaded(View view) {
-
-            Toast.makeText(self, "banner loaded", Toast.LENGTH_SHORT).show();
+        public void onBannerLoaded(View banner) {
+            Toast.makeText(self, "loaded", Toast.LENGTH_SHORT).show();
         }
-
         @Override
-        public void onBannerClosed(View view) {
-
-            Toast.makeText(self, "banner closed", Toast.LENGTH_SHORT).show();
+        public void onBannerClosed(View banner) {
+            Toast.makeText(self, "closed", Toast.LENGTH_SHORT).show();
         }
-
         @Override
-        public void onBannerFinished(View view) {
-
-            Toast.makeText(self, "banner finished", Toast.LENGTH_SHORT).show();
+        public void onBannerFinished() {
+            Toast.makeText(self, "finished", Toast.LENGTH_SHORT).show();
         }
-
         @Override
-        public void onBannerClicked(View view) {
-
-            Toast.makeText(self, "banner clicked", Toast.LENGTH_SHORT).show();
+        public void onBannerClicked(View banner) {
+            Toast.makeText(self, "clicked", Toast.LENGTH_SHORT).show();
         }
-
-        //do not write code here to not disturb custom events
         @Override
-        public boolean onCustomEvent(JSONArray jsonArray, JSONObject jsonObject) {
-
-            return false;
+        public void onNoFill(View banner) {
+            Toast.makeText(self, "no fill", Toast.LENGTH_SHORT).show();
         }
     });
-    
-    //don't forget to set the inventory hash before loading
     banner.setInventoryHash("<your-publication-hash>");
-
     banner.load();
 }
 
-//need to add this so video ads will work properly
+//permission dialog for marshmello and above
+@Override
+public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
+    banner.onRequestPermissionsResult(requestCode, permissions, grantResults);
+}
+
+//add this so video ads will work properly
 @Override
 protected void onPause() {
     super.onPause();
@@ -172,12 +172,6 @@ protected void onPause() {
 protected void onResume() {
     super.onResume();
     banner.onResume();
-}
-
-@Override
-protected void onDestroy() {
-    super.onDestroy();
-    banner.onDestroy();
 }
 
 // ...
