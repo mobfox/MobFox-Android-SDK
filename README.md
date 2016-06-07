@@ -114,7 +114,6 @@ import com.mobfox.sdk.bannerads.BannerListener;
 // ...
 
 Banner banner;
-BannerListener listener;
 
 @Override
 protected void onCreate(Bundle savedInstanceState) {
@@ -179,8 +178,6 @@ protected void onResume() {
 
 ## Interstitial
 
-It's possible to display interstitial ads in their own separate activity.
-
 In your activity set up the interstitialAd interstitial:
 
 ``` java
@@ -192,7 +189,8 @@ import com.mobfox.sdk.interstitialads.InterstitialAdListener;
 
 // ...
 
-private InterstitialAd interstitial;
+InterstitialAd interstitial;
+InterstitialAdListener listener;
 
 // ...
 
@@ -203,50 +201,46 @@ protected void onCreate(Bundle savedInstanceState) {
     interstitial = new InterstitialAd(this);
 
     final Activity self = this;
-    
     InterstitialAdListener listener = new InterstitialAdListener() {
         @Override
         public void onInterstitialLoaded(InterstitialAd interstitial) {
-            Toast.makeText(self, "interstitial ready", Toast.LENGTH_SHORT).show();
-
-            //call show to display the interstitial when it finishes loading
+            Toast.makeText(self, "loaded", Toast.LENGTH_SHORT).show();
+            //call show() to display the interstitial when its finished loading
             interstitial.show();
         }
-
         @Override
         public void onInterstitialFailed(InterstitialAd interstitial, Exception e) {
             Toast.makeText(self, e.getMessage(), Toast.LENGTH_SHORT).show();
         }
-
         @Override
         public void onInterstitialClosed(InterstitialAd interstitial) {
-            Toast.makeText(self, "interstitial closed", Toast.LENGTH_SHORT).show();
+            Toast.makeText(self, "closed", Toast.LENGTH_SHORT).show();
         }
-
         @Override
         public void onInterstitialFinished() {
-            Toast.makeText(self, "interstitial finished", Toast.LENGTH_SHORT).show();
+            Toast.makeText(self, "finished", Toast.LENGTH_SHORT).show();
         }
-
         @Override
         public void onInterstitialClicked(InterstitialAd interstitial) {
-            Toast.makeText(self, "interstitial clicked", Toast.LENGTH_SHORT).show();
+            Toast.makeText(self, "clicked", Toast.LENGTH_SHORT).show();
         }
-        
         @Override
         public void onInterstitialShown(InterstitialAd interstitial) {
-            Toast.makeText(self, "interstitial shown", Toast.LENGTH_SHORT).show();
+            Toast.makeText(self, "shown", Toast.LENGTH_SHORT).show();
         }
     };
-
     interstitial.setListener(listener);
-    
     interstitial.setInventoryHash("<your-publication-hash>");
-    
     interstitial.load();
 }
 
-//need to add this so video ads will work properly
+//permission dialog for marshmello and above
+@Override
+public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
+    interstitial.onRequestPermissionsResult(requestCode, permissions, grantResults);
+}
+
+//add this so video ads will work properly
 @Override
 protected void onPause() {
     super.onPause();
@@ -257,12 +251,6 @@ protected void onPause() {
 protected void onResume() {
     super.onResume();
     interstitial.onResume();
-}
-
-@Override
-protected void onDestroy() {
-    super.onDestroy();
-    interstitial.onDestroy();
 }
 
 // ...
