@@ -85,6 +85,13 @@ In your project's ```AndroidManifest.xml``` under the ```manifest``` tag, add th
 
 ```
 
+## Proguard
+```proguard
+-keep class com.mobfox.** { *; } 
+-keep class com.mobfox.adapter.** {*;} 
+-keep class com.mobfox.sdk.** {*;}
+```
+
 # Usage
 
 ## Banner
