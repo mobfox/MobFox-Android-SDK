@@ -15,6 +15,7 @@ Supports Android OS 4.1.x (Jelly Bean) and up.
   * [Native Ad](#native-ad)
   * [Custom Events](#custom-events)
   * [Adapters](#adapters)
+  * [Plugins] (#Plugins)
 
 <!-- toc stop -->
 
@@ -469,10 +470,6 @@ Adapters are the opposite of Custom Events, they let you use MobFox as a Custom 
 
 [Adapters](https://github.com/mobfox/MobFox-Android-SDK-Core-Lib/wiki/Adapters)
 
-# Min Versions
-
-Minimal lighter versions of the SDK core can be found [Here](https://github.com/mobfox/MobFox-Android-SDK-Core-Lib/wiki/Minimal-Versions)
-
 ## Plugins
 
 ## Unity Plugin
@@ -510,5 +507,10 @@ Inside the MobFox script you can find the callback functions you can use to hand
 
 You can also change the location and dimensions of banner ads by altering the parameters passed in ```ShowMobFoxBanner_Android ``` 
 (0, 0, 320, 50) are the default.
+
+# Min Versions
+
+Minimal lighter versions of the SDK core can be found [Here](https://github.com/mobfox/MobFox-Android-SDK-Core-Lib/wiki/Minimal-Versions)
+
 
 
