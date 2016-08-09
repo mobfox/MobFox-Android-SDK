@@ -15,6 +15,7 @@ Supports Android OS 4.1.x (Jelly Bean) and up.
   * [Native Ad](#native-ad)
   * [Custom Events](#custom-events)
   * [Adapters](#adapters)
+  * [Plugins](#plugins)
   * [Plugins](#Plugins) 
 
 
