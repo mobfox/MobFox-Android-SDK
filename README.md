@@ -454,6 +454,13 @@ public class Tracker {
 
 }
 ```
+## Location
+
+Sending the user's location will provide you with higher CPMs. In case this does not fit with your app, you can call (static method):
+```java
+Banner.setGetLocation(false);
+```
+to disable this feature of the SDK.
 
 ## Test Banner
 
