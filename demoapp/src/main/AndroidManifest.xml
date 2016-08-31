@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="sdk.mobfox.com.appcore">
+
+    <!--<uses-permission android:name="android.permission.INTERNET"></uses-permission>-->
+    <!--<uses-permission android:name="android.permission.READ_PHONE_STATE"></uses-permission>-->
+    <!--<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"></uses-permission>-->
+    <!--<uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"></uses-permission>-->
+
+    <application
+        android:hardwareAccelerated="true"
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+
+        <activity
+            android:name=".Menu"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".MainActivity"
+            android:label="@string/app_name"
+            android:theme="@style/AppTheme.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.STARTINGPOINT" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <activity android:name=".UseBannerAd" android:hardwareAccelerated="true"></activity>
+        <activity android:name=".UseNativeAd"></activity>
+        <activity android:name=".UseInterstitialAd"></activity>
+        <activity android:name=".RTBView"></activity>
+        <activity android:name=".CustomSizeBanner"></activity>
+
+        <!--<activity android:name="com.mobfox.sdk.interstitialads.InterstitialActivity"></activity>-->
+
+    </application>
+
+</manifest>
