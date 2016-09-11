@@ -480,43 +480,7 @@ Adapters are the opposite of Custom Events, they let you use MobFox as a Custom 
 
 ## Plugins
 
-## Unity Plugin
-
-This feature lets you develop with unity and use MobFox's SDK.
-
-Instructions:
-
-1. In your **Unity** project, create a folder ```Assets/Scripts/Android```.
- Copy the following from ```MobFox-Android-SDK-Core-Lib/plugins/Unity/``` into that directory:
-
- * ```assets directory (and content)```
- * ```libs directory (and content)```
- * ```res directory (and content)```
- * ```AndroidManifest.xml file``` 
-
-2. In your Unity project, create a folder ```Assets/Scripts```.
- Copy the following file from **Scripts** directory into that directory:
-
- **MobFox.cs**
- 
-  ![Image of MobFox.cs](https://github.com/mobfox/MobFox-Android-SDK-Core-Lib/blob/master/MobFox.cs.png)
-
-3. In your **Unity** project, create a game object called ```MobFoxObject```. Attach the **MobFox** script to it.
-
-  ![Image of Unityproject](https://github.com/mobfox/MobFox-Android-SDK-Core-Lib/blob/master/Unity%20project.png)
-
-4. Fill the **‘Mob Fox Banner Inventory Hash’** field with your MobFox hash id for banners.
-
-5. Fill the **‘Mob Fox Interstitial Inventory Hash’** field with your MobFox hash id for interstitials.
-
-6. Fill the **‘Mob Fox Game Object Name’** field with the name of the game object if you use one other than ‘MobFoxObject’.
-
-7. Now you can use ```MobFox.ShowMobFoxBanner``` to display a banner ad, and/or ```MobFox.ShowMobFoxInterstitial``` to display an interstitial ad.
-
-Inside the MobFox script you can find the callback functions you can use to handle events related to the banner ads (bannerReady, bannerError, bannerClosed, bannerClicked, bannerFinished) or interstitial ads (interstitialReady, interstitialError, interstitialClosed, interstitialClicked, interstitialFinished).
-
-You can also change the location and dimensions of banner ads by altering the parameters passed in ```ShowMobFoxBanner_Android ``` 
-(0, 0, 320, 50) are the default.
+[Plugins](https://github.com/mobfox/MobFox-Android-SDK-Core-Lib/wiki/Plugins)
 
 # Min Versions
 
