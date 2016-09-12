@@ -92,6 +92,20 @@ In your project's ```AndroidManifest.xml``` under the ```manifest``` tag, add th
 -keep class com.mobfox.sdk.** {*;}
 ```
 
+## Location
+Sending the user's location will provide you with higher CPMs.
+
+### Enable Location
+In your project's ```AndroidManifest.xml```, add the following permissions:
+```xml
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"></uses-permission>
+```
+
+Before calling any ad, call once:
+```java
+Banner.setGetLocation(true);
+```
+
 # Usage
 
 ## Banner
@@ -453,20 +467,6 @@ public class Tracker {
 
 }
 ```
-## Location
-Sending the user's location will provide you with higher CPMs.
-
-### Enable Location
-In your project's ```AndroidManifest.xml```, add the following permissions:
-```xml
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"></uses-permission>
-```
-
-Before calling any ad, call once:
-```java
-Banner.setGetLocation(true);
-```
-to disable this feature of the SDK.
 
 ## Test Banner
 
