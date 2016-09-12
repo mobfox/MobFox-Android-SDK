@@ -9,6 +9,7 @@ Supports Android OS 4.1.x (Jelly Bean) and up.
 * [Installation](#installation)
   * [Gradle Installation](#option-1-gradle-installation)
   * [Jar Installation](#option-2-jar-installation)
+  * [Location](#location)
 * [Usage](#usage)
   * [Banner Ad](#banner)
   * [Interstitial Ad](#interstitial)
@@ -92,18 +93,23 @@ In your project's ```AndroidManifest.xml``` under the ```manifest``` tag, add th
 -keep class com.mobfox.sdk.** {*;}
 ```
 
-## Location
+# Location
 Sending the user's location will provide you with higher CPMs.
 
-### Enable Location
-In your project's ```AndroidManifest.xml```, add the following permissions:
+## Enable Location
+In your project's ```AndroidManifest.xml```, add the following permission:
 ```xml
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"></uses-permission>
+<uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"></uses-permission>
 ```
 
 Before calling any ad, call once:
 ```java
 Banner.setGetLocation(true);
+```
+## Alternative Location
+If your app already has access to location data you set it manually in the ad:
+```java
+banner.setLocation(location);
 ```
 
 # Usage
