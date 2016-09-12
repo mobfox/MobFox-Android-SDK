@@ -49,7 +49,7 @@ Next, add ```Google Play Services``` and ```MobFox-Android-Core``` to your compi
 dependencies {
     //... other dependencies ...
     compile 'com.google.android.gms:play-services-ads:+'
-    compile 'com.github.mobfox:MobFox-Android-SDK-Core:v2.1.5'
+    compile 'com.github.mobfox:MobFox-Android-SDK-Core:2.1.6'
 }
 ```
 
@@ -454,10 +454,17 @@ public class Tracker {
 }
 ```
 ## Location
+Sending the user's location will provide you with higher CPMs.
 
-Sending the user's location will provide you with higher CPMs. In case this does not fit with your app, you can call (static method):
+### Enable Location
+In your project's ```AndroidManifest.xml```, add the following permissions:
+```xml
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"></uses-permission>
+```
+
+Before calling any ad, call once:
 ```java
-Banner.setGetLocation(false);
+Banner.setGetLocation(true);
 ```
 to disable this feature of the SDK.
 
