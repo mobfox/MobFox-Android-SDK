@@ -21,7 +21,8 @@ public class UseInterstitialAd extends Activity implements View.OnClickListener 
     //interstitial
     static final String inter_invh = "267d72ac3f77a3f447b32cf7ebf20673";
     //video
-    static final String some_app_inter = "145849979b4c7a12916c7f06d25b75e3";
+   // static final String some_app_inter = "145849979b4c7a12916c7f06d25b75e3";
+    static final String some_app_inter = "267d72ac3f77a3f447b32cf7ebf20673";
     static final String video_invh = "80187188f458cfde788d961b6882fd53";
 //    static final String video_invh = "9b3e3e967ad034aabd9a8d2295f51251";
     //audio

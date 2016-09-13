@@ -42,7 +42,7 @@
         <activity android:name=".RTBView"></activity>
         <activity android:name=".CustomSizeBanner"></activity>
 
-        <!--<activity android:name="com.mobfox.sdk.interstitialads.InterstitialActivity"></activity>-->
+        <activity android:name="com.mobfox.sdk.interstitialads.InterstitialActivity"></activity>
 
     </application>
 
