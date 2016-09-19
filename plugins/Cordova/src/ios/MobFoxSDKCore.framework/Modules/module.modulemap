@@ -1,0 +1,6 @@
+framework module MobFoxSDKCore {
+  umbrella header "MobFoxSDKCore.h"
+
+  export *
+  module * { export * }
+}

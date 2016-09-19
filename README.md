@@ -9,6 +9,7 @@ Supports Android OS 4.1.x (Jelly Bean) and up.
 * [Installation](#installation)
   * [Gradle Installation](#option-1-gradle-installation)
   * [Jar Installation](#option-2-jar-installation)
+  * [Location](#location)
 * [Usage](#usage)
   * [Banner Ad](#banner)
   * [Interstitial Ad](#interstitial)
@@ -49,7 +50,7 @@ Next, add ```Google Play Services``` and ```MobFox-Android-Core``` to your compi
 dependencies {
     //... other dependencies ...
     compile 'com.google.android.gms:play-services-ads:+'
-	   compile 'com.github.mobfox:MobFox-Android-SDK-Core:v2.1.5'
+    compile 'com.github.mobfox:MobFox-Android-SDK-Core:2.1.8'
 }
 ```
 
@@ -73,7 +74,6 @@ In your project's ```AndroidManifest.xml``` under the ```manifest``` tag, add th
     
     <uses-permission android:name="android.permission.INTERNET"></uses-permission>
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"></uses-permission>
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"></uses-permission>
     
     ...
     <application
@@ -91,6 +91,25 @@ In your project's ```AndroidManifest.xml``` under the ```manifest``` tag, add th
 -keep class com.mobfox.** { *; } 
 -keep class com.mobfox.adapter.** {*;} 
 -keep class com.mobfox.sdk.** {*;}
+```
+
+# Location
+Sending the user's location will provide you with higher CPMs.
+
+## Enable Location
+In your project's ```AndroidManifest.xml```, add the following permission:
+```xml
+<uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"></uses-permission>
+```
+
+Before calling any ad, call once:
+```java
+Banner.setGetLocation(true);
+```
+## Alternative Location
+If your app already has access to location data you set it manually in the ad:
+```java
+banner.setLocation(location);
 ```
 
 # Usage
@@ -454,13 +473,6 @@ public class Tracker {
 
 }
 ```
-## Location
-
-Sending the user's location will provide you with higher CPMs. In case this does not fit with your app, you can call (static method):
-```java
-Banner.setGetLocation(false);
-```
-to disable this feature of the SDK.
 
 ## Test Banner
 
@@ -480,43 +492,7 @@ Adapters are the opposite of Custom Events, they let you use MobFox as a Custom 
 
 ## Plugins
 
-## Unity Plugin
-
-This feature lets you develop with unity and use MobFox's SDK.
-
-Instructions:
-
-1. In your **Unity** project, create a folder ```Assets/Scripts/Android```.
- Copy the following from ```MobFox-Android-SDK-Core-Lib/plugins/Unity/``` into that directory:
-
- * ```assets directory (and content)```
- * ```libs directory (and content)```
- * ```res directory (and content)```
- * ```AndroidManifest.xml file``` 
-
-2. In your Unity project, create a folder ```Assets/Scripts```.
- Copy the following file from **Scripts** directory into that directory:
-
- **MobFox.cs**
- 
-  ![Image of MobFox.cs](https://github.com/mobfox/MobFox-Android-SDK-Core-Lib/blob/master/MobFox.cs.png)
-
-3. In your **Unity** project, create a game object called ```MobFoxObject```. Attach the **MobFox** script to it.
-
-  ![Image of Unityproject](https://github.com/mobfox/MobFox-Android-SDK-Core-Lib/blob/master/Unity%20project.png)
-
-4. Fill the **‘Mob Fox Banner Inventory Hash’** field with your MobFox hash id for banners.
-
-5. Fill the **‘Mob Fox Interstitial Inventory Hash’** field with your MobFox hash id for interstitials.
-
-6. Fill the **‘Mob Fox Game Object Name’** field with the name of the game object if you use one other than ‘MobFoxObject’.
-
-7. Now you can use ```MobFox.ShowMobFoxBanner``` to display a banner ad, and/or ```MobFox.ShowMobFoxInterstitial``` to display an interstitial ad.
-
-Inside the MobFox script you can find the callback functions you can use to handle events related to the banner ads (bannerReady, bannerError, bannerClosed, bannerClicked, bannerFinished) or interstitial ads (interstitialReady, interstitialError, interstitialClosed, interstitialClicked, interstitialFinished).
-
-You can also change the location and dimensions of banner ads by altering the parameters passed in ```ShowMobFoxBanner_Android ``` 
-(0, 0, 320, 50) are the default.
+[Plugins](https://github.com/mobfox/MobFox-Android-SDK-Core-Lib/wiki/Plugins)
 
 # Min Versions
 
