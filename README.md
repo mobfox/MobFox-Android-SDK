@@ -107,7 +107,7 @@ Before calling any ad, call once:
 Banner.setGetLocation(true);
 ```
 ## Alternative Location
-If your app already has access to location data you set it manually in the ad:
+If your app already has access to location data you can set it manually in the ad:
 ```java
 banner.setLocation(location);
 ```
