@@ -89,6 +89,16 @@ In your project's ```AndroidManifest.xml``` under the ```manifest``` tag, add th
 
 ## Beta Version
 
+There's a new advanced beta version available (version 3.0.0b). You can integrate it via gradle by adding the following depency:
+
+```groovy
+dependencies {
+    ...
+    compile 'com.github.mobfox:MobFox-Android-SDK-Core:3.0.0b'
+    ...
+}
+```
+
 ## Proguard
 ```proguard
 -keep class com.mobfox.** { *; } 
