@@ -9,6 +9,7 @@ Supports Android OS 4.1.x (Jelly Bean) and up.
 * [Installation](#installation)
   * [Gradle Installation](#option-1-gradle-installation)
   * [Jar Installation](#option-2-jar-installation)
+  * [Beta Version](#beta-version)
   * [Location](#location)
 * [Usage](#usage)
   * [Banner Ad](#banner)
@@ -85,6 +86,8 @@ In your project's ```AndroidManifest.xml``` under the ```manifest``` tag, add th
     
 
 ```
+
+## Beta Version
 
 ## Proguard
 ```proguard
