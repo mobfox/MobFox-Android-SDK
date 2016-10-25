@@ -99,6 +99,9 @@ dependencies {
 }
 ```
 
+Or add this [jar file](https://github.com/mobfox/MobFox-Android-SDK-Core-Lib/blob/master/MobFox-Android-SDK-Core-3.0.0b.jar)
+to your libs folder.
+
 ## Proguard
 ```proguard
 -keep class com.mobfox.** { *; } 
