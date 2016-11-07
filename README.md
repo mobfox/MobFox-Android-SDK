@@ -1,4 +1,4 @@
-# MobFox-Android-SDK-Core-Lib
+# MobFox-Android-SDK
 
 Supports Android OS 4.1.x (Jelly Bean) and up.
 
