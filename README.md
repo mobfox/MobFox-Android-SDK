@@ -9,7 +9,6 @@ Supports Android OS 4.1.x (Jelly Bean) and up.
 * [Installation](#installation)
   * [Gradle Installation](#option-1-gradle-installation)
   * [Jar Installation](#option-2-jar-installation)
-  * [Beta Version](#beta-version)
   * [Location](#location)
 * [Usage](#usage)
   * [Banner Ad](#banner)
@@ -85,18 +84,6 @@ In your project's ```AndroidManifest.xml``` under the ```manifest``` tag, add th
     </application>
     
 
-```
-
-## Beta Version
-
-There's a new advanced beta version available (version 3.0.0b). You can integrate it via gradle by adding the following depency:
-
-```groovy
-dependencies {
-    ...
-    compile 'com.github.mobfox:MobFox-Android-SDK-Core:3.0.0b'
-    ...
-}
 ```
 
 Or add this [jar file](https://github.com/mobfox/MobFox-Android-SDK-Core-Lib/blob/master/MobFox-Android-SDK-Core-3.0.0b.jar)
