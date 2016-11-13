@@ -65,7 +65,7 @@ Next, In your ```gradle.build``` add the following dependencies:
 ```groovy
 dependencies {
     compile 'com.google.android.gms:play-services-ads:+'
-    compile files('libs/MobFox-Android-SDK-Core-2.+.jar')
+    compile files('libs/MobFox-Android-SDK-Core-3.+.jar')
 }
 ```
 
