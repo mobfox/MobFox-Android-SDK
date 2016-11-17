@@ -104,15 +104,9 @@ In your project's ```AndroidManifest.xml```, add the following permission:
 ```xml
 <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"></uses-permission>
 ```
-
-Before calling any ad, call once:
-```java
-Banner.setGetLocation(true);
-```
-## Alternative Location
-If your app already has access to location data you can set it manually in the ad:
-```java
-banner.setLocation(location);
+Next, put this meta-data in your ```AndroidManifest.xml``` application tag:
+```xml
+<meta-data android:name="loc" android:value="true" />
 ```
 
 # Usage
