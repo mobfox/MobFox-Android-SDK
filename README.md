@@ -58,7 +58,7 @@ Done.
 
 ## Option 2: Jar Installation
 
-Download and unzip [MobFox-Android-SDK](https://github.com/mobfox/MobFox-Android-SDK/releases/latest) or clone this repository and extract the ```MobFox-Android-SDK-Core.jar``` and put it in your project under the ``libs`` directory.
+Download and unzip [MobFox-Android-SDK](https://github.com/mobfox/MobFox-Android-SDK/releases/latest) or clone this repository and extract the ```MobFox-Android-SDK-Core-latest.jar``` and put it in your project under the ``libs`` directory.
 
 Next, In your ```gradle.build``` add the following dependencies:
 
