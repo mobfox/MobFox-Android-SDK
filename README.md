@@ -373,20 +373,15 @@ import com.mobfox.sdk.customevents.CustomEventNative;
 
                 //register custom layout click
                 event.registerViewForInteraction(layout);
-
                 ad.fireTrackers(self);
 
-                headline.setText(ad.getHeadline());
+                headline.setText(ad.getTexts().get(0).getText());
 
                 ad.loadImages(self, new NativeAd.ImagesLoadedListener() {
                     @Override
                     public void onImagesLoaded(NativeAd ad) {
-
-                        Toast.makeText(self, "on images ready", Toast.LENGTH_SHORT).show();
-
-                        nativeIcon.setImageBitmap(ad.getMain());
-                        nativeMainImg.setImageBitmap(ad.getIcon());
-
+                    Toast.makeText(self, "on images ready", Toast.LENGTH_SHORT).show();
+                    nativeIcon.setImageBitmap(ad.getImages().get(0).getImg());
                     }
                 });
 
@@ -394,16 +389,12 @@ import com.mobfox.sdk.customevents.CustomEventNative;
 
             @Override
             public void onNativeError(Exception e) {
-            
                 Toast.makeText(self, "on native error", Toast.LENGTH_SHORT).show();
-
             }
 
             @Override
             public void onNativeClick(NativeAd ad) {
-
                 Toast.makeText(self, "on native click", Toast.LENGTH_SHORT).show();
-
             }
             
         };
