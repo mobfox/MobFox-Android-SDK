@@ -295,34 +295,32 @@ the layout below is used to show native assets:
 // ...
 
 <RelativeLayout
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
-    android:id="@+id/nativeLayout">
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/headline"/>
-
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:adjustViewBounds="true"
-        android:maxWidth="300dp"
-        android:maxHeight="300dp"
-        android:scaleType="fitCenter"
-        android:id="@+id/nativeIcon"
-        android:layout_below="@+id/headline"/>
-
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:adjustViewBounds="true"
-        android:maxHeight="300dp"
-        android:scaleType="fitCenter"
-        android:id="@+id/nativeMainImg"
-        android:layout_below="@+id/nativeIcon"/>
- </RelativeLayout>
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:id="@+id/nativeLayout"
+    android:layout_below="@+id/spinnerInvh">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/headline"/>
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:adjustViewBounds="true"
+            android:maxWidth="300dp"
+            android:maxHeight="300dp"
+            android:scaleType="fitCenter"
+            android:id="@+id/nativeIcon"
+            android:layout_below="@+id/headline"/>
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:adjustViewBounds="true"
+            android:maxHeight="300dp"
+            android:scaleType="fitCenter"
+            android:id="@+id/nativeMainImg"
+            android:layout_below="@+id/nativeIcon"/>
+</RelativeLayout>
  
 // ...
  
