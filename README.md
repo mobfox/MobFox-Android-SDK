@@ -373,6 +373,7 @@ import com.mobfox.sdk.customevents.CustomEventNative;
 
                 //register custom layout click
                 event.registerViewForInteraction(layout);
+                //fire trackers
                 ad.fireTrackers(self);
 
                 headline.setText(ad.getTexts().get(0).getText());
@@ -380,8 +381,8 @@ import com.mobfox.sdk.customevents.CustomEventNative;
                 ad.loadImages(self, new NativeAd.ImagesLoadedListener() {
                     @Override
                     public void onImagesLoaded(NativeAd ad) {
-                    Toast.makeText(self, "on images ready", Toast.LENGTH_SHORT).show();
-                    nativeIcon.setImageBitmap(ad.getImages().get(0).getImg());
+                        Toast.makeText(self, "on images ready", Toast.LENGTH_SHORT).show();
+                        nativeIcon.setImageBitmap(ad.getImages().get(0).getImg());
                     }
                 });
 
@@ -410,41 +411,56 @@ import com.mobfox.sdk.customevents.CustomEventNative;
 ```
 
 The ```NativeAd``` object returned by the native listener contains the ad data used to construct the native ad:
+
 ```java
-public class MobFoxNativeObject {
+public class NativeAd {
+    ...
+    public List<Tracker> getTrackerList() {
+        return trackerList;
+    }
+    public List<ImageItem> getImages() {
+        return images;
+    }
+    public List<TextItem> getTexts() {
+        return texts;
+    }
+    public String getLink() {
+        return link;
+    }
+    ...
+}
+public class TextItem {
+    ...
+    public String getType() {
+        return type;
+    }
 
-    public String getIconUrl();
-    
-    public int getIconWidth();
-
-    public int getIconHeight();
-    
-    //this will be null until loadImages is called
-    public Bitmap getIcon();
-    
-    public String getMainUrl();
-
-    public int getMainWidth()
-
-    public int getMainHeight();
-
-    //this will be null until loadImages is called
-    public Bitmap getMain();
-
-    public String getHeadline();
-
-    public String getDescription();
-
-    public String getCta();
-
-    public String getRating();
-
-    public String getAdvertiser();
-
-    public List<Tracker> getTrackerList();
-
-    public String getClickUrl();
-    
+    public String getText() {
+        return text;
+    }
+    ...
+}
+public class ImageItem {
+    ...
+    public String getType() {
+        return type;
+    }
+    public String getUrl() {
+        return url;
+    }
+    public int getH() {
+        return h;
+    }
+    public int getW() {
+        return w;
+    }
+    public Bitmap getImg() {
+        return img;
+    }
+    public void setImg(Bitmap img) {
+        this.img = img;
+    }
+    ...
 }
 ```
 
