@@ -457,9 +457,6 @@ public class ImageItem {
     public Bitmap getImg() {
         return img;
     }
-    public void setImg(Bitmap img) {
-        this.img = img;
-    }
     ...
 }
 ```
