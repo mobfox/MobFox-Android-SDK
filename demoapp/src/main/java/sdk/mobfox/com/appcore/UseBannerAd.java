@@ -76,7 +76,7 @@ public class UseBannerAd extends Activity implements View.OnClickListener {
                 Toast.makeText(self, "no fill", Toast.LENGTH_SHORT).show();
             }
         };
-        Banner.setGetLocation(false);
+        //Banner.setGetLocation(false);
         //Banner.setDev_js(0);
         banner.setListener(listener);
         banner.setInventoryHash(banner_invh);
