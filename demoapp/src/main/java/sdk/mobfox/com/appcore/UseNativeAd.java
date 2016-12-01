@@ -75,7 +75,7 @@ public class UseNativeAd extends Activity {
 
                         Toast.makeText(self, "on images ready", Toast.LENGTH_SHORT).show();
 
-                        nativeIcon.setImageBitmap(ad.getMain());
+                        nativeIcon.setImageBitmap(ad.getImages().get(0).getImg());
 //                        nativeMainImg.setImageBitmap(ad.getIcon());
 
                     }
