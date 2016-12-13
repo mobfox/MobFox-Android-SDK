@@ -106,7 +106,7 @@ In your project's ```AndroidManifest.xml```, add the following permission:
 ```
 Next, put this meta-data in your ```AndroidManifest.xml``` application tag:
 ```xml
-<meta-data android:name="loc" android:value="true" />
+<meta-data android:name="enableLocation" android:value="true" />
 ```
 
 # Usage
