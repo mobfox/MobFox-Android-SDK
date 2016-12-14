@@ -50,7 +50,7 @@ Next, add ```Google Play Services``` and ```MobFox-Android-SDK-Core``` to your c
 dependencies {
     //... other dependencies ...
     compile 'com.google.android.gms:play-services-ads:+'
-    compile 'com.github.mobfox:MobFox-Android-SDK-Core:3.0.6'
+    compile 'com.github.mobfox:MobFox-Android-SDK-Core:3.1.2'
 }
 ```
 
@@ -106,7 +106,7 @@ In your project's ```AndroidManifest.xml```, add the following permission:
 ```
 Next, put this meta-data in your ```AndroidManifest.xml``` application tag:
 ```xml
-<meta-data android:name="loc" android:value="true" />
+<meta-data android:name="enableLocation" android:value="true" />
 ```
 
 # Usage
