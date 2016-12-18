@@ -50,7 +50,7 @@ Next, add ```Google Play Services``` and ```MobFox-Android-SDK-Core``` to your c
 dependencies {
     //... other dependencies ...
     compile 'com.google.android.gms:play-services-ads:+'
-    compile 'com.github.mobfox:MobFox-Android-SDK-Core:3.1.2'
+    compile 'com.github.mobfox:MobFox-Android-SDK-Core:3.1.5'
 }
 ```
 
