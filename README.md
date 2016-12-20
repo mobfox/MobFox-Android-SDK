@@ -101,7 +101,7 @@ Sending the user's location will provide you with higher CPMs.
 
 ## Enable Location
 ### banner
-In your layout xml, in the Banner tag enable location by adding the mobfox attribute ```xmlxmlns:mobfox="http://schemas.android.com/apk/lib/com.mobfox.sdk"``` and enable location to true ```xmlxmlns:mobfox="http://schemas.android.com/apk/lib/com.mobfox.sdk"```
+In your layout xml, in the Banner tag enable location by adding the mobfox attribute ```xmlxmlns:mobfox="http://schemas.android.com/apk/lib/com.mobfox.sdk"``` and enable location to true ```mobfox:enableLocation="true"```
 
 Full code
 ```xml
