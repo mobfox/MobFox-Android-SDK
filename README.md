@@ -120,13 +120,13 @@ Full code
 </RelativeLayout>
 ```
 This could also be achieved by calling the static method
-```java
+```
 Banner.setLoc(true);
 ```
 ### interstitial
-Enable location by calling ```javaInterstitialAd.getLocation(true);```
+Enable location by calling ```InterstitialAd.getLocation(true);```
 ### native
-Enable location by calling ```javaNative.setLoc(true);```
+Enable location by calling ```Native.setLoc(true);```
 
 # Usage
 
