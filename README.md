@@ -100,6 +100,25 @@ to your libs folder.
 Sending the user's location will provide you with higher CPMs.
 
 ## Enable Location
+### banner
+In your layout xml, in the Banner tag enable location by adding the mobfox attribute ```xmlxmlns:mobfox="http://schemas.android.com/apk/lib/com.mobfox.sdk"``` and enable location to true ```xmlxmlns:mobfox="http://schemas.android.com/apk/lib/com.mobfox.sdk"```
+
+Full code
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    xmlns:mobfox="http://schemas.android.com/apk/lib/com.mobfox.sdk">
+    <com.mobfox.sdk.bannerads.Banner
+        android:layout_height="50dp"
+        android:layout_width="320dp"
+        mobfox:enableLocation="true"
+        android:id="@+id/banner"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true">
+    </com.mobfox.sdk.bannerads.Banner>
+</RelativeLayout>
+```
 In your project's ```AndroidManifest.xml```, add the following permission:
 ```xml
 <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"></uses-permission>
