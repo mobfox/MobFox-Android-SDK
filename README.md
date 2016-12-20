@@ -124,9 +124,9 @@ This could also be achieved by calling the static method
 Banner.setLoc(true);
 ```
 ### interstitial
-Enable location by calling ```InterstitialAd.getLocation(true);```
+Enable location by calling the static method ```InterstitialAd.getLocation(true);```
 ### native
-Enable location by calling ```Native.setLoc(true);```
+Enable location by calling the static method ```Native.setLoc(true);```
 
 # Usage
 
