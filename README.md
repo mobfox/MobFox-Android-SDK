@@ -119,14 +119,13 @@ Full code
     </com.mobfox.sdk.bannerads.Banner>
 </RelativeLayout>
 ```
-In your project's ```AndroidManifest.xml```, add the following permission:
-```xml
-<uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"></uses-permission>
-```
-Next, put this meta-data in your ```AndroidManifest.xml``` application tag:
-```xml
-<meta-data android:name="enableLocation" android:value="true" />
-```
+This could also be achieved by calling the static method
+```javaBanner.setLoc(true);```
+
+### interstitial
+Enable location by calling ```javaInterstitialAd.getLocation(true);```
+### native
+Enable location by calling ```javaNative.setLoc(true);```
 
 # Usage
 
