@@ -10,7 +10,6 @@ Supports Android OS 4.1.x (Jelly Bean) and up.
   * [Gradle Installation](#option-1-gradle-installation)
   * [Jar Installation](#option-2-jar-installation)
   * [Location](#location)
-  * [Beta version](#beta-version)
 * [Usage](#usage)
   * [Banner Ad](#banner)
   * [Interstitial Ad](#interstitial)
@@ -19,9 +18,7 @@ Supports Android OS 4.1.x (Jelly Bean) and up.
   * [Adapters](#adapters)
   * [Plugins](#plugins)
 
-
 <!-- toc stop -->
-
 
 # Prerequisites
 
@@ -128,9 +125,6 @@ Banner.setLoc(true);
 Enable location by calling the static method ```InterstitialAd.getLocation(true);```
 ### native
 Enable location by calling the static method ```Native.setLoc(true);```
-
-# Beta version
-MobFox SDK beta released! download it [here](https://docs.mobfox.com/docs/inventory-hashes-for-testing).
 
 # Usage
 
@@ -515,6 +509,9 @@ Adapters are the opposite of Custom Events, they let you use MobFox as a Custom 
 ## Plugins
 
 [Plugins](https://github.com/mobfox/MobFox-Android-SDK-Core-Lib/wiki/Plugins)
+
+# Beta version
+MobFox SDK beta released! download it [here](https://docs.mobfox.com/docs/inventory-hashes-for-testing).
 
 # Min Versions
 
