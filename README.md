@@ -511,7 +511,8 @@ Adapters are the opposite of Custom Events, they let you use MobFox as a Custom 
 [Plugins](https://github.com/mobfox/MobFox-Android-SDK-Core-Lib/wiki/Plugins)
 
 # Beta version
-MobFox SDK beta released! download it [here](https://docs.mobfox.com/docs/inventory-hashes-for-testing).
+
+MobFox SDK beta released! download it [here](https://github.com/mobfox/MobFox-Android-SDK/blob/master/beta/MobFox-Android-SDK-Core-beta.jar).
 
 # Min Versions
 
