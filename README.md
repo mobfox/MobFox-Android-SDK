@@ -10,6 +10,7 @@ Supports Android OS 4.1.x (Jelly Bean) and up.
   * [Gradle Installation](#option-1-gradle-installation)
   * [Jar Installation](#option-2-jar-installation)
   * [Location](#location)
+  * [Beta version](#beta-version)
 * [Usage](#usage)
   * [Banner Ad](#banner)
   * [Interstitial Ad](#interstitial)
@@ -127,6 +128,8 @@ Banner.setLoc(true);
 Enable location by calling the static method ```InterstitialAd.getLocation(true);```
 ### native
 Enable location by calling the static method ```Native.setLoc(true);```
+
+# Beta version
 
 # Usage
 
