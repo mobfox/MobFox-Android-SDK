@@ -130,6 +130,7 @@ Enable location by calling the static method ```InterstitialAd.getLocation(true)
 Enable location by calling the static method ```Native.setLoc(true);```
 
 # Beta version
+MobFox SDK beta released! download it [here](https://docs.mobfox.com/docs/inventory-hashes-for-testing).
 
 # Usage
 
