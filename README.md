@@ -496,15 +496,11 @@ You can test your implementations with these [test inventory hashes](https://doc
 
 ## Custom Events
 
-This feature lets you use your accounts on other advertising platforms such as MoPub inside MobFox's SDK.
-
-[Custom Events](https://github.com/mobfox/MobFox-Android-SDK-Core-Lib/wiki/Custom-Events)
+[Custom Events](https://github.com/mobfox/MobFox-Android-SDK-Core-Lib/wiki/Custom-Events) let you use your accounts on other advertising platforms such as MoPub inside MobFox's SDK.
 
 ## Adapters
 
-Adapters are the opposite of Custom Events, they let you use MobFox as a Custom Event in other networks.
-
-[Adapters](https://github.com/mobfox/MobFox-Android-SDK-Core-Lib/wiki/Adapters)
+[Adapters](https://github.com/mobfox/MobFox-Android-SDK-Core-Lib/wiki/Adapters) are the opposite of Custom Events, they let you use MobFox as a Custom Event in other networks.
 
 ## Plugins
 
