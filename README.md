@@ -508,15 +508,8 @@ Adapters are the opposite of Custom Events, they let you use MobFox as a Custom 
 
 ## Plugins
 
-[Plugins](https://github.com/mobfox/MobFox-Android-SDK-Core-Lib/wiki/Plugins)
+Plugins can be found in [SDK-plugins](https://github.com/mobfox/SDK-Plugins) repository.
 
 # Beta version
 
 MobFox SDK beta released! download it [here](https://github.com/mobfox/MobFox-Android-SDK/blob/master/beta/MobFox-Android-SDK-Core-beta.jar).
-
-# Min Versions
-
-Minimal lighter versions of the SDK core can be found [Here](https://github.com/mobfox/MobFox-Android-SDK-Core-Lib/wiki/Minimal-Versions)
-
-
-
