@@ -1,13 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent" android:layout_height="match_parent">
-
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    xmlns:mobfox="http://schemas.android.com/apk/lib/com.mobfox.sdk">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:orientation="vertical">
+        <sdk.mobfox.com.appcore.MySpinner
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/spinnerInvh"></sdk.mobfox.com.appcore.MySpinner>
+        <sdk.mobfox.com.appcore.MySpinner
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/spinnersizes"></sdk.mobfox.com.appcore.MySpinner>
+    </LinearLayout>
     <com.mobfox.sdk.bannerads.Banner
-        android:layout_width="320dp"
         android:layout_height="50dp"
+        android:layout_width="320dp"
         android:id="@+id/banner"
+        mobfox:enableLocation="true"
         android:layout_centerVertical="true"
         android:layout_centerHorizontal="true">
     </com.mobfox.sdk.bannerads.Banner>
-
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:hint="inventory hash"
+        android:id="@+id/etInvh"/>
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/loadBtn"
+        android:layout_above="@+id/etInvh"
+        android:layout_centerHorizontal="true"
+        android:text="load"/>
 </RelativeLayout>

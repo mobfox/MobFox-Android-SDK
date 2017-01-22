@@ -1,89 +1,184 @@
 package sdk.mobfox.com.appcore;
 
 import android.app.Activity;
+import android.content.ActivityNotFoundException;
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.LinearLayout;
+import android.widget.EditText;
+import android.widget.RelativeLayout;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.mobfox.sdk.bannerads.Banner;
 import com.mobfox.sdk.bannerads.BannerListener;
+import com.mobfox.sdk.utils.Utils;
+
+import static sdk.mobfox.com.appcore.UseNativeAd.ACTION_SCAN;
+import static sdk.mobfox.com.appcore.UseNativeAd.onResult;
+import static sdk.mobfox.com.appcore.UseNativeAd.tag;
+import static sdk.mobfox.com.appcore.UseNativeAd.toasts;
 
 
 /**
  * Created by asafg84 on 13/04/16.
  */
-public class UseBannerAd extends Activity implements View.OnClickListener {
+public class UseBannerAd extends Activity {
+
+    String invh = "";
 
     Banner banner;
     BannerListener listener;
 
-    //banner
-    static final String banner_invh = "fe96717d9875b9da4339ea5367eff1ec";
-    static final String some_app = "eb115dc9c19112f5a5c95ab728a3ce9c";
-    //text
-    static final String text_invh = "8769bb5eb962eb39170fc5d8930706a9";
-    //video
-    static final String video_invh = "80187188f458cfde788d961b6882fd53";
-    //static final String video_invh = "9b3e3e967ad034aabd9a8d2295f51251";
-    //audio
-    static final String audio_invh = "75f994b45ca31b454addc8b808d59135";
+    UseBannerAd self;
+
+    MySpinner spinnerInvh;
+    MySpinner spinnersizes;
+    EditText etInvh;
+    Button loadBtn;
+
+    boolean first = true;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.banner_ad);
-        makeButtons();
-        final Activity self = this;
+        self = this;
+
         banner = (Banner) findViewById(R.id.banner);
         listener = new BannerListener() {
             @Override
             public void onBannerError(View banner, Exception e) {
-
                 Toast.makeText(self, "on banner error: " + e.getMessage(), Toast.LENGTH_SHORT).show();
             }
 
             @Override
             public void onBannerLoaded(View banner) {
-
                 Toast.makeText(self, "on banner loaded", Toast.LENGTH_SHORT).show();
             }
 
             @Override
             public void onBannerClosed(View banner) {
-
                 Toast.makeText(self, "on banner closed", Toast.LENGTH_SHORT).show();
             }
 
             @Override
             public void onBannerFinished() {
-
                 Toast.makeText(self, "on banner finished", Toast.LENGTH_SHORT).show();
             }
 
             @Override
             public void onBannerClicked(View banner) {
-
                 Toast.makeText(self, "on banner clicked", Toast.LENGTH_SHORT).show();
             }
 
             @Override
             public void onNoFill(View view) {
-
                 Toast.makeText(self, "no fill", Toast.LENGTH_SHORT).show();
             }
         };
-        //Banner.setGetLocation(false);
-        //Banner.setDev_js(0);
         banner.setListener(listener);
-        banner.setInventoryHash(banner_invh);
-//        banner.setRefresh(5);
-      //  banner.setDev_js(0);
+        banner.setR_floor(0.5f);
 
-        Toast.makeText(this, "invh: " + banner_invh, Toast.LENGTH_SHORT).show();
+        etInvh = (EditText) findViewById(R.id.etInvh);
+
+        spinnerInvh = (MySpinner) findViewById(R.id.spinnerInvh);
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
+                R.array.spinnerinvh, android.R.layout.simple_spinner_item);
+        spinnerInvh.setAdapter(adapter);
+        spinnerInvh.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                if (first) {
+                    first = false;
+                    return;
+                }
+                String label = parent.getItemAtPosition(position).toString();
+                String[] spinnerinvh = getResources().getStringArray(R.array.spinnerinvh);
+                if (label.equals(spinnerinvh[0])) {
+                    invh = "";
+                    etInvh.setText("");
+                    try {
+                        Intent intent = new Intent(ACTION_SCAN);
+                        intent.putExtra("SCAN_MODE", "QR_CODE_MODE");
+                        startActivityForResult(intent, 0);
+                    } catch (ActivityNotFoundException e) {
+                        UseNativeAd.showDialog(self, "No Scanner Found", "Download a scanner code activity?", "Yes", "No").show();
+                    }
+                    return;
+                }
+                String[] splited = label.split("\\s+");
+                invh = splited[splited.length - 1];
+                etInvh.setText(invh);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+
+        spinnersizes = (MySpinner) findViewById(R.id.spinnersizes);
+        adapter = ArrayAdapter.createFromResource(this,
+                R.array.bannersizes, android.R.layout.simple_spinner_item);
+        spinnersizes.setAdapter(adapter);
+        spinnersizes.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                String label = parent.getItemAtPosition(position).toString();
+                if (label.equals("smart_banner")) {
+                    banner.setAdspace_height(50);
+                    banner.setAdspace_width(320);
+                    banner.setSmart(true);
+                    makeToast(self, "smart_banner");
+                    return;
+                }
+                String[] splited = label.split("x");
+                banner.setAdspace_width(Integer.parseInt(splited[0]));
+                banner.setAdspace_height(Integer.parseInt(splited[1]));
+                setDimensions(banner, Integer.parseInt(splited[0]), Integer.parseInt(splited[1]));
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+
+        loadBtn = (Button) findViewById(R.id.loadBtn);
+        loadBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (invh.isEmpty()) {
+                    makeToast(self, toasts[2]);
+                    return;
+                }
+                banner.setInventoryHash(invh);
+                banner.load();
+                return;
+            }
+        });
+
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        invh = onResult(requestCode, resultCode, data);
+        if (invh.equals("false")) {
+            makeToast(self, toasts[0]);
+            return;
+        }
+        etInvh.setText(invh);
+        makeToast(self, toasts[1] + invh);
+    }
+
+    public static void makeToast(Context context, String text) {
+        Toast.makeText(context, text, Toast.LENGTH_SHORT).show();
     }
 
     @Override
@@ -103,107 +198,16 @@ public class UseBannerAd extends Activity implements View.OnClickListener {
         banner.onResume();
     }
 
-    protected void makeButtons() {
-
-        LinearLayout row = new LinearLayout(this);
-
-        String[] labels = {
-                "text",
-                "banner",
-                "video",
-                "audio",
-                "load"
-        };
-
-        Button[] buttons = {
-
-                new Button(this),
-                new Button(this),
-                new Button(this),
-                new Button(this),
-                new Button(this)
-        };
-
-        for (int i = 0; i < labels.length; i++) {
-
-            buttons[i].setText(labels[i]);
-            buttons[i].setId(i);
-
-            LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
-                    ViewGroup.LayoutParams.WRAP_CONTENT,
-                    ViewGroup.LayoutParams.WRAP_CONTENT, 1.0f);
-
-            buttons[i].setLayoutParams(params);
-
-            buttons[i].setOnClickListener(this);
-
-            row.addView(buttons[i]);
+    static public void setDimensions(View view, int width, int height) {
+        try {
+            Context context = view.getContext();
+            RelativeLayout.LayoutParams layout_params = (RelativeLayout.LayoutParams) view.getLayoutParams();
+            layout_params.width = Utils.convertDpToPixel(width, context);
+            layout_params.height = Utils.convertDpToPixel(height, context);
+            view.setLayoutParams(layout_params);
+            makeToast(context, "width: " + width + ", height: " + height);
+        } catch (Exception e) {
+            Log.d(tag, e.toString());
         }
-
-        final ViewGroup viewGroup = (ViewGroup) ((ViewGroup) this
-                .findViewById(android.R.id.content)).getChildAt(0);
-
-        viewGroup.addView(row);
-    }
-
-    @Override
-    public void onClick(View v) {
-
-        int id = v.getId();
-
-        switch (id) {
-
-            //text
-            case 0:
-                banner.setType("");
-                banner.setInventoryHash(text_invh);
-                banner.setSkip(true);
-
-                Toast.makeText(this, "invh: " + text_invh, Toast.LENGTH_SHORT).show();
-
-                break;
-
-            //banner
-            case 1:
-                banner.setType("");
-                banner.setInventoryHash(banner_invh);
-
-                Toast.makeText(this, "invh: " + banner_invh, Toast.LENGTH_SHORT).show();
-
-                break;
-
-            //video
-            case 2:
-
-                banner.setInventoryHash(video_invh);
-                banner.setType("video");
-                banner.setStart_muted(true);
-                banner.setRefresh(0);
-                banner.setSkip(true);
-
-                Toast.makeText(this, "invh: " + video_invh, Toast.LENGTH_SHORT).show();
-
-                break;
-            //audio
-            case 3:
-
-                banner.setInventoryHash(audio_invh);
-                banner.setType("video");
-                banner.setRefresh(0);
-//                banner.setAutoplay("false");
-                banner.setStart_muted(true);
-                banner.setSkip(true);
-
-                Toast.makeText(this, "invh: " + audio_invh, Toast.LENGTH_SHORT).show();
-
-                break;
-            //load
-            case 4:
-
-                banner.load();
-
-                break;
-        }
-
     }
 }

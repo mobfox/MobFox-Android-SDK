@@ -4,11 +4,16 @@ import android.app.ListActivity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.StrictMode;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+
+import com.mobfox.sdk.bannerads.Banner;
+
+import java.util.concurrent.ThreadPoolExecutor;
 
 /**
  * Created by asafg84 on 28/02/16.
@@ -17,7 +22,7 @@ public class Menu extends ListActivity {
 
     static String cheesePackage = "sdk.mobfox.com.appcore";
 
-    String[] classes = {"UseNativeAd", "UseInterstitialAd", "UseBannerAd", "RTBView", "CustomSizeBanner"};
+    String[] classes = {"UseBannerAd", "UseNativeAd", "UseInterstitialAd"};
     Intent myIntent;
     Class myClass;
     Context myContext = Menu.this;
@@ -39,6 +44,9 @@ public class Menu extends ListActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+//        warmup
+        Banner.warmUp(this);
 
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);

@@ -1,90 +1,151 @@
 package sdk.mobfox.com.appcore;
 
 import android.app.Activity;
+import android.content.ActivityNotFoundException;
+import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.mobfox.sdk.interstitialads.InterstitialAd;
 import com.mobfox.sdk.interstitialads.InterstitialAdListener;
 
+import static sdk.mobfox.com.appcore.UseNativeAd.ACTION_SCAN;
+import static sdk.mobfox.com.appcore.UseNativeAd.makeToast;
+import static sdk.mobfox.com.appcore.UseNativeAd.onResult;
+import static sdk.mobfox.com.appcore.UseNativeAd.toasts;
+
 /**
  * Created by asafg84 on 03/05/16.
  */
-public class UseInterstitialAd extends Activity implements View.OnClickListener {
+public class UseInterstitialAd extends Activity {
+
+    String invh = "";
+
     InterstitialAd interstitial;
     InterstitialAdListener listener;
 
-    //interstitial
-    static final String inter_invh = "267d72ac3f77a3f447b32cf7ebf20673";
-    //video
-   // static final String some_app_inter = "145849979b4c7a12916c7f06d25b75e3";
-    static final String some_app_inter = "267d72ac3f77a3f447b32cf7ebf20673";
-    static final String video_invh = "80187188f458cfde788d961b6882fd53";
-//    static final String video_invh = "9b3e3e967ad034aabd9a8d2295f51251";
-    //audio
-    static final String audio_invh = "75f994b45ca31b454addc8b808d59135";
+    MySpinner spinnerInvh;
+    EditText etInvh;
+    Button loadBtn;
+
+    boolean first = true;
+
+    UseInterstitialAd self;
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        invh = onResult(requestCode, resultCode, data);
+        if (invh.equals("false")) {
+            makeToast(self, toasts[0]);
+            return;
+        }
+        etInvh.setText(invh);
+        makeToast(self, toasts[1] + invh);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.use_interstitial);
 
-        makeButtons();
-
+        InterstitialAd.getLocation(true);
         interstitial = new InterstitialAd(this);
+
+        self = this;
 
         listener = new InterstitialAdListener() {
             @Override
             public void onInterstitialLoaded(InterstitialAd interstitial) {
-
                 interstitial.show();
-
                 Toast.makeText(UseInterstitialAd.this, "load", Toast.LENGTH_SHORT).show();
-
             }
 
             @Override
             public void onInterstitialFailed(InterstitialAd interstitial, Exception e) {
-
                 Toast.makeText(UseInterstitialAd.this, "fail, " + e.getMessage(), Toast.LENGTH_SHORT).show();
-
             }
 
             @Override
             public void onInterstitialClosed(InterstitialAd interstitial) {
-
                 Toast.makeText(UseInterstitialAd.this, "close", Toast.LENGTH_SHORT).show();
-
             }
 
             @Override
             public void onInterstitialFinished() {
-
                 Toast.makeText(UseInterstitialAd.this, "finish", Toast.LENGTH_SHORT).show();
-
             }
 
             @Override
             public void onInterstitialClicked(InterstitialAd interstitial) {
-
                 Toast.makeText(UseInterstitialAd.this, "click", Toast.LENGTH_SHORT).show();
-
             }
 
             @Override
             public void onInterstitialShown(InterstitialAd interstitial) {
-
                 Toast.makeText(UseInterstitialAd.this, "show", Toast.LENGTH_SHORT).show();
-
             }
         };
         interstitial.setListener(listener);
-        interstitial.setSkip(true);
-        interstitial.setInventoryHash(some_app_inter);
+
+        etInvh = (EditText) findViewById(R.id.etInvh);
+
+        spinnerInvh = (MySpinner) findViewById(R.id.spinnerInvh);
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
+                R.array.spinnerinvh, android.R.layout.simple_spinner_item);
+        spinnerInvh.setAdapter(adapter);
+        spinnerInvh.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                if (first) {
+                    first = false;
+                    return;
+                }
+                String label = parent.getItemAtPosition(position).toString();
+                String[] spinnerinvh = getResources().getStringArray(R.array.spinnerinvh);
+                if (label.equals(spinnerinvh[0])) {
+                    invh = "";
+                    etInvh.setText("");
+                    try {
+                        Intent intent = new Intent(ACTION_SCAN);
+                        intent.putExtra("SCAN_MODE", "QR_CODE_MODE");
+                        startActivityForResult(intent, 0);
+                    } catch (ActivityNotFoundException e) {
+                        UseNativeAd.showDialog(self, "No Scanner Found", "Download a scanner code activity?", "Yes", "No").show();
+                    }
+                    return;
+                }
+                String[] splited = label.split("\\s+");
+                invh = splited[splited.length - 1];
+                etInvh.setText(invh);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+            }
+        });
+
+        loadBtn = (Button) findViewById(R.id.loadBtn);
+        loadBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (invh.isEmpty()) {
+                    makeToast(self, toasts[2]);
+                    return;
+                }
+                interstitial.setInventoryHash(invh);
+                interstitial.load();
+                return;
+            }
+        });
     }
 
     //need to add this so video ads will work properly
@@ -104,96 +165,5 @@ public class UseInterstitialAd extends Activity implements View.OnClickListener 
     @Override
     public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
         interstitial.onRequestPermissionsResult(requestCode, permissions, grantResults);
-    }
-
-    protected void makeButtons() {
-
-        LinearLayout row = new LinearLayout(this);
-
-        String[] labels = {
-                "reg",
-                "video",
-                "audio",
-                "load"
-        };
-
-        Button[] buttons = {
-
-                new Button(this),
-                new Button(this),
-                new Button(this),
-                new Button(this)
-        };
-
-        for (int i = 0; i < labels.length; i++) {
-
-            buttons[i].setText(labels[i]);
-            buttons[i].setId(i);
-
-//            buttons[i].setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT,
-//                    ViewGroup.LayoutParams.WRAP_CONTENT));
-
-            LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
-                    ViewGroup.LayoutParams.WRAP_CONTENT,
-                    ViewGroup.LayoutParams.WRAP_CONTENT, 1.0f);
-
-            buttons[i].setLayoutParams(params);
-
-            buttons[i].setOnClickListener(this);
-
-            row.addView(buttons[i]);
-        }
-
-        final ViewGroup viewGroup = (ViewGroup) ((ViewGroup) this
-                .findViewById(android.R.id.content)).getChildAt(0);
-
-        viewGroup.addView(row);
-    }
-
-    @Override
-    public void onClick(View v) {
-
-        int id = v.getId();
-
-        switch (id) {
-            //regular
-            case 0:
-
-                interstitial.setInventoryHash(inter_invh);
-                interstitial.setType("");
-
-                Toast.makeText(this, "invh: " + inter_invh, Toast.LENGTH_SHORT).show();
-
-                break;
-            //video
-            case 1:
-
-                interstitial.setInventoryHash(video_invh);
-                interstitial.setType("video");
-             //   interstitial.setStart_muted(true);
-                interstitial.setSkip(true);
-
-                Toast.makeText(this, "invh: " + video_invh, Toast.LENGTH_SHORT).show();
-
-                break;
-            //audio
-            case 2:
-
-                interstitial.setInventoryHash(audio_invh);
-                interstitial.setType("video");
-                interstitial.setSkip(true);
-                interstitial.setStart_muted(true);
-
-                Toast.makeText(this, "invh: " + audio_invh, Toast.LENGTH_SHORT).show();
-
-                break;
-            //load
-            case 3:
-
-                interstitial.load();
-
-                break;
-        }
-
     }
 }
