@@ -9,6 +9,7 @@ Supports Android OS 4.1.x (Jelly Bean) and up.
 * [Installation](#installation)
   * [Gradle Installation](#option-1-gradle-installation)
   * [Jar Installation](#option-2-jar-installation)
+  * [Smart Banner](#smart-banner)
   * [Location](#location)
 * [DemoApp](#demoapp)
 * [Usage](#usage)
@@ -93,6 +94,28 @@ to your libs folder.
 -keep class com.mobfox.** { *; } 
 -keep class com.mobfox.adapter.** {*;} 
 -keep class com.mobfox.sdk.** {*;}
+```
+
+# Smart Banner
+Banner's width equals screen width.
+## Enable Smart Banner
+In your layout xml, in the Banner tag set smart banner by adding the mobfox attribute ```xmlns:mobfox="http://schemas.android.com/apk/lib/com.mobfox.sdk"``` and set smart to true ```mobfox:smart="true"```
+
+Full code
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    xmlns:mobfox="http://schemas.android.com/apk/lib/com.mobfox.sdk">
+    <com.mobfox.sdk.bannerads.Banner
+        android:layout_height="50dp"
+        android:layout_width="320dp"
+        mobfox:smart="true"
+        android:id="@+id/banner"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true">
+    </com.mobfox.sdk.bannerads.Banner>
+</RelativeLayout>
 ```
 
 # Location
