@@ -245,7 +245,7 @@ protected void onResume() {
 
 ```
 
-### refresh
+### Refresh
 Enable refresh by calling the method ```banner.setRefresh(5)```
 - Integer Units seconds
 - Minimum 5 seconds
