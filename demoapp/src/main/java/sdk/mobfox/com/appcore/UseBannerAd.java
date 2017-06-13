@@ -12,12 +12,11 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RelativeLayout;
-import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.mobfox.sdk.bannerads.Banner;
 import com.mobfox.sdk.bannerads.BannerListener;
-import com.mobfox.sdk.utils.Utils;
+import com.mobfox.sdk.bannerads.LayoutUtils;
 
 import static sdk.mobfox.com.appcore.UseNativeAd.ACTION_SCAN;
 import static sdk.mobfox.com.appcore.UseNativeAd.onResult;
@@ -160,7 +159,6 @@ public class UseBannerAd extends Activity {
                 }
                 banner.setInventoryHash(invh);
                 banner.load();
-                return;
             }
         });
 
@@ -202,8 +200,8 @@ public class UseBannerAd extends Activity {
         try {
             Context context = view.getContext();
             RelativeLayout.LayoutParams layout_params = (RelativeLayout.LayoutParams) view.getLayoutParams();
-            layout_params.width = Utils.convertDpToPixel(width, context);
-            layout_params.height = Utils.convertDpToPixel(height, context);
+            layout_params.width = LayoutUtils.convertDpToPixel(width, context);
+            layout_params.height = LayoutUtils.convertDpToPixel(height, context);
             view.setLayoutParams(layout_params);
             makeToast(context, "width: " + width + ", height: " + height);
         } catch (Exception e) {
