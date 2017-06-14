@@ -131,15 +131,11 @@ public class UseBannerAd extends Activity {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 String label = parent.getItemAtPosition(position).toString();
                 if (label.equals("smart_banner")) {
-                    banner.setAdspace_height(50);
-                    banner.setAdspace_width(320);
                     banner.setSmart(true);
                     makeToast(self, "smart_banner");
                     return;
                 }
                 String[] splited = label.split("x");
-                banner.setAdspace_width(Integer.parseInt(splited[0]));
-                banner.setAdspace_height(Integer.parseInt(splited[1]));
                 setDimensions(banner, Integer.parseInt(splited[0]), Integer.parseInt(splited[1]));
             }
 
