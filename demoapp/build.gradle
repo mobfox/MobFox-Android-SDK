@@ -49,7 +49,7 @@ dependencies {
     compile 'com.android.support:appcompat-v7:25.3.1'
     compile 'com.android.support:design:25.3.1'
 
-    compile 'com.google.android.gms:play-services:11.0.0'
+    compile 'com.google.android.gms:play-services-ads:11.0.0'
     compile 'com.android.support:multidex:1.0.1'
 
     testCompile 'junit:junit:4.12'
