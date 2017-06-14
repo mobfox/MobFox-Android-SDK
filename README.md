@@ -1,3 +1,5 @@
+[![](https://jitpack.io/v/mobfox/MobFox-Android-SDK-Core.svg)](https://jitpack.io/#mobfox/MobFox-Android-SDK-Core)
+
 # MobFox-Android-SDK
 
 Supports Android OS 4.1.x (Jelly Bean) and up.
