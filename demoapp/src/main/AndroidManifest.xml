@@ -47,16 +47,17 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".UseBannerAd" android:hardwareAccelerated="true"></activity>
-        <activity android:name=".UseNativeAd"></activity>
-        <activity android:name=".UseInterstitialAd"></activity>
-        <activity android:name=".UseSmartBanner"></activity>
-        <activity android:name=".UseDummyAdapter"></activity>
-        <activity android:name=".RTBView"></activity>
-        <activity android:name=".CustomSizeBanner"></activity>
-        <activity android:name=".SevenBanners"></activity>
+        <activity android:name=".UseBannerAd" android:hardwareAccelerated="true"/>
+        <activity android:name=".UseNativeAd"/>
+        <activity android:name=".UseInterstitialAd"/>
+        <activity android:name=".UseSmartBanner"/>
+        <activity android:name=".UseDummyAdapter"/>
+        <activity android:name=".RTBView"/>
+        <activity android:name=".CustomSizeBanner"/>
+        <activity android:name=".SevenBanners"/>
 
-       <activity android:name="com.mobfox.sdk.interstitialads.InterstitialActivity" android:configChanges="orientation"></activity>
+        <activity android:name="com.mobfox.sdk.interstitialads.InterstitialActivity" android:hardwareAccelerated="true"/>
+        <service android:name="com.mobfox.sdk.services.MobFoxService" android:launchMode="singleTop" />
     </application>
 
 </manifest>

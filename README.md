@@ -52,7 +52,7 @@ Next, add ```Google Play Services``` and ```MobFox-Android-SDK-Core``` to your c
 dependencies {
     //... other dependencies ...
     compile 'com.google.android.gms:play-services-ads:+'
-    compile 'com.github.mobfox:MobFox-Android-SDK-Core:3.2.7'
+    compile 'com.github.mobfox:MobFox-Android-SDK-Core:3.2.7a'
 }
 ```
 
@@ -67,6 +67,7 @@ Next, In your ```gradle.build``` add the following dependencies:
 ```groovy
 dependencies {
     compile 'com.google.android.gms:play-services-ads:+'
+    compile 'com.danikula:videocache:2.7.0'
     compile files('libs/MobFox-Android-SDK-Core-3.+.jar')
 }
 ```
@@ -81,15 +82,13 @@ In your project's ```AndroidManifest.xml``` under the ```manifest``` tag, add th
     <application
     ...
     <!--mobfox interstitial activity-->
-    <activity android:name="com.mobfox.sdk.interstitialads.InterstitialActivity"></activity>
+    <activity android:name="com.mobfox.sdk.interstitialads.InterstitialActivity" android:hardwareAccelerated="true" />
+    <service android:name="com.mobfox.sdk.services.MobFoxService" android:launchMode="singleTop" />
     ...
     </application>
     
 
 ```
-
-Or add this [jar file](https://github.com/mobfox/MobFox-Android-SDK-Core-Lib/blob/master/MobFox-Android-SDK-Core-3.0.0b.jar)
-to your libs folder.
 
 ## Proguard
 ```proguard
@@ -541,6 +540,3 @@ You can test your implementations with these [test inventory hashes](https://doc
 
 Plugins can be found in [SDK-plugins](https://github.com/mobfox/SDK-Plugins) repository.
 
-# Beta version
-
-MobFox SDK beta released! download it [here](https://github.com/mobfox/MobFox-Android-SDK/blob/master/beta/MobFox-Android-SDK-Core-beta.jar).
