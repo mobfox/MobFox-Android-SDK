@@ -72,6 +72,9 @@ dependencies {
 }
 ```
 
+
+## Setting permissions and adding activity (for both installation options)
+
 In your project's ```AndroidManifest.xml``` under the ```manifest``` tag, add the following permissions:
 ```xml
     
