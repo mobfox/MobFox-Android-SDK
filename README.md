@@ -155,8 +155,7 @@ Enable location by calling the static method ```InterstitialAd.getLocation(true)
 Enable location by calling the static method ```Native.setLoc(true);```
 
 # Demoapp
-Find Demoapp source [here](https://github.com/mobfox/MobFox-Android-SDK/tree/master/demoapp),
-apk can be found under [demoapp/release](https://github.com/mobfox/MobFox-Android-SDK/blob/master/demoapp/release), and via [demoapp-latest.apk](https://github.com/mobfox/MobFox-Android-SDK/blob/master/demoapp-latest.apk) in the project's root folder.
+Find Demoapp source [here](https://github.com/mobfox/MobFox-Android-SDK/tree/master/demoapp).
 
 # Usage
 
