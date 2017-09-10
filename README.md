@@ -52,7 +52,7 @@ Next, add ```Google Play Services``` and ```MobFox-Android-SDK-Core``` to your c
 dependencies {
     //... other dependencies ...
     compile 'com.google.android.gms:play-services-ads:+'
-    compile 'com.github.mobfox:MobFox-Android-SDK-Core:3.2.7d'
+    compile 'com.github.mobfox:MobFox-Android-SDK-Core:3.2.8'
 }
 ```
 
@@ -86,6 +86,7 @@ In your project's ```AndroidManifest.xml``` under the ```manifest``` tag, add th
     ...
     <!--mobfox interstitial activity-->
     <activity android:name="com.mobfox.sdk.interstitialads.InterstitialActivity" android:hardwareAccelerated="true" />
+    <activity android:name="com.mobfox.sdk.interstitial.InterstitialActivity" android:hardwareAccelerated="true"/>
     <service android:name="com.mobfox.sdk.services.MobFoxService" android:launchMode="singleTop" />
     ...
     </application>
