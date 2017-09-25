@@ -2,6 +2,8 @@
 
 # MobFox-Android-SDK
 
+For any problems or questions not covered by the instructions below, please contact <sdk_support@mobfox.com> or open an issue.
+
 Supports Android OS 4.1.x (Jelly Bean) and up.
 
 
