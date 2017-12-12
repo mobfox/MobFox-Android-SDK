@@ -70,7 +70,7 @@ Next, In your ```gradle.build``` add the following dependencies:
 dependencies {
     compile 'com.google.android.gms:play-services-ads:+'
     compile 'com.danikula:videocache:2.7.0'
-    compile files('libs/MobFox-Android-SDK-Core-3.+.jar')
+    compile files('libs/MobFox-Android-SDK-Core-3.3.0.jar')
 }
 ```
 Add moat integration:
