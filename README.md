@@ -75,7 +75,7 @@ dependencies {
 ```
 Add moat integration:
 
-Download and add [MAT-moat-mobile-app-kit.aar](https://github.com/mobfox/MobFox-Android-SDK/MAT-moat-mobile-app-kit.aar) to libs directory.
+Download and add [MAT-moat-mobile-app-kit.aar](https://github.com/mobfox/MobFox-Android-SDK/blob/master_rc/MAT-moat-mobile-app-kit.aar) to libs directory.
 
 Next, In your ```gradle.build``` add the following repositories and dependencies:
 
