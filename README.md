@@ -54,7 +54,7 @@ Next, add ```Google Play Services``` and ```MobFox-Android-SDK-Core``` to your c
 dependencies {
     //... other dependencies ...
     compile 'com.google.android.gms:play-services-ads:+'
-    compile 'com.github.mobfox:MobFox-Android-SDK-Core:3.2.8f'
+    compile 'com.github.mobfox.MobFox-Android-SDK-Core:MobFox-Android-SDK-Core:v3.3.0'
 }
 ```
 
@@ -70,10 +70,30 @@ Next, In your ```gradle.build``` add the following dependencies:
 dependencies {
     compile 'com.google.android.gms:play-services-ads:+'
     compile 'com.danikula:videocache:2.7.0'
-    compile files('libs/MobFox-Android-SDK-Core-3.+.jar')
+    compile files('libs/MobFox-Android-SDK-Core-3.3.0.jar')
 }
 ```
+Add moat integration:
 
+Download and add [MAT-moat-mobile-app-kit.aar](https://github.com/mobfox/MobFox-Android-SDK/blob/master_rc/MAT-moat-mobile-app-kit.aar) to libs directory.
+
+Next, In your ```gradle.build``` add the following repositories and dependencies:
+
+```groovy
+allprojects {
+    repositories {
+        //... other repositories ...
+        flatDir {
+            dirs 'libs'
+        }
+    }
+}
+
+dependencies {
+    //... other dependencies ...
+    compile(name:'MAT-moat-mobile-app-kit', ext:'aar')
+}
+```
 
 ## Setting permissions and adding activity (for both installation options)
 
@@ -88,7 +108,7 @@ In your project's ```AndroidManifest.xml``` under the ```manifest``` tag, add th
     ...
     <!--mobfox interstitial activity-->
     <activity android:name="com.mobfox.sdk.interstitialads.InterstitialActivity" android:hardwareAccelerated="true" />
-    <activity android:name="com.mobfox.sdk.interstitial.InterstitialActivity" android:hardwareAccelerated="true"/>
+    <activity android:name="com.mobfox.sdk.interstitial.InterstitialActivity" android:hardwareAccelerated="true"  android:theme="@android:style/Theme.NoTitleBar.Fullscreen"/>
     <service android:name="com.mobfox.sdk.services.MobFoxService" android:launchMode="singleTop" />
     ...
     </application>
