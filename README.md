@@ -91,7 +91,7 @@ allprojects {
 
 dependencies {
     //... other dependencies ...
-    compile(name:'MAT-moat-mobile-app-kit-2.4.0', ext:'aar')
+    compile(name:'MAT-moat-mobile-app-kit', ext:'aar')
 }
 ```
 
