@@ -108,7 +108,7 @@ In your project's ```AndroidManifest.xml``` under the ```manifest``` tag, add th
     ...
     <!--mobfox interstitial activity-->
     <activity android:name="com.mobfox.sdk.interstitialads.InterstitialActivity" android:hardwareAccelerated="true" />
-    <activity android:name="com.mobfox.sdk.interstitial.InterstitialActivity" android:theme="@android:style/Theme.NoTitleBar.Fullscreen"/>
+    <activity android:name="com.mobfox.sdk.interstitial.InterstitialActivity" android:hardwareAccelerated="true"  android:theme="@android:style/Theme.NoTitleBar.Fullscreen"/>
     <service android:name="com.mobfox.sdk.services.MobFoxService" android:launchMode="singleTop" />
     ...
     </application>
