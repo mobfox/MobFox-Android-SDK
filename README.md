@@ -73,16 +73,16 @@ dependencies {
     compile files('libs/MobFox-Android-SDK-Core-3.+.jar')
 }
 ```
-# Moat integration:
+Add moat integration:
 
-Download and add MAT-moat-mobile-app-2.4.0.aar to libs directory.
+Download and add [MAT-moat-mobile-app-kit.aar](https://github.com/mobfox/MobFox-Android-SDK/MAT-moat-mobile-app-kit.aar) to libs directory.
 
 Next, In your ```gradle.build``` add the following repositories and dependencies:
 
 ```groovy
 allprojects {
     repositories {
-        ...
+        //... other repositories ...
         flatDir {
             dirs 'libs'
         }
@@ -90,6 +90,7 @@ allprojects {
 }
 
 dependencies {
+    //... other dependencies ...
     compile(name:'MAT-moat-mobile-app-kit-2.4.0', ext:'aar')
 }
 ```
