@@ -73,7 +73,26 @@ dependencies {
     compile files('libs/MobFox-Android-SDK-Core-3.+.jar')
 }
 ```
+# Moat integration:
 
+Download and add MAT-moat-mobile-app-2.4.0.aar to libs directory.
+
+Next, In your ```gradle.build``` add the following repositories and dependencies:
+
+```groovy
+allprojects {
+    repositories {
+        ...
+        flatDir {
+            dirs 'libs'
+        }
+    }
+}
+
+dependencies {
+    compile(name:'MAT-moat-mobile-app-kit-2.4.0', ext:'aar')
+}
+```
 
 ## Setting permissions and adding activity (for both installation options)
 
@@ -88,7 +107,7 @@ In your project's ```AndroidManifest.xml``` under the ```manifest``` tag, add th
     ...
     <!--mobfox interstitial activity-->
     <activity android:name="com.mobfox.sdk.interstitialads.InterstitialActivity" android:hardwareAccelerated="true" />
-    <activity android:name="com.mobfox.sdk.interstitial.InterstitialActivity" android:hardwareAccelerated="true"/>
+    <activity android:name="com.mobfox.sdk.interstitial.InterstitialActivity" android:theme="@android:style/Theme.NoTitleBar.Fullscreen"/>
     <service android:name="com.mobfox.sdk.services.MobFoxService" android:launchMode="singleTop" />
     ...
     </application>
