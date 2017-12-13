@@ -22,6 +22,7 @@ Supports Android OS 4.1.x (Jelly Bean) and up.
   * [Custom Events](#custom-events)
   * [Adapters](#adapters)
   * [Plugins](#plugins)
+* [MOAT](#built-in-moat-viewability-measurement)
 
 <!-- toc stop -->
 
@@ -564,4 +565,8 @@ You can test your implementations with these [test inventory hashes](https://doc
 ## Plugins
 
 Plugins can be found in [SDK-plugins](https://github.com/mobfox/SDK-Plugins) repository.
+
+# Built-in MOAT Viewability Measurement
+ 
+This enables publishers to measure their in-app inventory according to Moat’s viewability metrics, and make their inventory more available to advertisers who are only interested in ‘viewability-monitored’ traffic.
 
