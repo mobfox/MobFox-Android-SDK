@@ -6,7 +6,6 @@ For any problems or questions not covered by the instructions below, please cont
 
 Supports Android OS 4.1.x (Jelly Bean) and up.
 
-
 <!-- toc -->
 
 * [Prerequisites](#prerequisites)
@@ -73,7 +72,8 @@ dependencies {
     compile files('libs/MobFox-Android-SDK-Core-3.3.0.jar')
 }
 ```
-Add moat integration:
+
+### Add moat integration:
 
 Download and add [MAT-moat-mobile-app-kit.aar](https://github.com/mobfox/MobFox-Android-SDK/blob/master/MAT-moat-mobile-app-kit.aar) to libs directory.
 
