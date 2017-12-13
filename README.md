@@ -568,5 +568,5 @@ Plugins can be found in [SDK-plugins](https://github.com/mobfox/SDK-Plugins) rep
 
 # Built-in MOAT Viewability Measurement
  
-This enables publishers to measure their in-app inventory according to Moat’s viewability metrics, and make their inventory more available to advertisers who are only interested in ‘viewability-monitored’ traffic.
+This enables publishers to measure their in-app inventory according to [Moat](https://moat.com/)’s viewability metrics, and make their inventory more available to advertisers who are only interested in ‘viewability-monitored’ traffic.
 
