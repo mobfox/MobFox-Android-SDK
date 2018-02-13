@@ -57,7 +57,7 @@ dependencies {
     compile 'com.github.mobfox.MobFox-Android-SDK-Core:MobFox-Android-SDK-Core:v3.3.0'
 }
 ```
-**Note that we are using ```compileSdkVersion 25```  and ```buildToolsVersion 25.0.3```.**
+**Note that we are using android ```compileSdkVersion 25```  and ```buildToolsVersion 25.0.3```.**
 
 Done.
 
