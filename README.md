@@ -57,16 +57,7 @@ dependencies {
     compile 'com.github.mobfox.MobFox-Android-SDK-Core:MobFox-Android-SDK-Core:v3.3.0'
 }
 ```
-**Make sure that  ```compileSdkVersion```  is ```25```  and ```buildToolsVersion```  is ```25.0.3```:**
-```groovy
-android {
-    compileSdkVersion 25
-    buildToolsVersion '25.0.3'
-    //...
-    }
-```
-
-
+**Note that we are using ```compileSdkVersion 25```  and ```buildToolsVersion 25.0.3```.**
 
 Done.
 
