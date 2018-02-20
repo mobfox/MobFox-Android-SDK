@@ -54,7 +54,7 @@ Next, add ```Google Play Services``` and ```MobFox-Android-SDK-Core``` to your c
 dependencies {
     //... other dependencies ...
     compile 'com.google.android.gms:play-services-ads:+'
-    compile 'com.github.mobfox.MobFox-Android-SDK-Core:MobFox-Android-SDK-Core:v3.3.0'
+    compile 'com.github.mobfox.MobFox-Android-SDK-Core:MobFox-Android-SDK-Core:v3.3.1'
 }
 ```
 **Note that we are using android ```compileSdkVersion 25```  and ```buildToolsVersion 25.0.3```.**
@@ -70,7 +70,7 @@ Next, In your ```gradle.build``` add the following dependencies:
 ```groovy
 dependencies {
     compile 'com.google.android.gms:play-services-ads:+'
-    compile 'com.danikula:videocache:2.7.0'
+    compile 'com.github.mobfox:AndroidVideoCache:v2.7.1'
     compile files('libs/MobFox-Android-SDK-Core-3.3.0.jar')
 }
 ```
