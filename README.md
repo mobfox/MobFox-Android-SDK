@@ -77,7 +77,7 @@ repositories {
 dependencies {
     compile 'com.google.android.gms:play-services-ads:+'
     compile 'com.github.mobfox:AndroidVideoCache:v2.7.1'
-    compile files('libs/MobFox-Android-SDK-Core-3.3.1.jar')
+    compile files('libs/MobFox-Android-SDK-Core-3.4.0.jar')
 }
 ```
 
