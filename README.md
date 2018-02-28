@@ -68,6 +68,12 @@ Download and unzip [MobFox-Android-SDK](https://github.com/mobfox/MobFox-Android
 Next, In your ```gradle.build``` add the following dependencies:
 
 ```groovy
+
+repositories {
+    //... other repositories ...
+    maven { url "https://jitpack.io" }
+}
+
 dependencies {
     compile 'com.google.android.gms:play-services-ads:+'
     compile 'com.github.mobfox:AndroidVideoCache:v2.7.1'
