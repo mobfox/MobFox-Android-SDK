@@ -54,7 +54,7 @@ Next, add ```Google Play Services``` and ```MobFox-Android-SDK-Core``` to your c
 dependencies {
     //... other dependencies ...
     compile 'com.google.android.gms:play-services-ads:+'
-    compile 'com.github.mobfox.MobFox-Android-SDK-Core:MobFox-Android-SDK-Core:3.4.0'
+    compile 'com.github.mobfox.MobFox-Android-SDK-Core:MobFox-Android-SDK-Core:3.4.1'
 }
 ```
 **Note that we are using android ```compileSdkVersion 25```  and ```buildToolsVersion 25.0.3```.**
@@ -77,7 +77,7 @@ repositories {
 dependencies {
     compile 'com.google.android.gms:play-services-ads:+'
     compile 'com.github.mobfox:AndroidVideoCache:v2.7.1'
-    compile files('libs/MobFox-Android-SDK-Core-3.4.0.jar')
+    compile files('libs/MobFox-Android-SDK-Core-3.4.1.jar')
 }
 ```
 
