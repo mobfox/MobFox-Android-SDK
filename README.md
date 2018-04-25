@@ -377,6 +377,7 @@ In your project's ```AndroidManifest.xml``` under the ```application``` tag, dec
 ## Video Ad
 In order to display video ads - 
 Use the same implementation method as Interstitial and simply initiate it with a video designated inventory hash.
+
 To designate an inventory to video - contact our team and tell us which inventory you wish you use as video placement. We'll set it up for you.
 	
 ## Native Ad
