@@ -1,3 +1,4 @@
+
 [![](https://jitpack.io/v/mobfox/MobFox-Android-SDK-Core.svg)](https://jitpack.io/#mobfox/MobFox-Android-SDK-Core)
 
 # MobFox-Android-SDK
@@ -18,6 +19,7 @@ Supports Android OS 4.1.x (Jelly Bean) and up.
 * [Usage](#usage)
   * [Banner Ad](#banner)
   * [Interstitial Ad](#interstitial)
+  * [ Video Ad](#video-ad)
   * [Native Ad](#native-ad)
   * [Custom Events](#custom-events)
   * [Adapters](#adapters)
@@ -372,7 +374,12 @@ In your project's ```AndroidManifest.xml``` under the ```application``` tag, dec
     <activity android:name="com.mobfox.sdk.interstitialads.InterstitialActivity"></activity>
 
 ```
+## Video Ad
+In order to display video ads - 
+Use the same implementation method as Interstitial and simply initiate it with a video designated inventory hash.
 
+To designate an inventory to video - contact our team and tell us which inventory you wish you use as video placement. We'll set it up for you.
+	
 ## Native Ad
 the layout below is used to show native assets:
 
