@@ -519,7 +519,7 @@ Plugins can be found in [SDK-plugins](https://github.com/mobfox/SDK-Plugins) rep
 This enables publishers to measure their in-app inventory according to [Moat](https://moat.com/)’s viewability metrics, and make their inventory more available to advertisers who are only interested in ‘viewability-monitored’ traffic.
 
 # GDPR
-GDPR Parameters can be set as follows:
+GDPR parameters can be set as follows:
 ```java
 MobfoxRequestParams gdprParams = new MobfoxRequestParams();
 gdprParams.setParam(MobfoxRequestParams.USER_GDPR,"1"); // can be "0" or "1"
