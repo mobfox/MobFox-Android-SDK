@@ -178,10 +178,6 @@ import android.support.annotation.Nullable;
 
 import com.mobfox.sdk.banner.Banner;
 
-/**
- * Created by nabriski on 10/05/2018.
- */
-
 public class InlineBannerActivity extends Activity {
 
     Banner banner;
