@@ -55,7 +55,7 @@ Next, add ```Google Play Services``` and ```MobFox-Android-SDK-Core``` to your c
 dependencies {
     //... other dependencies ...
     compile 'com.google.android.gms:play-services-ads:+'
-    compile 'com.github.mobfox.MobFox-Android-SDK-Core:MobFox-Android-SDK-Core:3.4.2'
+    compile 'com.github.mobfox.MobFox-Android-SDK-Core:MobFox-Android-SDK-Core:3.4.1'
 }
 ```
 **Note that we are using android ```compileSdkVersion 25```  and ```buildToolsVersion 25.0.3```.**
@@ -118,6 +118,7 @@ In your project's ```AndroidManifest.xml``` under the ```manifest``` tag, add th
     <application
     ...
     <!--mobfox interstitial activity-->
+    <activity android:name="com.mobfox.sdk.interstitialads.InterstitialActivity" android:hardwareAccelerated="true" />
     <activity android:name="com.mobfox.sdk.interstitial.InterstitialActivity" android:hardwareAccelerated="true"  android:theme="@android:style/Theme.NoTitleBar.Fullscreen"/>
     <service android:name="com.mobfox.sdk.services.MobFoxService" android:launchMode="singleTop" />
     ...
@@ -133,6 +134,60 @@ In your project's ```AndroidManifest.xml``` under the ```manifest``` tag, add th
 -keep class com.mobfox.sdk.** {*;}
 ```
 
+# Smart Banner
+Banner's width equals screen width.
+## Enable Smart Banner
+In your layout xml, in the Banner tag set smart banner by adding the mobfox attribute ```xmlns:mobfox="http://schemas.android.com/apk/lib/com.mobfox.sdk"``` and set smart to true ```mobfox:smart="true"```
+
+Full code
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    xmlns:mobfox="http://schemas.android.com/apk/lib/com.mobfox.sdk">
+    <com.mobfox.sdk.bannerads.Banner
+        android:layout_height="50dp"
+        android:layout_width="320dp"
+        mobfox:smart="true"
+        android:id="@+id/banner"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true">
+    </com.mobfox.sdk.bannerads.Banner>
+</RelativeLayout>
+```
+
+# Location
+Sending the user's location will provide you with higher CPMs.
+
+## Enable Location
+### banner
+In your layout xml, in the Banner tag enable location by adding the mobfox attribute ```xmlns:mobfox="http://schemas.android.com/apk/lib/com.mobfox.sdk"``` and enable location to true ```mobfox:enableLocation="true"```
+
+Full code
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    xmlns:mobfox="http://schemas.android.com/apk/lib/com.mobfox.sdk">
+    <com.mobfox.sdk.bannerads.Banner
+        android:layout_height="50dp"
+        android:layout_width="320dp"
+        mobfox:enableLocation="true"
+        android:id="@+id/banner"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true">
+    </com.mobfox.sdk.bannerads.Banner>
+</RelativeLayout>
+```
+This could also be achieved by calling the static method
+```
+Banner.setLoc(true);
+```
+### interstitial
+Enable location by calling the static method ```InterstitialAd.getLocation(true);```
+### native
+Enable location by calling the static method ```Native.setLoc(true);```
+
 # Demoapp
 Find Demoapp source [here](https://github.com/mobfox/MobFox-Android-SDK/tree/master/demoapp).
 
@@ -143,26 +198,13 @@ Find Demoapp source [here](https://github.com/mobfox/MobFox-Android-SDK/tree/mas
 Add to your activity's layout xml:
 ```xml
 
-<?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:mobfox="http://schemas.android.com/apk/lib/com.mobfox.sdk"
-    android:orientation="vertical" 
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
-
-    <com.mobfox.sdk.banner.Banner
-        android:layout_height="50dp"
-        android:layout_width="320dp"
+<com.mobfox.sdk.bannerads.Banner
+        android:layout_width="300dp"
+        android:layout_height="250dp"
         android:id="@+id/banner"
-        mobfox:inventory="fe96717d9875b9da4339ea5367eff1ec"
-        android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true">
-    </com.mobfox.sdk.banner.Banner>
-
-</RelativeLayout>
-```
-
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true">
+</com.mobfox.sdk.bannerads.Banner>
 ```
 It's advised to select popular ```layout_width```/```layout_height``` combinations so you'll get a good fill rate.
 Popular sizes are: 320x50, 300x250, 320x480
@@ -172,148 +214,165 @@ In your activity set up the banner:
 ```java
 // ...
 
-import android.app.Activity;
-import android.os.Bundle;
-import android.support.annotation.Nullable;
+import com.mobfox.sdk.bannerads.Banner;
+import com.mobfox.sdk.bannerads.BannerListener;
 
-import com.mobfox.sdk.banner.Banner;
+// ...
 
-/**
- * Created by nabriski on 10/05/2018.
- */
+Banner banner;
 
-public class InlineBannerActivity extends Activity {
-
-    Banner banner;
-
-    @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-
-        setContentView(R.layout.banner_inline);
-        banner = (Banner) findViewById(R.id.banner);
-        banner.setListener(new Banner.Listener() {
-            @Override
-            public void onBannerError(Banner banner, Exception e) {
-
-            }
-
-            @Override
-            public void onBannerLoaded(Banner banner) {
-
-            }
-
-            @Override
-            public void onBannerClosed(Banner banner) {
-
-            }
-
-            @Override
-            public void onBannerFinished() {
-
-            }
-
-            @Override
-            public void onBannerClicked(Banner banner) {
-
-            }
-
-            @Override
-            public void onNoFill(Banner banner) {
-
-            }
-        });
-        banner.load();
-    }
-
-    //add this so video ads will work properly
-    @Override
-    protected void onPause() {
-        super.onPause();
-        banner.onPause();
-    }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-        banner.onResume();
-    }
+@Override
+protected void onCreate(Bundle savedInstanceState) {
+    super.onCreate(savedInstanceState);
+    setContentView(R.layout.activity_main);
+    
+    banner = (Banner) findViewById(R.id.banner);
+    
+    final Activity self = this;
+    banner.setListener(new BannerListener() {
+        @Override
+        public void onBannerError(View banner, Exception e) {
+            Toast.makeText(self, e.getMessage(), Toast.LENGTH_SHORT).show();
+        }
+        @Override
+        public void onBannerLoaded(View banner) {
+            Toast.makeText(self, "loaded", Toast.LENGTH_SHORT).show();
+        }
+        @Override
+        public void onBannerClosed(View banner) {
+            Toast.makeText(self, "closed", Toast.LENGTH_SHORT).show();
+        }
+        @Override
+        public void onBannerFinished() {
+            Toast.makeText(self, "finished", Toast.LENGTH_SHORT).show();
+        }
+        @Override
+        public void onBannerClicked(View banner) {
+            Toast.makeText(self, "clicked", Toast.LENGTH_SHORT).show();
+        }
+        @Override
+        public void onNoFill(View banner) {
+            Toast.makeText(self, "no fill", Toast.LENGTH_SHORT).show();
+        }
+    });
+    banner.setInventoryHash("<your-publication-hash>");
+    banner.load();
 }
 
+//permission dialog for marshmello and above
+@Override
+public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
+    banner.onRequestPermissionsResult(requestCode, permissions, grantResults);
+}
+
+//add this so video ads will work properly
+@Override
+protected void onPause() {
+    super.onPause();
+    banner.onPause();
+}
+
+@Override
+protected void onResume() {
+    super.onResume();
+    banner.onResume();
+}
+
+// ...
 
 ```
 
 ### Refresh
-Enable refresh by calling the method ```banner.setRefresh(10)```
-- Integer Units in seconds
-- Minimum is 10 seconds
+Enable refresh by calling the method ```banner.setRefresh(5)```
+- Integer Units seconds
+- Minimum 5 seconds
 
 ## Interstitial
 
-In your activity set up the interstitial ad:
+In your activity set up the interstitialAd interstitial:
 
 ``` java
-//...
 
-import android.app.Activity;
-import android.os.Bundle;
-import android.widget.LinearLayout;
+// ...
 
-import com.mobfox.sdk.interstitial.Interstitial;
-import com.mobfox.sdk.interstitial.InterstitialListener;
+import com.mobfox.sdk.interstitialads.InterstitialAd;
+import com.mobfox.sdk.interstitialads.InterstitialAdListener;
 
-public class UseInterstitialAd extends Activity {
+// ...
 
-    private static String invh = "267d72ac3f77a3f447b32cf7ebf20673";
-    Interstitial inter;
+InterstitialAd interstitial;
+InterstitialAdListener listener;
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
+// ...
 
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.use_inline);
+@Override
+protected void onCreate(Bundle savedInstanceState) {
+    super.onCreate(savedInstanceState);
 
-        final LinearLayout layout = (LinearLayout) findViewById(R.id.dummy_container);
+    interstitial = new InterstitialAd(this);
 
-        final UseInterstitialAd self = this;
-
-                inter = new Interstitial(self,invh);
-                inter.setListener(new InterstitialListener() {
-                    @Override
-                    public void onInterstitialLoaded(Interstitial interstitial) {
-                        inter.show();
-                    }
-
-                    @Override
-                    public void onInterstitialFailed(String e) {
-
-                    }
-
-                    @Override
-                    public void onInterstitialClosed() {
-                    }
-
-                    @Override
-                    public void onInterstitialClicked() {
-                    }
-
-                    @Override
-                    public void onInterstitialShown() {
-                    }
-
-                    @Override
-                    public void onInterstitialFinished() {
-                    }
-                });
-               inter.load();
-
-    }
-
+    final Activity self = this;
+    InterstitialAdListener listener = new InterstitialAdListener() {
+        @Override
+        public void onInterstitialLoaded(InterstitialAd interstitial) {
+            Toast.makeText(self, "loaded", Toast.LENGTH_SHORT).show();
+            //call show() to display the interstitial when its finished loading
+            interstitial.show();
+        }
+        @Override
+        public void onInterstitialFailed(InterstitialAd interstitial, Exception e) {
+            Toast.makeText(self, e.getMessage(), Toast.LENGTH_SHORT).show();
+        }
+        @Override
+        public void onInterstitialClosed(InterstitialAd interstitial) {
+            Toast.makeText(self, "closed", Toast.LENGTH_SHORT).show();
+        }
+        @Override
+        public void onInterstitialFinished() {
+            Toast.makeText(self, "finished", Toast.LENGTH_SHORT).show();
+        }
+        @Override
+        public void onInterstitialClicked(InterstitialAd interstitial) {
+            Toast.makeText(self, "clicked", Toast.LENGTH_SHORT).show();
+        }
+        @Override
+        public void onInterstitialShown(InterstitialAd interstitial) {
+            Toast.makeText(self, "shown", Toast.LENGTH_SHORT).show();
+        }
+    };
+    interstitial.setListener(listener);
+    interstitial.setInventoryHash("<your-publication-hash>");
+    interstitial.load();
 }
 
+//permission dialog for marshmello and above
+@Override
+public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
+    interstitial.onRequestPermissionsResult(requestCode, permissions, grantResults);
+}
 
+//add this so video ads will work properly
+@Override
+protected void onPause() {
+    super.onPause();
+    interstitial.onPause();
+}
+
+@Override
+protected void onResume() {
+    super.onResume();
+    interstitial.onResume();
+}
+
+// ...
 ```
 
+In your project's ```AndroidManifest.xml``` under the ```application``` tag, declare the following activity:
+```xml
+    
+    <activity android:name="com.mobfox.sdk.interstitialads.InterstitialActivity"></activity>
+
+```
 ## Native Ad
 the layout below is used to show native assets:
 
