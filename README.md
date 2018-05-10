@@ -13,6 +13,9 @@ Supports Android OS 4.1.x (Jelly Bean) and up.
 * [Installation](#installation)
   * [Gradle Installation](#option-1-gradle-installation)
   * [Jar Installation](#option-2-jar-installation)
+  * [Add MOAT Integration](#add-moat-integration)
+  * [Proguard](#proguard)
+
 * [DemoApp](#demoapp)
 * [Usage](#usage)
   * [Banner Ad](#banner)
@@ -80,7 +83,7 @@ dependencies {
 }
 ```
 
-### Add MOAT integration:
+### Add MOAT Integration:
 
 Download and add [MAT-moat-mobile-app-kit.aar](https://github.com/mobfox/MobFox-Android-SDK/blob/master/MAT-moat-mobile-app-kit.aar) to libs directory.
 
