@@ -521,7 +521,7 @@ This enables publishers to measure their in-app inventory according to [Moat](ht
 # GDPR
 GDPR Parameters can be set as follows:
 ```java
- MobfoxRequestParams gdprParams = new MobfoxRequestParams();
+MobfoxRequestParams gdprParams = new MobfoxRequestParams();
 gdprParams.setParam(MobfoxRequestParams.USER_GDPR,"1"); // can be "0" or "1"
 gdprParams.setParam(MobfoxRequestParams.USER_CONSENT,"1");// can be "0" or "1"
 banner.addParams(gdprParams);
