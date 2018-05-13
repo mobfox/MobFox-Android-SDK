@@ -60,7 +60,7 @@ dependencies {
     compile 'com.github.mobfox.MobFox-Android-SDK-Core:MobFox-Android-SDK-Core:3.4.2'
 }
 ```
-**Note that we are using android ```compileSdkVersion 25```  and ```buildToolsVersion 25.0.3```.**
+**Note that we are using android ```compileSdkVersion 26```  and ```buildToolsVersion 26.1.0```.**
 
 Done.
 
@@ -129,7 +129,9 @@ In your project's ```AndroidManifest.xml``` under the ```manifest``` tag, add th
 ```
 
 ## Proguard
-```proguard
+In your project's ```proguard-rules.pro``` add the following permissions:
+
+```xml
 -keep class com.mobfox.** { *; }
 -keep class com.mobfox.adapter.** {*;}
 -keep class com.mobfox.sdk.** {*;}
