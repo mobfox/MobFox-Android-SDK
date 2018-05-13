@@ -144,7 +144,7 @@ Find Demoapp source [here](https://github.com/mobfox/MobFox-Android-SDK/tree/mas
 
 ## Banner
 
-Add to your activity's layout xml:
+Add to your relevant activity's layout xml:
 ```xml
 
 <?xml version="1.0" encoding="utf-8"?>
@@ -190,7 +190,7 @@ public class InlineBannerActivity extends Activity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        setContentView(R.layout.banner_inline);
+        setContentView(R.layout.<YOUR_ACTIVITY_LAYOUT>);
         banner = (Banner) findViewById(R.id.banner);
         banner.setListener(new Banner.Listener() {
             @Override
