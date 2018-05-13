@@ -250,7 +250,8 @@ Enable refresh by calling the method ```banner.setRefresh(10)```
 
 ## Interstitial
 
-In your activity set up the interstitial ad:
+In your relevant activity xml file add new 'LinearLayout'. 
+Than, set up the activity java file as follows :
 
 ``` java
 //...
@@ -273,7 +274,7 @@ public class UseInterstitialAd extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.use_inline);
 
-        final LinearLayout layout = (LinearLayout) findViewById(R.id.dummy_container);
+        final LinearLayout layout = (LinearLayout) findViewById(R.id.<YOUR_'LinearLayout'_ID>);
 
         final UseInterstitialAd self = this;
 
