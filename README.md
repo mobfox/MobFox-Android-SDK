@@ -1,5 +1,6 @@
 
 
+
 [![](https://jitpack.io/v/mobfox/MobFox-Android-SDK-Core.svg)](https://jitpack.io/#mobfox/MobFox-Android-SDK-Core)
 
 # MobFox-Android-SDK
@@ -588,6 +589,16 @@ The GDPR stands for the [General Data Protection Regulation](https://gdpr-info.e
 
  - MobFox SDK latest version (**3.5.0** and above).
  - Latest Adapters for AdMob & MoPub
+ 
+ **Set GDPR & GDPR Consent:**
+```
+banner.setGdpr(true);  
+banner.setGdprConsent("1");  
+interstitial.getBanner().setGdprConsent("1");  
+interstitial.getBanner().setGdpr(true);
+```
+GDPR for AdMob
+GDPR for MoPub
 
 For additional info - [https://www.mobfox.com/gdpr-faq/](https://www.mobfox.com/gdpr-faq/)
 
