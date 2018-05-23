@@ -597,8 +597,6 @@ banner.setGdprConsent("1");
 interstitial.getBanner().setGdprConsent("1");  
 interstitial.getBanner().setGdpr(true);
 ```
-GDPR for AdMob
-GDPR for MoPub
 
 For additional info - [https://www.mobfox.com/gdpr-faq/](https://www.mobfox.com/gdpr-faq/)
 
