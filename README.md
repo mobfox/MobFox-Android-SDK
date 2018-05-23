@@ -1,6 +1,7 @@
 
 
 
+
 [![](https://jitpack.io/v/mobfox/MobFox-Android-SDK-Core.svg)](https://jitpack.io/#mobfox/MobFox-Android-SDK-Core)
 
 # MobFox-Android-SDK
@@ -597,7 +598,8 @@ banner.setGdprConsent("1");
 interstitial.getBanner().setGdprConsent("1");  
 interstitial.getBanner().setGdpr(true);
 ```
+***
+**GDPR instructions for AdMob & MoPub can be found in the [Adapters](https://github.com/mobfox/MobFox-Android-SDK/wiki/Adapters) page.**
 
 For additional info - [https://www.mobfox.com/gdpr-faq/](https://www.mobfox.com/gdpr-faq/)
-
 
