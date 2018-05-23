@@ -1,4 +1,5 @@
 
+
 [![](https://jitpack.io/v/mobfox/MobFox-Android-SDK-Core.svg)](https://jitpack.io/#mobfox/MobFox-Android-SDK-Core)
 
 # MobFox-Android-SDK
@@ -24,6 +25,7 @@ Supports Android OS 4.1.x (Jelly Bean) and up.
   * [Adapters](#adapters)
   * [Plugins](#plugins)
 * [MOAT](#built-in-moat-viewability-measurement)
+* [GDPR](#gdpr)
 
 <!-- toc stop -->
 
@@ -55,7 +57,7 @@ Next, add ```Google Play Services``` and ```MobFox-Android-SDK-Core``` to your c
 dependencies {
     //... other dependencies ...
     compile 'com.google.android.gms:play-services-ads:+'
-    compile 'com.github.mobfox.MobFox-Android-SDK-Core:MobFox-Android-SDK-Core:3.4.1'
+    compile 'com.github.mobfox.MobFox-Android-SDK-Core:MobFox-Android-SDK-Core:3.5.0'
 }
 ```
 **Note that we are using android ```compileSdkVersion 25```  and ```buildToolsVersion 25.0.3```.**
@@ -78,7 +80,7 @@ repositories {
 dependencies {
     compile 'com.google.android.gms:play-services-ads:+'
     compile 'com.github.mobfox:AndroidVideoCache:v2.7.1'
-    compile files('libs/MobFox-Android-SDK-Core-3.4.1.jar')
+    compile files('libs/MobFox-Android-SDK-Core-3.5.0.jar')
 }
 ```
 
@@ -575,7 +577,18 @@ You can test your implementations with these [test inventory hashes](https://doc
 
 Plugins can be found in [SDK-plugins](https://github.com/mobfox/SDK-Plugins) repository.
 
-# Built-in MOAT Viewability Measurement
+## Built-in MOAT Viewability Measurement
  
 This enables publishers to measure their in-app inventory according to [Moat](https://moat.com/)’s viewability metrics, and make their inventory more available to advertisers who are only interested in ‘viewability-monitored’ traffic.
+
+## GDPR
+The GDPR stands for the [General Data Protection Regulation](https://gdpr-info.eu/), which creates consistent data protection rules across the [European Union](https://europa.eu/european-union/about-eu/countries_en). 
+
+**GDPR Requirements:**
+
+ - MobFox SDK latest version (**3.5.0** and above).
+ - Latest Adapters for AdMob & MoPub
+
+For additional info - [https://www.mobfox.com/gdpr-faq/](https://www.mobfox.com/gdpr-faq/)
+
 
