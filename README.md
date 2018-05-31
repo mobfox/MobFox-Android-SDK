@@ -1,7 +1,19 @@
 
+
+
 [![](https://jitpack.io/v/mobfox/MobFox-Android-SDK-Core.svg)](https://jitpack.io/#mobfox/MobFox-Android-SDK-Core)
 
 # MobFox-Android-SDK
+
+### Important!
+###  Please note version 3.6.0 have some no backward incompatible changes. therefore it is highly recommended to follow this tutorial after updating to 3.6.0  .
+
+
+### Publishers that have updated SDK version to 3.6.0 and use MobFox as adapter, must also update adapters Jar files manually (even if using SDK gradle Installation). To do so, download or clone the relevant adapter jar file, and change it with the old jar in your project.  
+Jar file located in: 
+```MobFox-AndroidSDK/thirdPartyNetworks/RELEVANT_ADAPTER/*.jar```
+
+
 
 For any problems or questions not covered by the instructions below, please contact <sdk_support@mobfox.com> or open an issue.
 
@@ -57,7 +69,7 @@ Next, add ```Google Play Services``` and ```MobFox-Android-SDK-Core``` to your c
 dependencies {
     //... other dependencies ...
     compile 'com.google.android.gms:play-services-ads:+'
-    compile 'com.github.mobfox.MobFox-Android-SDK-Core:MobFox-Android-SDK-Core:3.4.2'
+    compile 'com.github.mobfox.MobFox-Android-SDK-Core:MobFox-Android-SDK-Core:3.6.0'
 }
 ```
 **Note that we are using android ```compileSdkVersion 26```  and ```buildToolsVersion 26.1.0```.**
@@ -80,7 +92,7 @@ repositories {
 dependencies {
     compile 'com.google.android.gms:play-services-ads:+'
     compile 'com.github.mobfox:AndroidVideoCache:v2.7.1'
-    compile files('libs/MobFox-Android-SDK-Core-3.4.1.jar')
+    compile files('libs/MobFox-Android-SDK-Core-3.6.0.jar')
 }
 ```
 
@@ -511,7 +523,12 @@ You can test your implementations with these [test inventory hashes](https://doc
 
 ## Adapters
 
+
 [Adapters](https://github.com/mobfox/MobFox-Android-SDK-Core-Lib/wiki/Adapters) are the opposite of Custom Events, they let you use MobFox as a Custom Event in other networks.
+
+* Publishers that updated SDK to version 3.6.0 must also update adapters Jar files. To do so, download or clone jar file, and change it with the old jar in your project.
+Jar file located in: 
+*  > MobFox-AndroidSDK/thirdPartyNetworks/RELEVANT_NETWORK/*.jar
 
 ## Plugins
 
