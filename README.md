@@ -1,6 +1,7 @@
 
 
 
+
 [![](https://jitpack.io/v/mobfox/MobFox-Android-SDK-Core.svg)](https://jitpack.io/#mobfox/MobFox-Android-SDK-Core)
 
 # MobFox-Android-SDK
@@ -49,6 +50,7 @@ You will need a [MobFox](http://www.mobfox.com/) account.
 
 ## Option 1: Gradle Installation
 
+##### Please note  this is the recommended installation for MobFox SDK.
 MobFox SDK can easily be added as a dependency from JitPack package repository.
 
 Add ```JitPack``` to your repositories, if missing.
@@ -78,6 +80,7 @@ Done.
 
 ## Option 2: Jar Installation
 
+##### Please note it is kindly recommended to use the gradle installation and not Jar installation.
 Download and unzip [MobFox-Android-SDK](https://github.com/mobfox/MobFox-Android-SDK/releases/latest) or clone this repository and extract the ```MobFox-Android-SDK-Core-latest.jar``` and put it in your project under the ``libs`` directory.
 
 Next, In your ```gradle.build``` add the following dependencies:
@@ -529,6 +532,11 @@ You can test your implementations with these [test inventory hashes](https://doc
 * Publishers that updated SDK to version 3.6.0 must also update adapters Jar files. To do so, download or clone jar file, and change it with the old jar in your project.
 Jar file located in: 
 *  > MobFox-AndroidSDK/thirdPartyNetworks/RELEVANT_NETWORK/*.jar
+
+Than, update jar files in your project "libs" directory and set it in 
+*  > File - Project Structure - Dependencies 
+
+in android studio.
 
 ## Plugins
 
