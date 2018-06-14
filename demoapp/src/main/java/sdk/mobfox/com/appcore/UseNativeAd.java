@@ -19,7 +19,9 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.mobfox.sdk.customevents.CustomEventNative;
 import com.mobfox.sdk.nativeads.Native;
+import com.mobfox.sdk.nativeads.NativeAd;
 import com.mobfox.sdk.nativeads.NativeListener;
 import com.mobfox.sdk.networking.RequestParams;
 
@@ -65,7 +67,7 @@ public class UseNativeAd extends Activity implements AdapterView.OnItemSelectedL
 
         self = this;
 
-//        Native.setDebug(true);
+        Native.setDebug(true);
 
         //assigning xml components to our layout
         headline = (TextView) findViewById(R.id.headline);
@@ -103,7 +105,7 @@ public class UseNativeAd extends Activity implements AdapterView.OnItemSelectedL
 
         //we must set a listener for native
 
-       /* listener = new NativeListener() {
+        listener = new NativeListener() {
             @Override
             public void onNativeReady(Native aNative, CustomEventNative event, NativeAd ad) {
 
@@ -118,14 +120,14 @@ public class UseNativeAd extends Activity implements AdapterView.OnItemSelectedL
                 ad.loadImages(self, new NativeAd.ImagesLoadedListener() {
                     @Override
                     public void onImagesLoaded(NativeAd ad) {
-                        Toast.makeText(self, "on images ready", Toast.LENGTH_SHORT).show();
-                        nativeIcon.setImageBitmap(ad.getImages().get(0).getImg());
+                    Toast.makeText(self, "on images ready", Toast.LENGTH_SHORT).show();
+                    nativeIcon.setImageBitmap(ad.getImages().get(0).getImg());
                     }
                 });
 
-            }*/
+            }
 
-          /*  @Override
+            @Override
             public void onNativeError(Exception e) {
                 Toast.makeText(self, e.getMessage(), Toast.LENGTH_SHORT).show();
             }
@@ -135,9 +137,9 @@ public class UseNativeAd extends Activity implements AdapterView.OnItemSelectedL
                 Toast.makeText(self, "on native click", Toast.LENGTH_SHORT).show();
             }
 
-        };*/
+        };
 
-       // aNative.setListener(listener);
+        aNative.setListener(listener);
     }
 
     @Override
@@ -224,15 +226,12 @@ public class UseNativeAd extends Activity implements AdapterView.OnItemSelectedL
 
     @Override
     public void onClick(View v) {
-
-
         if (v.getId() == R.id.loadBtn) {
             if (invh.isEmpty()) {
                 makeToast(self, toasts[2]);
                 return;
             }
             aNative.load(invh);
-            //"f129d39a980e6102b68dfcefe78c8832"
             return;
         }
         if (v.getId() == R.id.btnAdd) {

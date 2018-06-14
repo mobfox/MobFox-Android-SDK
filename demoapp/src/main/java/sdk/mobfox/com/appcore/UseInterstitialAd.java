@@ -1,238 +1,166 @@
 package sdk.mobfox.com.appcore;
 
 import android.app.Activity;
-import android.content.Context;
+import android.content.ActivityNotFoundException;
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.RelativeLayout;
-import android.widget.Spinner;
-import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.android.gms.common.api.CommonStatusCodes;
-import com.google.android.gms.vision.barcode.Barcode;
-import com.mobfox.sdk.interstitial.Interstitial;
-import com.mobfox.sdk.interstitial.InterstitialListener;
-import com.mobfox.sdk.networking.MobfoxRequestParams;
+import com.mobfox.sdk.interstitialads.InterstitialAd;
+import com.mobfox.sdk.interstitialads.InterstitialAdListener;
 
-import sdk.mobfox.com.appcore.barcode.BarcodeCaptureActivity;
+import static sdk.mobfox.com.appcore.UseNativeAd.ACTION_SCAN;
+import static sdk.mobfox.com.appcore.UseNativeAd.makeToast;
+import static sdk.mobfox.com.appcore.UseNativeAd.onResult;
+import static sdk.mobfox.com.appcore.UseNativeAd.toasts;
 
 /**
  * Created by asafg84 on 03/05/16.
  */
-public class UseInterstitialAd extends Activity implements AdapterView.OnItemSelectedListener {
+public class UseInterstitialAd extends Activity {
 
-    private static final int BARCODE_READER_REQUEST_CODE = 1;
+    String invh = "";
 
-   // private static String invh = "267d72ac3f77a3f447b32cf7ebf20673";
-//    private static String invh = "925cda5671815c81802bf8b7f45eec55";
-    //private static String invh = "80187188f458cfde788d961b6882fd53";
+    InterstitialAd interstitial;
+    InterstitialAdListener listener;
 
+    MySpinner spinnerInvh;
+    EditText etInvh;
+    Button loadBtn;
 
-    //private static String invh = "267d72ac3f77a3f447b32cf7ebf20673";
+    boolean first = true;
 
-    //private static String invh = "267d72ac3f77a3f447b32cf7ebf20673";
-    private static String invh = "925cda5671815c81802bf8b7f45eec55";
-    //private static String invh = "80187188f458cfde788d961b6882fd53";
-
-
-    static long millisecs;
-    // final DummyAdapter da = new DummyAdapter();
-    public Interstitial interAd;
-    public EditText invhText;
-    public EditText floorText;
-    public Button load;
-    public Button qrcode;
-    public TextView logText;
-    public String server="";
-
-    MobfoxRequestParams mfrp;
-
-
-    float floor = -1;
-
-    Context c;
-
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.use_dummy_adapter);
-        getWindow().getDecorView().setBackgroundColor(Color.rgb(144,202,249));
-
-
-        final RelativeLayout layout = (RelativeLayout) findViewById(R.id.dummy_container);
-
-        c = getApplicationContext();
-
-        mfrp = new MobfoxRequestParams();
-
-
-        Spinner serverSpinner = (Spinner) findViewById(R.id.server_spinner);
-
-        logText     = (TextView) findViewById(R.id.logText);
-        floorText   = (EditText) findViewById(R.id.floor_etext);
-        invhText    = (EditText) findViewById(R.id.invhText);
-        invhText.setText(invh);
-
-
-        final UseInterstitialAd self = this;
-
-        load = (Button) findViewById(R.id.loadBtn);
-        load.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                invh = invhText.getText().toString();
-                interAd = new Interstitial(self,invh);
-
-                if (floorText.getText().length() > 0){
-                    floor = Float.parseFloat(floorText.getText().toString());
-                    if(floor > 0){
-                        mfrp.setParam(MobfoxRequestParams.R_FLOOR,floor);
-                        interAd.setRequestParams(mfrp);
-                    }
-                }
-                if (!server.equals("")){
-                    if (server.equals("http://nvirginia-my.mobfox.com")){
-                        mfrp.setParam("debugResponseURL", server);
-                        interAd.setRequestParams(mfrp);
-                    }
-                    if (server.equals("http://tokyo-my.mobfox.com")){
-                        mfrp.setParam("debugResponseURL", server);
-                        interAd.setRequestParams(mfrp);
-
-                    }
-
-                }
-
-                interAd.setListener(new InterstitialListener() {
-                    @Override
-                    public void onInterstitialLoaded(Interstitial interstitial) {
-                        Toast.makeText(self, "inter loaded", Toast.LENGTH_SHORT).show();
-                        interAd.show();
-                    }
-
-                    @Override
-                    public void onInterstitialFailed(String e) {
-                        Toast.makeText(self, e, Toast.LENGTH_SHORT).show();
-                        logText.setText(e);
-
-                    }
-
-                    @Override
-                    public void onInterstitialClosed() {
-                        Toast.makeText(self, "closed", Toast.LENGTH_SHORT).show();
-                    }
-
-                    @Override
-                    public void onInterstitialClicked() {
-                        Toast.makeText(self, "clicked", Toast.LENGTH_SHORT).show();
-                    }
-
-                    @Override
-                    public void onInterstitialShown() {
-                        Toast.makeText(self, "shown", Toast.LENGTH_SHORT).show();
-                        logText.setText("");
-                    }
-
-                    @Override
-                    public void onInterstitialFinished() {
-                        Toast.makeText(self, "finished", Toast.LENGTH_SHORT).show();
-                    }
-                });
-                interAd.load();
-            }
-        });
-
-        ArrayAdapter<CharSequence> serverSpinnerAdapter = ArrayAdapter.createFromResource(this,
-                R.array.servers_array, android.R.layout.simple_spinner_item);
-        serverSpinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        serverSpinner.setAdapter(serverSpinnerAdapter);
-        serverSpinner.setOnItemSelectedListener(this);
-
-        qrcode = (Button) findViewById(R.id.qrcode);
-        qrcode.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), BarcodeCaptureActivity.class);
-                startActivityForResult(intent, BARCODE_READER_REQUEST_CODE);
-            }
-        });
-    }
-
+    UseInterstitialAd self;
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if (requestCode == BARCODE_READER_REQUEST_CODE) {
-            if (resultCode == CommonStatusCodes.SUCCESS) {
-                if (data != null) {
-                    Barcode barcode = data.getParcelableExtra(BarcodeCaptureActivity.BarcodeObject);
-                    invhText.setText(barcode.displayValue);
-                }
+        invh = onResult(requestCode, resultCode, data);
+        if (invh.equals("false")) {
+            makeToast(self, toasts[0]);
+            return;
+        }
+        etInvh.setText(invh);
+        makeToast(self, toasts[1] + invh);
+    }
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.use_interstitial);
+
+        InterstitialAd.getLocation(true);
+        interstitial = new InterstitialAd(this);
+
+        self = this;
+
+        listener = new InterstitialAdListener() {
+            @Override
+            public void onInterstitialLoaded(InterstitialAd interstitial) {
+                interstitial.show();
+                Toast.makeText(UseInterstitialAd.this, "load", Toast.LENGTH_SHORT).show();
             }
-        }
-        else super.onActivityResult(requestCode, resultCode, data);
-    }
 
+            @Override
+            public void onInterstitialFailed(InterstitialAd interstitial, Exception e) {
+                Toast.makeText(UseInterstitialAd.this, "fail, " + e.getMessage(), Toast.LENGTH_SHORT).show();
+            }
 
-    @Override
-    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+            @Override
+            public void onInterstitialClosed(InterstitialAd interstitial) {
+                Toast.makeText(UseInterstitialAd.this, "close", Toast.LENGTH_SHORT).show();
+            }
 
-        String spinnerId = parent.getItemAtPosition(position).toString();
-//        int parentId = parent.getId();
+            @Override
+            public void onInterstitialFinished() {
+                Toast.makeText(UseInterstitialAd.this, "finish", Toast.LENGTH_SHORT).show();
+            }
 
-        switch (spinnerId) {
-            case "North Virginia":
-                //set server to north virginia
-                server = "http://nvirginia-my.mobfox.com";
-//                Toast.makeText(c, "North Virginia", Toast.LENGTH_SHORT).show();
-                break;
-            case "Tokyo":
-                //set server to tokyo
-                server = "http://tokyo-my.mobfox.com";
+            @Override
+            public void onInterstitialClicked(InterstitialAd interstitial) {
+                Toast.makeText(UseInterstitialAd.this, "click", Toast.LENGTH_SHORT).show();
+            }
 
-//                Toast.makeText(c, "Tokyo", Toast.LENGTH_SHORT).show();
-                break;
-        }
+            @Override
+            public void onInterstitialShown(InterstitialAd interstitial) {
+                Toast.makeText(UseInterstitialAd.this, "show", Toast.LENGTH_SHORT).show();
+            }
+        };
+        interstitial.setListener(listener);
+        //interstitial.setType("video");
 
-    }
+        etInvh = (EditText) findViewById(R.id.etInvh);
 
-    @Override
-    public void onNothingSelected(AdapterView<?> parent) {
-
-    }
-
-    /*protected  void loadAd(final LinearLayout layout, final DummyAdapter adapter, final DummyAdapter.Listener listener){
-
-        final UseInterstitialAd self = this;
-        layout.removeAllViews();
-        Log.d("MobFoxBanner","load ad!");
-        UseDummyAdapter.millisecs = System.currentTimeMillis();
-        // String invh = "80187188f458cfde788d961b6882fd53";  // video
-        // String invh = "fe96717d9875b9da4339ea5367eff1ec"; // banner
-        //String invh = "267d72ac3f77a3f447b32cf7ebf20673"; // interstitial
-
-        adapter.loadAd(self, invh, listener);
-
-    }*/
-
-    /*protected void reload(final LinearLayout layout, final DummyAdapter adapter, final DummyAdapter.Listener listener){
-
-        final UseInterstitialAd self = this;
-        UseDummyAdapter.millisecs = System.currentTimeMillis();
-        new android.os.Handler().postDelayed(
-                new Runnable() {
-                    public void run() {
-                        da.loadAd(self,invh,listener);
+        spinnerInvh = (MySpinner) findViewById(R.id.spinnerInvh);
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
+                R.array.spinnerinvh, android.R.layout.simple_spinner_item);
+        spinnerInvh.setAdapter(adapter);
+        spinnerInvh.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                if (first) {
+                    first = false;
+                    return;
+                }
+                String label = parent.getItemAtPosition(position).toString();
+                String[] spinnerinvh = getResources().getStringArray(R.array.spinnerinvh);
+                if (label.equals(spinnerinvh[0])) {
+                    invh = "";
+                    etInvh.setText("");
+                    try {
+                        Intent intent = new Intent(ACTION_SCAN);
+                        intent.putExtra("SCAN_MODE", "QR_CODE_MODE");
+                        startActivityForResult(intent, 0);
+                    } catch (ActivityNotFoundException e) {
+                        UseNativeAd.showDialog(self, "No Scanner Found", "Download a scanner code activity?", "Yes", "No").show();
                     }
-                },
-                500000);
-    }*/
+                    return;
+                }
+                String[] splited = label.split("\\s+");
+                invh = splited[splited.length - 1];
+                etInvh.setText(invh);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+            }
+        });
+
+        loadBtn = (Button) findViewById(R.id.loadBtn);
+        loadBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (invh.isEmpty()) {
+                    makeToast(self, toasts[2]);
+                    return;
+                }
+                interstitial.setInventoryHash(invh);
+                interstitial.load();
+                return;
+            }
+        });
+    }
+
+    //need to add this so video ads will work properly
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        interstitial.onPause();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        interstitial.onResume();
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
+        interstitial.onRequestPermissionsResult(requestCode, permissions, grantResults);
+    }
 }

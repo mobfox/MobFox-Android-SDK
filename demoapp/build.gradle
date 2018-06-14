@@ -1,14 +1,10 @@
 apply plugin: 'com.android.application'
 
-version = "1.6"
+version = "1.2"
 
 buildscript {
     repositories {
         jcenter()
-        maven {
-            url 'https://maven.google.com/'
-            name 'Google'
-        }
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:2.3.3'
@@ -21,10 +17,10 @@ android {
 
     defaultConfig {
         applicationId "sdk.mobfox.com.appcore"
-        minSdkVersion 19
+        minSdkVersion 16
         targetSdkVersion 25
-        versionCode 8
-        versionName = version
+        versionCode 1
+        versionName "1.0"
         multiDexEnabled true
         archivesBaseName = "MobFox-Android-SDK-Client-" + version + ".apk"
     }
@@ -47,28 +43,21 @@ repositories {
     jcenter()
     maven { url "https://jitpack.io" }
     mavenCentral()
-    maven {
-        url 'https://maven.google.com/'
-        name 'Google'
-    }
 }
 
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
+
     compile 'com.android.support:appcompat-v7:25.3.1'
     compile 'com.android.support:design:25.3.1'
-    compile 'com.google.android.gms:play-services-ads:11.0.4'
-    compile 'com.google.android.gms:play-services-vision:11.0.4'
+
+    compile 'com.google.android.gms:play-services-ads:11.0.0'
     compile 'com.android.support:multidex:1.0.1'
+
     compile 'com.github.mobfox:AndroidVideoCache:v2.7.1'
-    compile('com.mopub:mopub-sdk:5.1.0@aar') {
-        transitive = true
-        exclude module: 'libAvid-mopub' // To exclude AVID
-        exclude module: 'moat-mobile-app-kit' // To exclude Moat
-    }
+
     testCompile 'junit:junit:4.12'
-    //compile 'com.github.mobfox.MobFox-Android-SDK-Core:MobFox-Android-SDK-Core:dev-SNAPSHOT'
-    compile files('libs/MobFox-Android-MoPub-Adapter.jar')
-    compile files('libs/MobFox-Android-AdMob-Adapter.jar')
-    compile files('/Users/ofirkariv/Desktop/120618/testDir/MobFox-Android-SDK/MobFox-Android-SDK-Core-latest.jar')
+//    compile 'com.github.mobfox:MobFox-Android-SDK-Core:3.1.7'
+
+//    compile project(':core')
 }
