@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:mobfox="http://schemas.android.com/apk/lib/com.mobfox.sdk"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <com.mobfox.sdk.banner.Banner
+        android:id="@+id/bannerin_mp"
+        android:layout_width="320dp"
+        android:layout_height="50dp"
+        android:layout_centerInParent="true"
+        mobfox:inventory="30d36ccbff22b2c7dae0e3d2669be832">
+    </com.mobfox.sdk.banner.Banner>
+
+    <Button
+        android:id="@+id/load_mf_am_ce"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="89dp"
+        android:text="Button" />
+
+    <Spinner
+        android:id="@+id/mfmp_size_spinner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_toEndOf="@+id/load_mf_am_ce"
+        android:layout_toRightOf="@+id/load_mf_am_ce" />
+
+    <TextView
+        android:id="@+id/activity_name_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/mfmp_size_spinner"
+        android:layout_toStartOf="@+id/mfmp_size_spinner"
+        android:text="Mobfox->Mopub" />
+</RelativeLayout>

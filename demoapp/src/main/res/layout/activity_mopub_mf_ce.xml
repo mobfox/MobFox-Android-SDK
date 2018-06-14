@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent">
+
+    <com.mopub.mobileads.MoPubView
+        android:id="@+id/adview"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true" />
+
+    <Button
+        android:id="@+id/load_mp_ce"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/adview"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="70dp"
+        android:text="load" />
+
+    <Spinner
+        android:id="@+id/mpmf_size_spinner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_toEndOf="@+id/load_mp_ce"
+        android:layout_toRightOf="@+id/load_mp_ce" />
+
+    <TextView
+        android:id="@+id/activity_name_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/mpmf_size_spinner"
+        android:layout_toStartOf="@+id/mpmf_size_spinner"
+        android:text="Mopub->Mobfox" />
+
+</RelativeLayout>
