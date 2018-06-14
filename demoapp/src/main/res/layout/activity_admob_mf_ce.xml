@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:ads="http://schemas.android.com/apk/res-auto">
+
+    <com.google.android.gms.ads.AdView
+        android:id="@+id/adView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_centerVertical="true"
+        ads:adSize="SMART_BANNER"
+        ads:adUnitId="ca-app-pub-6224828323195096/4350674761"></com.google.android.gms.ads.AdView>
+
+    <Button
+        android:id="@+id/load_gad_ce"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="40dp"
+        android:text="Button" />
+
+    <Spinner
+        android:id="@+id/gadmf_size_spinner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_toEndOf="@+id/load_gad_ce"
+        android:layout_toRightOf="@+id/load_gad_ce" />
+
+    <TextView
+        android:id="@+id/activity_name_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/gadmf_size_spinner"
+        android:layout_toStartOf="@+id/gadmf_size_spinner"
+        android:text="Admob->Mobfox" />
+
+
+</RelativeLayout>

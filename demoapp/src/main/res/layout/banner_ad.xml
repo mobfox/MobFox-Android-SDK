@@ -6,18 +6,41 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
-        android:orientation="vertical">
+        android:orientation="horizontal"
+        android:weightSum="32"
+        android:id="@+id/llTop">
         <sdk.mobfox.com.appcore.MySpinner
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_weight="24"
             android:id="@+id/spinnerInvh"></sdk.mobfox.com.appcore.MySpinner>
         <sdk.mobfox.com.appcore.MySpinner
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_weight="8"
             android:id="@+id/spinnersizes"></sdk.mobfox.com.appcore.MySpinner>
     </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/llTop"
+        android:orientation="horizontal"
+        android:weightSum="32"
+        android:id="@+id/llBottom">
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="refresh"
+            android:layout_weight="8"
+            android:id="@+id/cbRefresh"/>
+        <sdk.mobfox.com.appcore.MySpinner
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="8"
+            android:id="@+id/spinnerrefresh"></sdk.mobfox.com.appcore.MySpinner>
+    </LinearLayout>
     <com.mobfox.sdk.bannerads.Banner
-        android:layout_height="50dp"
+        android:layout_height="51dp"
         android:layout_width="320dp"
         android:id="@+id/banner"
         mobfox:enableLocation="true"

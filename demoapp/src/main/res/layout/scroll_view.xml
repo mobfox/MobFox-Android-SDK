@@ -32,7 +32,7 @@
                     android:layout_height="500dp"
                     android:id="@+id/bottomColor"
                     android:layout_below="@id/topColor"
-                    android:background="@color/common_google_signin_btn_text_light_focused"/>
+                    android:background="?attr/colorPrimary"/>
                 <com.mobfox.sdk.bannerads.Banner
                     android:layout_width="300dp"
                     android:layout_height="250dp"

@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:mobfox="http://schemas.android.com/apk/lib/com.mobfox.sdk"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <Button
+        android:id="@+id/qrcode"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentStart="true"
+        android:text="Inventory Hash QRCode" />
+
+    <EditText
+        android:id="@+id/invhText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentStart="true"
+        android:ellipsize="start"
+        android:ems="10"
+        android:gravity="center_horizontal"
+        android:hint="Inventory Hash"
+        android:inputType="textPersonName" />
+
+    <Spinner
+        android:id="@+id/size_spinner"
+        android:layout_width="130dp"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/server_spinner"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/qrcode" />
+
+    <Spinner
+        android:id="@+id/server_spinner"
+        android:layout_width="130dp"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/floor_etext"
+        android:layout_alignEnd="@+id/load_btn"
+        android:layout_alignRight="@+id/load_btn"
+        android:layout_below="@+id/qrcode" />
+
+
+    <!--<ScrollView-->
+        <!--android:id="@+id/scrollView3"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="450dp"-->
+        <!--android:layout_alignEnd="@+id/floor_etext"-->
+        <!--android:layout_alignRight="@+id/floor_etext"-->
+        <!--android:layout_below="@+id/size_spinner"-->
+        <!--android:verticalScrollbarPosition="left"-->
+        <!--android:fadeScrollbars="false">-->
+
+
+        <!--<LinearLayout-->
+            <!--android:id="@+id/banner_container"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:verticalScrollbarPosition="left"-->
+            <!--android:layout_gravity="center_horizontal"-->
+            <!--android:gravity="center_horizontal"-->
+            <!--android:orientation="vertical"-->
+            <!--android:weightSum="32" />-->
+    <!--</ScrollView>-->
+
+    <com.mobfox.sdk.banner.Banner
+        android:id="@+id/banner320x50"
+        android:layout_width="320dp"
+        android:layout_height="50dp"
+        android:layout_alignTop="@+id/banner300x50"
+        android:layout_centerHorizontal="true"
+        mobfox:inventory="fe96717d9875b9da4339ea5367eff1ec">
+
+    </com.mobfox.sdk.banner.Banner>
+
+    <com.mobfox.sdk.banner.Banner
+        android:id="@+id/banner300x50"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:layout_alignStart="@+id/banner320x50"
+        android:layout_centerVertical="true"
+        mobfox:inventory="fe96717d9875b9da4339ea5367eff1ec">
+
+    </com.mobfox.sdk.banner.Banner>
+
+    <com.mobfox.sdk.banner.Banner
+        android:id="@+id/banner300x250"
+        android:layout_width="300dp"
+        android:layout_height="250dp"
+        android:layout_alignStart="@+id/banner300x50"
+        android:layout_centerVertical="true"
+        mobfox:inventory="fe96717d9875b9da4339ea5367eff1ec">
+
+    </com.mobfox.sdk.banner.Banner>
+
+
+    <Button
+        android:id="@+id/load_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/invhText"
+        android:layout_centerHorizontal="true"
+        android:text="load inventory" />
+
+    <EditText
+        android:id="@+id/floor_etext"
+        android:layout_width="130dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/qrcode"
+        android:layout_toEndOf="@+id/server_spinner"
+        android:layout_toRightOf="@+id/server_spinner"
+        android:ellipsize="start"
+        android:gravity="center_horizontal"
+        android:ems="10"
+        android:hint="Floor"
+        android:inputType="numberDecimal" />
+
+</RelativeLayout>
