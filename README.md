@@ -77,13 +77,16 @@ dependencies {
 **Note that we are using android ```compileSdkVersion 26```  and ```buildToolsVersion 26.1.0```.**
 
 Done.
+To continue installation, skip the next level and go directly to  
+[Setting permissions and adding activity (for both installation options)](#permissions)
 
 ## Option 2: Jar Installation
 
 ##### Please note we are recommending not to use the Jar installation and use the gradle installation instead.
-Download and unzip [MobFox-Android-SDK](https://github.com/mobfox/MobFox-Android-SDK/releases/latest) or clone this repository and extract the ```MobFox-Android-SDK-Core-latest.jar``` and put it in your project under the ``libs`` directory.
+1) Download and unzip [MobFox-Android-SDK](https://github.com/mobfox/MobFox-Android-SDK/releases/latest) or clone this repository.  
+Extract the ```MobFox-Android-SDK-Core-latest.jar``` jar file and put it in your project under the ``libs`` directory.
 
-Next, In your ```gradle.build``` add the following dependencies:
+2) Next, In your ```gradle.build``` add the following dependencies:
 
 ```groovy
 
@@ -99,7 +102,7 @@ dependencies {
 }
 ```
 
-### Add MOAT Integration:
+3)  Add MOAT Integration: 
 
 Download and add [MAT-moat-mobile-app-kit.aar](https://github.com/mobfox/MobFox-Android-SDK/blob/master/MAT-moat-mobile-app-kit.aar) to libs directory.
 
@@ -121,7 +124,14 @@ dependencies {
 }
 ```
 
-## Setting permissions and adding activity (for both installation options)
+
+
+
+
+
+## Permissions
+
+#### Setting permissions and adding activity (for both installation options).
 
 In your project's ```AndroidManifest.xml``` under the ```manifest``` tag, add the following permissions:
 ```xml
@@ -548,9 +558,12 @@ This enables publishers to measure their in-app inventory according to [Moat](ht
 
 # GDPR
 GDPR parameters can be set as follows:
+- For more information about the gdpr parameters please refer to "gdpr" and "gdpr_consent" rows in the following link: 
+https://docs.mobfox.com/v1.0/docs/global-request-parameters
+
 ```java
 MobfoxRequestParams gdprParams = new MobfoxRequestParams();
 gdprParams.setParam(MobfoxRequestParams.USER_GDPR,"1"); // can be "0" or "1"
-gdprParams.setParam(MobfoxRequestParams.USER_CONSENT,"1");// can be "0" or "1"
+gdprParams.setParam(MobfoxRequestParams.USER_CONSENT,"1");// can be "0" , "1" or "BOJObISOJObISAABAAENAA4AAAAAoAAA" (please refer to link above for further information).
 banner.addParams(gdprParams);
 ```
