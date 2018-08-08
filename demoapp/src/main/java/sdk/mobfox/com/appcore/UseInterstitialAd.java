@@ -37,8 +37,8 @@ public class UseInterstitialAd extends Activity implements AdapterView.OnItemSel
 
     //private static String invh = "267d72ac3f77a3f447b32cf7ebf20673";
 
-    //private static String invh = "267d72ac3f77a3f447b32cf7ebf20673";
-    private static String invh = "925cda5671815c81802bf8b7f45eec55";
+    private static String invh = "267d72ac3f77a3f447b32cf7ebf20673";
+    //private static String invh = "925cda5671815c81802bf8b7f45eec55";
     //private static String invh = "80187188f458cfde788d961b6882fd53";
 
 
@@ -116,6 +116,7 @@ public class UseInterstitialAd extends Activity implements AdapterView.OnItemSel
                     @Override
                     public void onInterstitialLoaded(Interstitial interstitial) {
                         Toast.makeText(self, "inter loaded", Toast.LENGTH_SHORT).show();
+                   
                         interAd.show();
                     }
 
@@ -148,6 +149,7 @@ public class UseInterstitialAd extends Activity implements AdapterView.OnItemSel
                     }
                 });
                 interAd.load();
+
             }
         });
 
