@@ -7,10 +7,10 @@
 # MobFox-Android-SDK
 
 ### Important!
-###  Please note version 3.6.0 have some no backward incompatible changes. therefore it is highly recommended to follow this tutorial after updating to 3.6.0 or above .
+###  Please note versions 3.6.0 and above have some no backward incompatible changes. Therefore, it is highly recommended to follow this tutorial after updating.
 
 
-### Publishers that have updated SDK version to 3.6.0 or above and use MobFox as adapter, must also update adapters Jar files manually (even if using SDK gradle Installation). To do so, download or clone the relevant adapter jar file, and change it with the old jar in your project.  
+### Publishers that have updated SDK version to 3.6.0 or above and use MobFox through an adapter, must also update adapters Jar files manually (even if using SDK gradle Installation). To do so, please download or clone the relevant adapter jar file, and change it with the old jar in your project.  
 Jar file located in: 
 ```MobFox-AndroidSDK/thirdPartyNetworks/RELEVANT_ADAPTER/*.jar```
 
