@@ -7,10 +7,10 @@
 # MobFox-Android-SDK
 
 ### Important!
-###  Please note version 3.6.0 have some no backward incompatible changes. therefore it is highly recommended to follow this tutorial after updating to 3.6.0  .
+###  Please note version 3.6.0 have some no backward incompatible changes. therefore it is highly recommended to follow this tutorial after updating to 3.6.0 or above .
 
 
-### Publishers that have updated SDK version to 3.6.0 and use MobFox as adapter, must also update adapters Jar files manually (even if using SDK gradle Installation). To do so, download or clone the relevant adapter jar file, and change it with the old jar in your project.  
+### Publishers that have updated SDK version to 3.6.0 or above and use MobFox as adapter, must also update adapters Jar files manually (even if using SDK gradle Installation). To do so, download or clone the relevant adapter jar file, and change it with the old jar in your project.  
 Jar file located in: 
 ```MobFox-AndroidSDK/thirdPartyNetworks/RELEVANT_ADAPTER/*.jar```
 
@@ -71,10 +71,10 @@ Next, add ```Google Play Services``` and ```MobFox-Android-SDK-Core``` to your c
 dependencies {
     //... other dependencies ...
     compile 'com.google.android.gms:play-services-ads:+'
-    compile 'com.github.mobfox.MobFox-Android-SDK-Core:MobFox-Android-SDK-Core:3.6.0'
+    compile 'com.github.mobfox.MobFox-Android-SDK-Core:MobFox-Android-SDK-Core:3.6.1'
 }
 ```
-**Note that we are using android ```compileSdkVersion 26```  and ```buildToolsVersion 26.1.0```.**
+**Note that we are using android ```compileSdkVersion 26```  and ```buildToolsVersion 26.0.2```.**
 
 Done.
 To continue installation, skip the next level and go directly to  
@@ -99,7 +99,7 @@ dependencies {
     compile 'com.google.android.gms:play-services-ads:+'
     compile 'com.android.volley:volley:1.1.0'
     compile 'com.github.mobfox:AndroidVideoCache:v2.7.1'
-    compile files('libs/MobFox-Android-SDK-Core-3.6.0.jar')
+    compile files('libs/MobFox-Android-SDK-Core-3.6.1.jar')
 }
 ```
 
