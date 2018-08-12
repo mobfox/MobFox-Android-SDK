@@ -7,7 +7,15 @@
 # MobFox-Android-SDK
 
 ### Important!
+### New documentation page - https://mobfox.atlassian.net/wiki/spaces/PUMD/pages/354156654/Getting+Started
+
 ###  Please note versions 3.6.0 and above have some no backward incompatible changes. Therefore, it is highly recommended to follow this tutorial after updating.
+
+### Main changes in 3.6.0 and above - 
+* Code refactoring in Banner & Interstitial implementation by using new engine.
+* New Demo App
+* Streamlined API.
+* Updated Mopub and Admob Adapters.
 
 
 ### Publishers that have updated SDK version to 3.6.0 or above and use MobFox through an adapter, must also update adapters Jar files manually (even if using SDK gradle Installation). To do so, please download or clone the relevant adapter jar file, and change it with the old jar in your project.  
