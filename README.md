@@ -7,7 +7,7 @@
 # MobFox-Android-SDK
 
 ### Important!
-### New documentation page - https://mobfox.atlassian.net/wiki/spaces/PUMD/pages/354156654/Getting+Started
+### [New documentation page](https://mobfox.atlassian.net/wiki/spaces/PUMD/pages/354156654/Getting+Started)
 
 ###  Please note versions 3.6.0 and above have some no backward incompatible changes. Therefore, it is highly recommended to follow this tutorial after updating.
 
