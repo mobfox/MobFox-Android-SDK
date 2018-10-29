@@ -7,8 +7,7 @@ android:
                 - extra-android-m2repository
 script:
         - ./demoapp/gradlew build
-before_install:
-        - chmod +x gradlew
+
 branches:
         only:
                 - CITest
