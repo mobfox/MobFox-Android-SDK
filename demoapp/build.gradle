@@ -4,11 +4,11 @@ version = "1.6"
 
 buildscript {
     repositories {
-        jcenter()
         maven {
             url 'https://maven.google.com/'
             name 'Google'
         }
+        jcenter()
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:2.3.3'
@@ -44,13 +44,13 @@ android {
 }
 
 repositories {
-    jcenter()
     maven { url "https://jitpack.io" }
     mavenCentral()
     maven {
         url 'https://maven.google.com/'
         name 'Google'
     }
+    jcenter()
 }
 
 dependencies {
