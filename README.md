@@ -106,7 +106,7 @@ repositories {
 }
 
 dependencies {
-    compile 'com.google.android.gms:play-services-ads:+'
+    compile 'com.google.android.gms:play-services-ads:16.0.0'
     compile 'com.android.volley:volley:1.1.0'
     compile 'com.github.mobfox:AndroidVideoCache:v2.7.1'
     compile files('libs/MobFox-Android-SDK-Core-3.6.4.jar')
