@@ -37,7 +37,7 @@ dependencies {
 | Native | ```com.mobfox.sdk.adapters.MoPubNativeAdAdapter``` | ```{"invh":"<your-publication-hash>"}```|
 
 
-## Click 'Save & Close'.
+### Click 'Save & Close'.
 
 Now, when calling your MoPub ads, you should get the respective Mobfox ads.
 
