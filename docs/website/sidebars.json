@@ -1,6 +1,10 @@
 {
   "docs": {
-    "Getting Started" : ["getting_started"]
+    "Getting Started" : [
+        "getting_started",
+        "banners",
+        "interstitials"
+    ]
   },
   "docs-other": {
     "First Category": ["doc4", "doc5"]

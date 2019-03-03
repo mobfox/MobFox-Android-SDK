@@ -1,27 +1,24 @@
 ---
 id: getting_started
-title: Integrate via Android SDK
+title: Install The MobFox Android SDK
 ---
 
-The SDK supports Android OS 4.4.x (KitKat) and later.
-
-## Where to get support
-For any problems or questions not covered by the instructions below, contact EMAIL: sdk_support@mobfox.com or open an issue.
-
-If you want to report bugs or technical issues with this SDK please do it on Github.
-
-
-## Prerequisites
-You will need a Mobfox account.
-
-## Installation
-
-Note: The SDK supports Android API 19 and above.
+The SDK supports Android OS 4.4.x / API 19 (KitKat) and later.
 
 For users with lower versions the SDK will run normally but will not return any ads.
 
 
-### AndroidManifest.xml
+## Where to get support
+For any problems or questions not covered by the instructions below, contact EMAIL: sdk_support@mobfox.com or open an issue.
+
+To report bugs or technical issues with this SDK please do it on Github.
+
+
+## Prerequisites
+You will need a [MobFox](https://mobfox.com) account.
+
+
+## AndroidManifest.xml
 
 Add the following your app's AndroidManifest.xml:
 ```html,xml
@@ -51,8 +48,8 @@ Add the following your app's AndroidManifest.xml:
 ```
 
 
-### Top Level build.grade
-Add ```jitpack``` repo to your top level ```build.gradle```.
+## Top Level ```build.grade```
+Add the ```jitpack``` repository to your top level ```build.gradle```.
 ```groovy
 allprojects {
     repositories {
@@ -62,12 +59,12 @@ allprojects {
 }
 ```
 
-### Module Level build.grade
+## Module Level ```build.grade```
 
-#### Google Play Services
+### Google Play Services
 Install [Google Play Services](https://developers.google.com/android/guides/setup) for ads (```com.google.android.gms:play-services-ads```), if you don't have it already.
 
-#### Include the MobFox SDK
+### Include the MobFox SDK
 Add to your module level ```build.gradle```:
 ```groovy
 dependencies {
@@ -79,8 +76,8 @@ dependencies {
 Note: We are using android compileSdkVersion 25 and buildToolsVersion 25.0.3.
 
 
-### Proguard
-If using [Proguard](https://developer.android.com/studio/build/shrink-code) please add the following to your ```proguard-rules.pro``` or similar:
+## Proguard
+If using [Proguard](https://developer.android.com/studio/build/shrink-code) please add the following to your ```proguard-rules.pro``` or similar file:
 ```
 -keep class com.mobfox. {*;}
 
