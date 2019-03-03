@@ -26,15 +26,15 @@ dependencies {
 1. Enter your CPM preferences.
 
 ### Add Custom Event Data
-1. Enter the appropriate Custom Event Class name from the table below in the *#Custom Event Class** field.
+1. Enter the appropriate **Custom Event Class Name** from the table below in the corresponding field.
 1. Enter the appropriate **Custom Event Class Data** from the table below in the corresponding field.
 
 | Ad Type        | Class  | Data  |
 | ------------- |-------------| -----|
-| Banner | ```com.mobfox.sdk.adapters.MoPubBannerAdapter``` | ```{"invh":"<your-publication-hash>"}```|
-| Interstitial  | ```com.mobfox.sdk.adapters.MoPubInterstitialAdapter```  |```{"invh":"<your-publication-hash>"}```  |
-| Rewarded Video  | ```com.mobfox.sdk.adapters.MoPubRewardedAdapter```  |```{"invh":"<your-publication-hash>"}```  |
-| Native | ```com.mobfox.sdk.adapters.MoPubNativeAdAdapter``` | ```{"invh":"<your-publication-hash>"}```|
+| Banner | ```com.mobfox.sdk.adapters.MoPubBannerAdapter``` | ```{"invh":"<your-mobfox-inventory-hash>"}```|
+| Interstitial  | ```com.mobfox.sdk.adapters.MoPubInterstitialAdapter```  |```{"invh":"<your-mobfox-inventory-hash>"}```  |
+| Rewarded Video  | ```com.mobfox.sdk.adapters.MoPubRewardedAdapter```  |```{"invh":"<your-mobfox-inventory-hash>"}```  |
+| Native | ```com.mobfox.sdk.adapters.MoPubNativeAdAdapter``` | ```{"invh":"<your-mobfox-inventory-hash>"}```|
 
 
 ### Click 'Save & Close'.
