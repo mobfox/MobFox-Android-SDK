@@ -1,0 +1,8 @@
+{
+  "docs": {
+    "Getting Started" : ["getting_started"]
+  },
+  "docs-other": {
+    "First Category": ["doc4", "doc5"]
+  }
+}
