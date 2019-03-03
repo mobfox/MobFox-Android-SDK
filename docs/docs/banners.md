@@ -5,8 +5,8 @@ title: Banner Ads
 
 There are two methods to create a MobFox Banner instance:
 
-- Create the banner using an XML layout
-- Create the banner programmatically 
+- [Create the banner using an XML layout](#using-xml-layout)
+- [Create the banner programmatically](#programmatically)
 
 
 ## Using XML Layout
@@ -145,7 +145,7 @@ public class ProgrammaticBannerActivity extends AppCompatActivity {
  
         super.onCreate(savedInstanceState);
         final Context context = getApplicationContext();
-        String inventoryHash = "fe96717d9875b9da4339ea5367eff1ec"; //Banner Test Invertory Hash
+        String inventoryHash = "fe96717d9875b9da4339ea5367eff1ec"; //test inventory hash for banner
         setContentView(R.layout.<YOUR_ACTIVITY_LAYOUT>);
         LinearLayout view = findViewById(R.id.your_layout);
         //Default banner sizes:

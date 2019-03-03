@@ -21,7 +21,7 @@ const users = [
 ];
 
 const siteConfig = {
-  title: 'MobFox SDK', // Title for your website.
+  title: 'Android SDK', // Title for your website.
   tagline: 'Install The MobFox SDK',
   url: 'https://mobfox.com', // Your website URL
   baseUrl: '/', // Base URL for your project */
