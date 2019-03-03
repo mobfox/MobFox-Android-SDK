@@ -2,8 +2,10 @@
   "docs": {
     "Getting Started" : [
         "getting_started",
+        "mopub_adapter",
         "banners",
-        "interstitials"
+        "interstitials",
+        "native"
     ]
   },
   "docs-other": {
